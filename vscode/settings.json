@@ -1,0 +1,54 @@
+{
+    "cmake.cmakePath": "/usr/local/bin/cmake",
+    "cmake.configureOnOpen": true,
+    "security.workspace.trust.untrustedFiles": "open",
+    "[dart]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.rulers": [
+            80
+        ],
+        "editor.selectionHighlight": false,
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+        "editor.suggestSelection": "first",
+        "editor.tabCompletion": "onlySnippets",
+        "editor.wordBasedSuggestions": false
+    },
+    "git.autofetch": true,
+    "remote.SSH.enableRemoteCommand": true,
+    "window.newWindowDimensions": "maximized",
+    "window.restoreFullscreen": true,
+    "dart.flutterSdkPaths": [
+        "~/.flutter"
+    ],
+    "redhat.telemetry.enabled": true,
+
+    "gitlab.instanceUrl": "https://gitlab.claytonc.dev",
+    "dart.openDevTools": "flutter",
+    "python.defaultInterpreterPath": "/usr/local/bin/python3",
+    "githubPullRequests.createOnPublishBranch": "never",
+    "kubescape.dirPath": "/Users/clayton/Dev/libraries/go/bin/kubescape",
+    "vs-kubernetes": {
+        "vs-kubernetes.crd-code-completion": "enabled"
+    },
+    "editor.inlineSuggest.enabled": true,
+    "github.copilot.enable": {
+        "*": false,
+        "yaml": true,
+        "plaintext": false,
+        "markdown": false
+    },
+    "kubescape.customFrameworksDir": "~/.kubescape",
+    "kubescape.scanOnSave": "yaml",
+    "settingsSync.ignoredExtensions": [
+        "platformio.platformio-ide"
+    ],
+    "git.confirmSync": false,
+    "git.enableSmartCommit": true,
+    "terminal.integrated.defaultProfile.osx": "tmux",
+    "rapidapi.terminalLink.enabled": false,
+    "workbench.colorTheme": "Solarized Dark",
+    "arduino.commandPath": "Contents/MacOS/run-arduino.sh",
+    "arduino.path": "/Applications",
+    "window.zoomLevel": 1
+}
