@@ -1,5 +1,9 @@
-vim.g.tokyonight_transparent_sidebar = true
-vim.g.tokyonight_transparent = true
+-- general
 vim.opt.background = 'dark'
 
-vim.cmd[[colorscheme tokyonight]]
+-- tokyonight
+vim.g.tokyonight_transparent_sidebar = true
+vim.g.tokyonight_transparent = true
+
+-- colorscheme
+vim.cmd[[colorscheme solarized]]

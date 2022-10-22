@@ -21,7 +21,8 @@ alias sleep1 "sudo pmset disablesleep -1"
 alias sleep0 "sudo pmset disablesleep -0"
 alias dns "sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder"
 alias restart 'sudo shutdown -r now'
-alias ll 'ls -a'
+alias la 'ls -a'
+alias ll 'ls -lha'
 alias k kubectl
 alias kd 'kubectl describe'
 alias kg 'kubectl get'

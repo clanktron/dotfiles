@@ -1,19 +1,32 @@
-vim.opt.guicursor = ""
-vim.o.termguicolors = true
+-- settings
+
+-- set custom leader key
+vim.g.mapleader = " "
+
+-- line numbers
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
+-- tabs
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
+
+-- indentation
+vim.opt.autoindent = true
+vim.opt.smartindent = true
+
+-- line wrapping
+vim.opt.wrap = false
+
+-- search
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
-vim.opt.smartindent = true
+-- appearance
+vim.opt.guicursor = ""
+vim.o.termguicolors = true
 
-vim.opt.wrap = false
-
-vim.g.mapleader = " "
-
-
+-- use system clipboard
+vim.opt.clipboard:append("unnamedplus")
