@@ -10,11 +10,9 @@ return require('packer').startup(function(use)
   -- Colors
   use 'folke/tokyonight.nvim'
 
-
-  -- LSP/Intellisense
+  -- treesitter (syntax highlighting)
   use("nvim-treesitter/nvim-treesitter", {
      run = ":TSUpdate"
   })
   
-
 end)

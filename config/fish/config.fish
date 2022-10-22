@@ -6,7 +6,7 @@ set --export --prepend PATH "/Users/clayton/.rd/bin"
 set fish_greeting ""
 set -gx EDITOR vim
 #set -gx EDITOR 'code --wait'
-set HOMEBREW_NO_ENV_HINTS 1
+set -gx HOMEBREW_NO_ENV_HINTS 1
 
 # Theme
 set -g theme_color_scheme terminal-dark

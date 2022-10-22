@@ -1,4 +1,4 @@
-require("clayton.remap")
-require("clayton.set")
+require("clayton.keymaps")
+require("clayton.settings")
 require("clayton.packer")
 print('hello clayton')

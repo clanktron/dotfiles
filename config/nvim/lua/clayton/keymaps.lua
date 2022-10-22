@@ -1,3 +1,6 @@
+-- local nnoremap = require('clayton.keymaps').nnoremap
+-- nnoremap('<leader>pv', '<cmd>Ex<CR>')
+
 local M = {}
 
 local function bind(op, outer_opts)
