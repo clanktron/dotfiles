@@ -1,24 +1,6 @@
--- local nnoremap = require('clayton.keymaps').nnoremap
--- nnoremap('<leader>pv', '<cmd>Ex<CR>')
+local keymap = vim.keymap
 
-local M = {}
-
-local function bind(op, outer_opts)
-    outer_opts = outer_opts or {noremap = true}
-    return function(lhs, rhs, opts)
-        opts = vim.tbl_extend("force",
-            outer_opts,
-            opts or {}
-        )
-        vim.keymap.set(op, lhs, rhs, opts)
-    end
-end
-
-M.nmap = bind("n", {noremap = false})
-M.nnoremap = bind("n")
-M.vnoremap = bind("v")
-M.xnoremap = bind("x")
-M.inoremap = bind("i")
-
-return M
-
+-- tab shortcuts
+keymap.set("n", "<C-t>", "<Esc>:Texplore<CR>")
+keymap.set("n", "<C-l>", "<Esc>:tabnext<CR>")
+keymap.set("n", "<C-h>", "<Esc>:tabprevious<CR>")
