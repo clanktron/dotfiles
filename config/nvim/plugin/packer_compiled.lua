@@ -74,6 +74,21 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["NeoSolarized.nvim"] = {
+    loaded = true,
+    path = "/Users/clayton/.local/share/nvim/site/pack/packer/start/NeoSolarized.nvim",
+    url = "https://github.com/Tsuzat/NeoSolarized.nvim"
+  },
+  ["markdown-preview.nvim"] = {
+    loaded = true,
+    path = "/Users/clayton/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim",
+    url = "https://github.com/iamcco/markdown-preview.nvim"
+  },
+  ["nightfox.nvim"] = {
+    loaded = true,
+    path = "/Users/clayton/.local/share/nvim/site/pack/packer/start/nightfox.nvim",
+    url = "https://github.com/EdenEast/nightfox.nvim"
+  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/Users/clayton/.local/share/nvim/site/pack/packer/start/nvim-treesitter",

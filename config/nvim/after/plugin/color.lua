@@ -5,5 +5,9 @@ vim.opt.background = 'dark'
 vim.g.tokyonight_transparent_sidebar = true
 vim.g.tokyonight_transparent = true
 
+-- nightfox (needs to be configured to work with treesitter?)
+
+
+
 -- colorscheme
-vim.cmd[[colorscheme solarized]]
+vim.cmd[[colorscheme NeoSolarized]]
