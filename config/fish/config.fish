@@ -35,6 +35,7 @@ alias ka 'kubectl apply -f'
 alias kc 'kubectx'
 alias docker 'nerdctl'
 alias ucla-vpn 'sudo openconnect --protocol=anyconnect https://ssl.vpn.ucla.edu'
+alias lg lazygit
 
 # Functions
 function kn
