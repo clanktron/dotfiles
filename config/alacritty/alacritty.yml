@@ -39,7 +39,7 @@ window:
 
   # Window decoration
   # Full, Transparent, Buttonless, None
-  decorations: None 
+  decorations: Buttonless
 
 # When true, bold text is drawn using the bright variant of colors.
 draw_bold_text_with_bright_colors: true
@@ -126,22 +126,22 @@ key_bindings:
   - { key: Equals,   mods: Command, action: IncreaseFontSize             }
   - { key: Minus,    mods: Command, action: DecreaseFontSize             }
   - { key: W,        mods: Command,       chars: "\x04" }
-  - { key: H,        mods: Command,       chars: "\x14\x1b\x5b\x44" }
-  - { key: J,        mods: Command,       chars: "\x14\x1b\x5b\x42" }
-  - { key: K,        mods: Command,       chars: "\x14\x1b\x5b\x41" }
-  - { key: L,        mods: Command,       chars: "\x14\x1b\x5b\x43" }
-  - { key: T,        mods: Command,       chars: "\x14\x63" }
-  - { key: Key1,     mods: Command,       chars: "\x14\x30" }
-  - { key: Key2,     mods: Command,       chars: "\x14\x31" }
-  - { key: Key3,     mods: Command,       chars: "\x14\x32" }
-  - { key: Key4,     mods: Command,       chars: "\x14\x33" }
-  - { key: Key5,     mods: Command,       chars: "\x14\x34" }
-  - { key: Key6,     mods: Command,       chars: "\x14\x35" }
-  - { key: Key7,     mods: Command,       chars: "\x14\x36" }
-  - { key: Key8,     mods: Command,       chars: "\x14\x37" }
-  - { key: Key9,     mods: Command,       chars: "\x14\x38" }
-  - { key: Key0,     mods: Command,       chars: "\x14\x39" }
-  - { key: Left,     mods: Command,       chars: "\x14\x1b\x5b\x44" }
-  - { key: Down,     mods: Command,       chars: "\x14\x1b\x5b\x42" }
-  - { key: Up,       mods: Command,       chars: "\x14\x1b\x5b\x41" }
-  - { key: Right,    mods: Command,       chars: "\x14\x1b\x5b\x43" }
+  - { key: H,        mods: Command,       chars: "\x01\x1b\x5b\x44" }
+  - { key: J,        mods: Command,       chars: "\x01\x1b\x5b\x42" }
+  - { key: K,        mods: Command,       chars: "\x01\x1b\x5b\x41" }
+  - { key: L,        mods: Command,       chars: "\x01\x1b\x5b\x43" }
+  - { key: T,        mods: Command,       chars: "\x01\x63" }
+  - { key: Key1,     mods: Command,       chars: "\x01\x30" }
+  - { key: Key2,     mods: Command,       chars: "\x01\x31" }
+  - { key: Key3,     mods: Command,       chars: "\x01\x32" }
+  - { key: Key4,     mods: Command,       chars: "\x01\x33" }
+  - { key: Key5,     mods: Command,       chars: "\x01\x34" }
+  - { key: Key6,     mods: Command,       chars: "\x01\x35" }
+  - { key: Key7,     mods: Command,       chars: "\x01\x36" }
+  - { key: Key8,     mods: Command,       chars: "\x01\x37" }
+  - { key: Key9,     mods: Command,       chars: "\x01\x38" }
+  - { key: Key0,     mods: Command,       chars: "\x01\x39" }
+    #  - { key: Left,     mods: Command,       chars: "\x13\x1b\x5b\x44" }
+    #  - { key: Down,     mods: Command,       chars: "\x13\x1b\x5b\x42" }
+    #  - { key: Up,       mods: Command,       chars: "\x13\x1b\x5b\x41" }
+    #  - { key: Right,    mods: Command,       chars: "\x13\x1b\x5b\x43" }
