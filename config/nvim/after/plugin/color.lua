@@ -10,4 +10,4 @@ vim.g.tokyonight_transparent = true
 
 
 -- colorscheme
-vim.cmd[[colorscheme NeoSolarized]]
+vim.cmd[[colorscheme neosolarized]]

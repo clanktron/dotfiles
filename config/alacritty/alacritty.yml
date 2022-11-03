@@ -1,3 +1,5 @@
+# (r) = changes require application restart
+
 # Environment Variables
 env:
  TERM: xterm-256color
@@ -7,11 +9,14 @@ import:
 - "~/.config/alacritty/color.yml"
 
 window:
-  # Window dimensions in character columns and lines
-  # (changes require restart)
+  # Window dimensions in character columns and lines (r)
   dimensions:
     columns: 120
-    lines: 15
+    lines: 61
+
+  position:
+    x: 920
+    y: 30
 
   # Startup Mode (changes require restart)
   # Values for `startup_mode`:
@@ -35,7 +40,7 @@ window:
   dynamic_title: true
 
   # Background opacity
-  opacity: 0.85
+  opacity: .98
 
   # Window decoration
   # Full, Transparent, Buttonless, None

@@ -1,8 +1,5 @@
 -- settings
 
--- set custom leader key
-vim.g.mapleader = " "
-
 -- line numbers
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -30,3 +27,6 @@ vim.o.termguicolors = true
 
 -- use system clipboard
 vim.opt.clipboard:append("unnamedplus")
+
+-- directory navigation
+vim.opt.autochdir = true
