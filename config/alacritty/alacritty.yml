@@ -40,7 +40,7 @@ window:
   dynamic_title: true
 
   # Background opacity
-  opacity: .98
+  opacity: 1
 
   # Window decoration
   # Full, Transparent, Buttonless, None

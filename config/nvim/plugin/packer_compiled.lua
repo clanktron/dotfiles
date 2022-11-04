@@ -94,6 +94,11 @@ _G.packer_plugins = {
     path = "/Users/clayton/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
+  ["oh-lucy.nvim"] = {
+    loaded = true,
+    path = "/Users/clayton/.local/share/nvim/site/pack/packer/start/oh-lucy.nvim",
+    url = "https://github.com/Yazeed1s/oh-lucy.nvim"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/Users/clayton/.local/share/nvim/site/pack/packer/start/packer.nvim",

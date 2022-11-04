@@ -7,7 +7,5 @@ vim.g.tokyonight_transparent = true
 
 -- nightfox (needs to be configured to work with treesitter?)
 
-
-
 -- colorscheme
-vim.cmd[[colorscheme neosolarized]]
+vim.cmd[[colorscheme tokyonight-storm]]

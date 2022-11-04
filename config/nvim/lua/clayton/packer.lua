@@ -27,6 +27,7 @@ return require('packer').startup(function(use)
     use 'folke/tokyonight.nvim'
     use 'EdenEast/nightfox.nvim'
     use 'Tsuzat/NeoSolarized.nvim'
+    use 'Yazeed1s/oh-lucy.nvim'
   
     -- treesitter (syntax highlighting)
     use('nvim-treesitter/nvim-treesitter', {
