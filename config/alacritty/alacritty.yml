@@ -40,7 +40,7 @@ window:
   dynamic_title: true
 
   # Background opacity
-  opacity: 1
+  opacity: .6
 
   # Window decoration
   # Full, Transparent, Buttonless, None
@@ -59,12 +59,12 @@ scrolling:
 font:
  # The normal (roman) font face to use.
   normal:
-    family: Fira Code
+    family: FiraCode Nerd Font
     style: Regular
  
   # The bold font face
   bold:
-    family: Fira Code
+    family: FiraCode Nerd Font
     style: Bold
  
   # The italic font face

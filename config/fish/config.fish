@@ -3,7 +3,7 @@ set --export --prepend PATH "/Users/clayton/.rd/bin"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
 # Colorscheme
-set COLOR nightfox 
+set COLOR tokyonight 
 source (dirname (status --current-filename))/colors/$COLOR.fish
 
 # Fish defaults

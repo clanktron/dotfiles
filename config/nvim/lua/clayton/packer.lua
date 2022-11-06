@@ -28,12 +28,53 @@ return require('packer').startup(function(use)
     use 'EdenEast/nightfox.nvim'
     use 'Tsuzat/NeoSolarized.nvim'
     use 'Yazeed1s/oh-lucy.nvim'
-  
+
+    -- useful functions for other plugins
+    use 'nvim-lua/plenary.nvim'
+
+    -- file explorer
+    use 'nvim-tree/nvim-tree.lua'
+    use 'kyazdani42/nvim-web-devicons'
+
+    -- statusline
+    use 'nvim-lualine/lualine.nvim'
+
+    -- tmux & split window navigation
+    use 'christoomey/vim-tmux-navigator'
+
+    -- window maximize/minimize
+    use 'szw/vim-maximizer'
+
     -- treesitter (syntax highlighting)
     use('nvim-treesitter/nvim-treesitter', {
         run = ":TSUpdate"
     })
-  
+
+    -- autocompletion
+    use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
+
+    -- snippets
+    use 'L3MON4D3/LuaSnip'
+    use 'saadparwaiz1/cmp_luasnip'
+    use 'rafamadriz/friendly-snippets'
+
+    -- lsp manage and install
+    use 'williamboman/mason.nvim'
+    use 'williamboman/mason-lspconfig.nvim'
+
+    -- configure lsp
+    use 'neovim/nvim-lspconfig'
+    use 'hrsh7th/cmp-nvim-lsp'
+    use {'glepnir/lspsaga.nvim', branch = 'main'}
+    use 'jose-elias-alvarez/typescript.nvim'
+    use 'onsails/lspkind.nvim'
+
+    -- fuzzy finding
+    use {'nvim-telescope/telescope.nvim', tag = '0.1.x'}
+    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+
     -- Markdown
     use({
         "iamcco/markdown-preview.nvim",
