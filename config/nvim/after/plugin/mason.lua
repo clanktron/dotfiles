@@ -3,8 +3,8 @@ require('mason').setup()
 require('mason-lspconfig').setup({
     ensure_installed = {
         'ansiblels',
-        'arduino_language_server',
-        'asm_lsp',
+        -- 'arduino_language_server',
+        -- 'asm_lsp',
         'astro',
         'bashls',
         'clangd',
