@@ -38,5 +38,6 @@ yabai -m config window_gap                   15
 yabai -m rule --add app="^System Preferences$" manage=off
 yabai -m rule --add app="^Archive Utility$" manage=off
 yabai -m rule --add app="^Messages$" manage=off
+yabai -m rule --add app="^Spotify$" manage=off
 
 echo "yabai configuration loaded.."
