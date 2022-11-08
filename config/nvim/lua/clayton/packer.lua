@@ -46,9 +46,11 @@ return require('packer').startup(function(use)
     use 'szw/vim-maximizer'
 
     -- treesitter (syntax highlighting)
-    use('nvim-treesitter/nvim-treesitter', {
-        run = ":TSUpdate"
-    })
+    use('nvim-treesitter/nvim-treesitter', { run = ":TSUpdate" })
+
+    -- auto closing
+    use 'windwp/nvim-autopairs'
+    use 'windwp/nvim-ts-autotag'
 
     -- autocompletion
     use 'hrsh7th/nvim-cmp'
@@ -73,6 +75,9 @@ return require('packer').startup(function(use)
     -- fuzzy finding
     use {'nvim-telescope/telescope.nvim', tag = '0.1.x'}
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+
+    -- git signs plugin
+    use 'lewis6991/gitsigns.nvim'
 
     -- Markdown
     use({
