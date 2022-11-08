@@ -1,21 +1,19 @@
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-set --export --prepend PATH "/Users/clayton/.rd/bin"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
-
-# Colorscheme
-set COLOR tokyonight 
-source (dirname (status --current-filename))/colors/$COLOR.fish
+# ENVIRONMENT
+set -gx EDITOR nvim
+#set -gx EDITOR 'code --wait'
+set -gx HOMEBREW_NO_ENV_HINTS 1
+## PATH
+set -gx PATH /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+set -gx GOPATH ~/Developer/go
+set -px PATH $GOPATH/bin
 
 # Fish defaults
 set fish_greeting ""
 fish_vi_key_bindings
 
-# Environment vars
-set -gx EDITOR nvim
-#set -gx EDITOR 'code --wait'
-set -gx HOMEBREW_NO_ENV_HINTS 1
-set -gx GOPATH '~/Developer/go/'
-set -gx PATH $PATH:$GOPATH/bin
+# Colorscheme
+set COLOR tokyonight 
+source (dirname (status --current-filename))/colors/$COLOR.fish
 
 # Prompt
 set -g fish_prompt_pwd_dir_length 1
@@ -82,3 +80,7 @@ switch (uname)
   case '*'
     source (dirname (status --current-filename))/os/windows.fish
 end
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+set --export --prepend PATH "/Users/clayton/.rd/bin"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
