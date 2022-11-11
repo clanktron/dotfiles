@@ -36,6 +36,9 @@ alias docker 'nerdctl'
 alias ucla-vpn 'sudo openconnect --protocol=anyconnect https://ssl.vpn.ucla.edu'
 alias ad 'arduino-cli'
 
+# zoxide integration
+zoxide init fish | source
+
 # Functions
 function kn
     kubectl config set-context --current --namespace="$argv" && kubectl config view --minify | grep namespace:
