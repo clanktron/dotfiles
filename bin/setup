@@ -1,14 +1,16 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
+# too lazy to write robust script so this is just for basic testing
+ln -sf ~/dotfiles/config/nvim ~/.config/nvim
+ln -sf ~/dotfiles/config/tmux ~/.config/tmux
+ln -sf ~/dotfiles/config/fish ~/.config/fish
 
-read "Would you like to overwrite your current .config files? (y/n)	" input
-
-
-for dir in ../.config do
-	if [$input == [yY]] then
-		rm -r ~/.config/$dir
-	fi
-	ln -sf $dir ~/.config/$dir
-done
-
-
+# read "Would you like to overwrite your current .config files? (y/n)	" input
+# 
+# 
+# for dir in ../.config do
+# 	if [$input == [yY]] then
+# 		rm -r ~/.config/$dir
+# 	fi
+# 	ln -sf $dir ~/.config/$dir
+# done
