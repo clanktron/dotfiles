@@ -123,6 +123,7 @@ shell:
 
 # Key bindings
 key_bindings:
+  - { key: N, mods: Command, action: CreateNewWindow }
   - { key: Return,   mods: Command, action: ToggleSimpleFullscreen }
   - { key: V,        mods: Command, action: Paste                        }
   - { key: C,        mods: Command, action: Copy                         }

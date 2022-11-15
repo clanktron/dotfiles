@@ -2,6 +2,8 @@
 set -gx EDITOR nvim
 #set -gx EDITOR 'code --wait'
 set -gx HOMEBREW_NO_ENV_HINTS 1
+set -gx SOPS_AGE_KEY_FILE ~/.config/sops/age/keys.txt
+
 ## PATH
 set -gx PATH /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 set -gx GOPATH ~/Developer/go
