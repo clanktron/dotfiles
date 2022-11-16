@@ -2,7 +2,7 @@
 set -gx EDITOR nvim
 #set -gx EDITOR 'code --wait'
 set -gx HOMEBREW_NO_ENV_HINTS 1
-set -gx SOPS_AGE_KEY_FILE ~/.config/sops/age/keys.txt
+set -gx SOPS_AGE_KEY_FILE ~/.config/sops/age/age.agekey
 
 ## PATH
 set -gx PATH /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
