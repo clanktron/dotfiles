@@ -42,5 +42,6 @@ yabai -m rule --add app="^Spotify$" manage=off
 yabai -m rule --add app="^Slack$" manage=off
 yabai -m rule --add app="^Proton Mail Bridge$" manage=off
 yabai -m rule --add app="^Stats$" manage=off
+yabai -m rule --add app="^Bitwarden$" manage=off
 
 echo "yabai configuration loaded.."
