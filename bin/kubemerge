@@ -4,13 +4,10 @@
 cp ~/.kube/config ~/.kube/config.bak 
 
 # Merge the two config files together into a new config file 
-KUBECONFIG=~/.kube/config:$@
-echo $KUBECONFIG
-kubectl config view --flatten > ~/.kube/tmp
-cat ~/.kube/tmp
+KUBECONFIG=~/.kube/config:$@ kubectl config view --flatten > /tmp/config 
 
 # Replace your old config with the new merged config 
-mv ~/.kube/tmp ~/.kube/config 
+mv /tmp/config ~/.kube/config 
 
 # (optional) Delete the backup once you confirm everything worked ok 
 # rm ~/.kube/config.bak
