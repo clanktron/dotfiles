@@ -46,7 +46,7 @@ return require('packer').startup(function(use)
     use 'szw/vim-maximizer'
 
     -- treesitter (syntax highlighting)
-    use('nvim-treesitter/nvim-treesitter', { run = ":TSUpdate" })
+    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
     -- auto closing
     use 'windwp/nvim-autopairs'
@@ -79,11 +79,16 @@ return require('packer').startup(function(use)
     -- git signs plugin
     use 'lewis6991/gitsigns.nvim'
 
+    -- debugging
+    use 'mfussenegger/nvim-dap'
+    use 'rcarriga/nvim-dap-ui'
+    use 'theHamsta/nvim-dap-virtual-text'
+
     -- Markdown
     use({
-        "iamcco/markdown-preview.nvim",
+        'iamcco/markdown-preview.nvim',
         -- if this func doesn't auto run, run it with :call mkdp#util#install() 
-        run = function() vim.fn["mkdp#util#install"]() end,
+        run = function() vim.fn['mkdp#util#install']() end,
     })
 
     if packer_bootstrap then

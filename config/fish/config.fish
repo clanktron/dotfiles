@@ -36,8 +36,7 @@ alias ka 'kubectl apply -f'
 alias kc 'kubectx'
 alias docker 'nerdctl'
 alias ucla-vpn 'sudo openconnect --protocol=anyconnect https://ssl.vpn.ucla.edu'
-alias ad 'arduino-cli'
-
+alias c 'clear'
 # zoxide integration
 zoxide init fish | source
 
