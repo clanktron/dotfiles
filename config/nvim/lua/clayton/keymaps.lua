@@ -40,3 +40,8 @@ vim.keymap.set('v', '<Leader>bs', function() silicon.visualise_api({to_clip = tr
 vim.keymap.set('n', '<Leader>s',  function() silicon.visualise_api({to_clip = true, visible = true}) end )
 -- Generate current buffer line in normal mode
 vim.keymap.set('n', '<Leader>s',  function() silicon.visualise_api({to_clip = true}) end )
+
+-- debugging
+--local dap = require('dap')
+--local dapui = require('dapui')
+

@@ -27,6 +27,3 @@ vim.o.termguicolors = true
 
 -- use system clipboard
 vim.opt.clipboard:append("unnamedplus")
-
--- directory navigation
-vim.opt.autochdir = true
