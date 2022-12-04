@@ -84,6 +84,9 @@ return require('packer').startup(function(use)
     use 'rcarriga/nvim-dap-ui'
     use 'theHamsta/nvim-dap-virtual-text'
 
+    -- code pics
+    use 'narutoxy/silicon.lua'
+
     -- Markdown
     use({
         'iamcco/markdown-preview.nvim',
