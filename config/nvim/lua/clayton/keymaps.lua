@@ -15,6 +15,10 @@ vim.keymap.set("n", "<leader>m", ":MaximizerToggle<CR>")
 vim.keymap.set("n", "<leader>v", "<C-w>v")
 vim.keymap.set("n", "<leader>o", "<C-w>s")
 
+-- no more case sensitive saves
+vim.keymap.set("n", ":W", ":w")
+vim.keymap.set("n", ":Wq", ":wq")
+
 -- open directory
 vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
 -- keymap.set("n", "<leader>e", "<Esc>:E.<CR>")
@@ -25,6 +29,7 @@ vim.keymap.set("n", "<leader>q", "<Esc>:q<CR>")
 -- telescope
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fk', builtin.keymaps, {})
 vim.keymap.set('n', '<leader>fs', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fc', builtin.grep_string, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
@@ -42,6 +47,45 @@ vim.keymap.set('n', '<Leader>s',  function() silicon.visualise_api({to_clip = tr
 vim.keymap.set('n', '<Leader>s',  function() silicon.visualise_api({to_clip = true}) end )
 
 -- debugging
---local dap = require('dap')
---local dapui = require('dapui')
+local dap = require('dap')
+local dapui = require('dapui')
 
+vim.keymap.set('n', "<F5>", function()
+    dapui.toggle(1)
+end)
+
+vim.keymap.set('n', "<F6>", function()
+    dapui.toggle(2)
+end)
+
+vim.keymap.set('n', "F6", function()
+    dap.close()
+end)
+
+vim.keymap.set('n', "<Up>", function()
+    dap.continue()
+end)
+
+vim.keymap.set('n', "<Down>", function()
+    dap.step_over()
+end)
+
+vim.keymap.set('n', "<Right>", function()
+    dap.step_into()
+end)
+
+vim.keymap.set('n', "<Left>", function()
+    dap.step_out()
+end)
+
+vim.keymap.set('n', "<Leader>b", function()
+    dap.toggle_breakpoint()
+end)
+
+vim.keymap.set('n', "<Leader>B", function()
+    dap.set_breakpoint(vim.fn.input('Breakpoint condition: '))
+end)
+
+vim.keymap.set('n', "<leader>rc", function()
+    dap.run_to_cursor()
+end)

@@ -1,4 +1,4 @@
--- ensure packer is installed
+-- ensure packer is installedpacker
 local ensure_packer = function()
   local fn = vim.fn
   local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
@@ -75,6 +75,7 @@ return require('packer').startup(function(use)
     -- fuzzy finding
     use {'nvim-telescope/telescope.nvim', tag = '0.1.x'}
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+    use 'nvim-telescope/telescope-dap.nvim'
 
     -- git signs plugin
     use 'lewis6991/gitsigns.nvim'
