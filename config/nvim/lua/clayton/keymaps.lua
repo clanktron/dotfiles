@@ -23,8 +23,9 @@ vim.keymap.set("n", ":Wq", ":wq")
 vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
 -- keymap.set("n", "<leader>e", "<Esc>:E.<CR>")
 
--- fast quit
+-- fast quit and save
 vim.keymap.set("n", "<leader>q", "<Esc>:q<CR>")
+vim.keymap.set("n", "<leader>w", "<Esc>:w<CR>")
 
 -- telescope
 local builtin = require('telescope.builtin')
