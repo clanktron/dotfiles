@@ -71,10 +71,10 @@ else
 end
 
 # Start TMUX on login
-if status is-interactive 
-and not set -q TMUX
-    tmux attach -t main || tmux new -s main
-end
+# if status is-interactive 
+# and not set -q TMUX
+#     tmux attach -t main || tmux new -s main
+# end
 
 # Source additional config based on OS
 switch (uname)

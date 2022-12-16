@@ -8,19 +8,22 @@ vim.keymap.set("n", "<leader>h", "<Esc>gT")
 -- keymap.set("n", "<C-k>", "<Esc>gt")
 -- keymap.set("n", "<C-j>", "<Esc>gT")
 
+-- show path
+vim.keymap.set("n", ":path", ":echo expand('%:p')")
+
 -- vim-maximizer
 vim.keymap.set("n", "<leader>m", ":MaximizerToggle<CR>")
 
 -- window splits
 vim.keymap.set("n", "<leader>v", "<C-w>v")
-vim.keymap.set("n", "<leader>o", "<C-w>s")
+vim.keymap.set("n", "<leader>h", "<C-w>s")
 
 -- no more case sensitive saves
 vim.keymap.set("n", ":W", ":w")
 vim.keymap.set("n", ":Wq", ":wq")
 
 -- open directory
-vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
+vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR> <Cmd>set relativenumber<CR>")
 -- keymap.set("n", "<leader>e", "<Esc>:E.<CR>")
 
 -- fast quit and save
