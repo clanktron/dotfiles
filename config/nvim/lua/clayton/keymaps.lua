@@ -1,6 +1,20 @@
 -- set custom leader key
 vim.g.mapleader = " "
 
+-- moving selected sections
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- stable page browsing
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+-- really escape
+vim.keymap.set({'n','v','i'}, "<Esc>", '<Esc><Esc>')
+
+-- sane pasting
+vim.keymap.set('x', '<leader>p', "\"_dP")
+
 -- tab shortcuts
 vim.keymap.set("n", "<leader>t", "<Esc>:tabnew<CR>")
 vim.keymap.set("n", "<leader>l", "<Esc>gt")
@@ -39,6 +53,12 @@ vim.keymap.set('n', '<leader>fc', builtin.grep_string, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
+-- popup navigation
+vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
+vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
+vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
+vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+
 -- silicon
 local silicon = require('silicon')
 -- Generate image of lines in a visual selection
@@ -53,43 +73,13 @@ vim.keymap.set('n', '<Leader>s',  function() silicon.visualise_api({to_clip = tr
 -- debugging
 local dap = require('dap')
 local dapui = require('dapui')
-
-vim.keymap.set('n', "<F5>", function()
-    dapui.toggle(1)
-end)
-
-vim.keymap.set('n', "<F6>", function()
-    dapui.toggle(2)
-end)
-
-vim.keymap.set('n', "F6", function()
-    dap.close()
-end)
-
-vim.keymap.set('n', "<Up>", function()
-    dap.continue()
-end)
-
-vim.keymap.set('n', "<Down>", function()
-    dap.step_over()
-end)
-
-vim.keymap.set('n', "<Right>", function()
-    dap.step_into()
-end)
-
-vim.keymap.set('n', "<Left>", function()
-    dap.step_out()
-end)
-
-vim.keymap.set('n', "<Leader>b", function()
-    dap.toggle_breakpoint()
-end)
-
-vim.keymap.set('n', "<Leader>B", function()
-    dap.set_breakpoint(vim.fn.input('Breakpoint condition: '))
-end)
-
-vim.keymap.set('n', "<leader>rc", function()
-    dap.run_to_cursor()
-end)
+vim.keymap.set('n', "<F5>", function() dapui.toggle(1) end)
+vim.keymap.set('n', "<F6>", function() dapui.toggle(2) end)
+vim.keymap.set('n', "F6", function() dap.close() end)
+vim.keymap.set('n', "<Up>", function() dap.continue() end)
+vim.keymap.set('n', "<Down>", function() dap.step_over() end)
+vim.keymap.set('n', "<Right>", function() dap.step_into() end)
+vim.keymap.set('n', "<Left>", function() dap.step_out() end)
+vim.keymap.set('n', "<Leader>b", function() dap.toggle_breakpoint() end)
+vim.keymap.set('n', "<Leader>B", function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end) 
+vim.keymap.set('n', "<leader>rc", function() dap.run_to_cursor() end)
