@@ -5,7 +5,7 @@ set -gx HOMEBREW_NO_ENV_HINTS 1
 set -gx SOPS_AGE_KEY_FILE ~/.config/sops/age/age.agekey
 
 ## PATH
-set -gx PATH /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+set -gx PATH $HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
 set -gx GOPATH ~/Developer/go
 set -px PATH $GOPATH/bin
 set -px PATH ~/.local/bin
