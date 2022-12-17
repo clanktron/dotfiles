@@ -9,6 +9,7 @@ set -gx PATH /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 set -gx GOPATH ~/Developer/go
 set -px PATH $GOPATH/bin
 set -px PATH ~/.local/bin
+set -px PATH ~/.cargo/bin
 
 # Fish defaults
 set fish_greeting ""
@@ -71,10 +72,10 @@ else
 end
 
 # Start TMUX on login
-# if status is-interactive 
-# and not set -q TMUX
-#     tmux attach -t main || tmux new -s main
-# end
+if status is-interactive 
+and not set -q TMUX
+    tmux attach -t main || tmux new -s main
+end
 
 # Source additional config based on OS
 switch (uname)
