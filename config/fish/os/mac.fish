@@ -1,3 +1,6 @@
+# Environment variables
+set -x XDG_CONFIG_HOME /Users/clayton/.config
+
 # Path
 set -ax PATH /Library/Apple/usr/bin
 set -ax PATH /Applications/VMware\ Fusion.app/Contents/Public
