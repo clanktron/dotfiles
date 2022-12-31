@@ -87,6 +87,9 @@ return require('packer').startup(function(use)
     use 'rcarriga/nvim-dap-ui'
     use 'theHamsta/nvim-dap-virtual-text'
 
+    -- go programming
+    use 'ray-x/go.nvim'
+
     -- code pics
     use 'narutoxy/silicon.lua'
 

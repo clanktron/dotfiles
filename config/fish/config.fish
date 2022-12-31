@@ -10,6 +10,7 @@ set -gx GOPATH ~/Developer/go
 set -px PATH $GOPATH/bin
 set -px PATH ~/.local/bin
 set -px PATH ~/.cargo/bin
+set -px PATH ~/.rd/bin
 
 # Fish defaults
 set fish_greeting ""
@@ -87,6 +88,3 @@ switch (uname)
     source (dirname (status --current-filename))/os/windows.fish
 end
 
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-set --export --prepend PATH "/Users/clayton/.rd/bin"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
