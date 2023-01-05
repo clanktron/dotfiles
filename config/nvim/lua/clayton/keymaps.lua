@@ -30,7 +30,7 @@ vim.keymap.set("n", "<leader>m", ":MaximizerToggle<CR>")
 
 -- window splits
 vim.keymap.set("n", "<leader>v", "<C-w>v")
-vim.keymap.set("n", "<leader>h", "<C-w>s")
+vim.keymap.set("n", "<leader>o", "<C-w>s")
 
 -- no more case sensitive saves
 vim.keymap.set("n", ":W", ":w")
@@ -53,11 +53,11 @@ vim.keymap.set('n', '<leader>fc', builtin.grep_string, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
--- popup navigation
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+-- -- popup navigation
+-- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
+-- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
+-- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
+-- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 -- silicon
 local silicon = require('silicon')
@@ -71,15 +71,15 @@ vim.keymap.set('n', '<Leader>s',  function() silicon.visualise_api({to_clip = tr
 vim.keymap.set('n', '<Leader>s',  function() silicon.visualise_api({to_clip = true}) end )
 
 -- debugging
-local dap = require('dap')
-local dapui = require('dapui')
-vim.keymap.set('n', "<F5>", function() dapui.toggle(1) end)
-vim.keymap.set('n', "<F6>", function() dapui.toggle(2) end)
-vim.keymap.set('n', "F6", function() dap.close() end)
-vim.keymap.set('n', "<Up>", function() dap.continue() end)
-vim.keymap.set('n', "<Down>", function() dap.step_over() end)
-vim.keymap.set('n', "<Right>", function() dap.step_into() end)
-vim.keymap.set('n', "<Left>", function() dap.step_out() end)
-vim.keymap.set('n', "<Leader>b", function() dap.toggle_breakpoint() end)
-vim.keymap.set('n', "<Leader>B", function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end) 
-vim.keymap.set('n', "<leader>rc", function() dap.run_to_cursor() end)
+-- local dap = require('dap')
+-- local dapui = require('dapui')
+-- vim.keymap.set('n', "<F5>", function() dapui.toggle(1) end)
+-- vim.keymap.set('n', "<F6>", function() dapui.toggle(2) end)
+-- vim.keymap.set('n', "F6", function() dap.close() end)
+-- vim.keymap.set('n', "<Up>", function() dap.continue() end)
+-- vim.keymap.set('n', "<Down>", function() dap.step_over() end)
+-- vim.keymap.set('n', "<Right>", function() dap.step_into() end)
+-- vim.keymap.set('n', "<Left>", function() dap.step_out() end)
+-- vim.keymap.set('n', "<Leader>b", function() dap.toggle_breakpoint() end)
+-- vim.keymap.set('n', "<Leader>B", function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end) 
+-- vim.keymap.set('n', "<leader>rc", function() dap.run_to_cursor() end)
