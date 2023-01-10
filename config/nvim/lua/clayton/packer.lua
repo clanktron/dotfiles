@@ -99,6 +99,9 @@ return require('packer').startup(function(use)
     -- harpoon
     use 'mbbill/undotree'
 
+    -- LaTeX
+    use 'lervag/vimtex'
+
     -- Markdown
     use({
         'iamcco/markdown-preview.nvim',
