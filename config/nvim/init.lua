@@ -1,3 +1,3 @@
 require('clayton')
 
-print('init.lua loaded')
+-- print('init.lua loaded')
