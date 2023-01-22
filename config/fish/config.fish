@@ -1,12 +1,14 @@
 # ENVIRONMENT
 set -gx EDITOR nvim
-#set -gx EDITOR 'code --wait'
+# set -gx EDITOR 'code --wait'
 set -gx HOMEBREW_NO_ENV_HINTS 1
 set -gx SOPS_AGE_KEY_FILE ~/.config/sops/age/age.agekey
 set -gx DBUS_SESSION_BUS_ADDRESS "unix:path=$DBUS_LAUNCHD_SESSION_BUS_SOCKET"
 
 ## PATH
 set -gx PATH $HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
+# Use GNU coreutils instead of any mac builtins
+# set -px PATH /usr/local/opt/coreutils/libexec/gnubin
 set -gx GOPATH ~/Developer/go
 set -px PATH $GOPATH/bin
 set -px PATH ~/.local/bin
@@ -49,8 +51,8 @@ function kn
 end
 
 function ide
-    tmux split-window -h -p 66
-    tmux split-window -h -p 30
+    tmux split-window -v -p 30
+    tmux split-window -h -p 53
 end
 
 function ...
