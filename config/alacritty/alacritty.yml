@@ -133,7 +133,7 @@ key_bindings:
   - { key: Equals,   mods: Command, action: IncreaseFontSize             }
   - { key: Minus,    mods: Command, action: DecreaseFontSize             }
   - { key: W,        mods: Command,       chars: "\x04" }
-  - { key: L,        mods: Command,       chars: "\x63\x6c\x65\x61\x72\x0a" } # Hex is equivalent to typing "clear"  
+  - { key: L,        mods: Command,       chars: "\x03\x63\x6c\x65\x61\x72\x0a" } # Hex is equivalent to typing "clear"  
   - { key: H,        mods: Command,       chars: "\x01\x1b\x5b\x44" }
   - { key: J,        mods: Command,       chars: "\x01\x1b\x5b\x42" }
   - { key: K,        mods: Command,       chars: "\x01\x1b\x5b\x41" }
