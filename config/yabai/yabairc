@@ -43,5 +43,7 @@ yabai -m rule --add app="^Slack$" manage=off
 yabai -m rule --add app="^Proton Mail Bridge$" manage=off
 yabai -m rule --add app="^Stats$" manage=off
 yabai -m rule --add app="^Bitwarden$" manage=off
+yabai -m rule --add app="^About This Mac$" manage=off
+# /System/Library/CoreServices/Applications/About This Mac.app
 
 echo "yabai configuration loaded.."
