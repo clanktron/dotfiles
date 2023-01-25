@@ -4,6 +4,7 @@ set -gx EDITOR nvim
 set -gx HOMEBREW_NO_ENV_HINTS 1
 set -gx SOPS_AGE_KEY_FILE ~/.config/sops/age/age.agekey
 set -gx DBUS_SESSION_BUS_ADDRESS "unix:path=$DBUS_LAUNCHD_SESSION_BUS_SOCKET"
+set -gx test ~/Tests/
 
 ## PATH
 set -gx PATH $HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
