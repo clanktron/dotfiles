@@ -1,0 +1,26 @@
+#!/bin/sh 
+
+# Dependencies: curl, jq
+
+ACCESS_TOKEN="${CANVAS_API_TOKEN:="invalid"}"
+canvasURL="${canvasURL:="bruinlearn.ucla.edu"}"
+# courseId="${courseId:="153171"}"
+
+# Get all courses
+# curl https://"$canvasURL"/api/v1/courses -H "Authorization: Bearer $ACCESS_TOKEN" | jq 
+# Get active enrollments
+curl https://"$canvasURL"/api/v1/courses -H "Authorization: Bearer $ACCESS_TOKEN" | jq '.[] | select(.enrollments) | select(.enrollments[].enrollment_state=="active")'
+
+# /:"$courseId"/
+
+# # Attempted graphql query
+# curl https://"$canvasURL"/api/graphql \
+#   -H "Authorization: Bearer $ACCESS_TOKEN" \
+#   -d query="query courseInfo($courseId: ID!) {
+#        course(id: $courseId) {
+#         id
+#         _id
+#         name
+#        }
+#      }" \
+#   -d variables[courseId]=1

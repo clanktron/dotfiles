@@ -41,8 +41,8 @@ alias kg 'kubectl get'
 alias ka 'kubectl apply -f'
 alias kc 'kubectx'
 alias docker 'nerdctl'
-alias ucla-vpn 'sudo openconnect --protocol=anyconnect https://ssl.vpn.ucla.edu'
 alias c 'clear'
+
 # zoxide integration
 zoxide init fish | source
 
@@ -92,3 +92,5 @@ switch (uname)
     source (dirname (status --current-filename))/os/windows.fish
 end
 
+# Source local config
+source (dirname (status --current-filename))/local.fish
