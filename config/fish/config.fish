@@ -42,6 +42,7 @@ alias ka 'kubectl apply -f'
 alias kc 'kubectx'
 alias docker 'nerdctl'
 alias c 'clear'
+alias ta 'tmux attach -t'
 
 # zoxide integration
 zoxide init fish | source

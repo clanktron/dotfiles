@@ -1,0 +1,8 @@
+#!/bin/sh
+
+FZFRESULT="$(fzf)"
+
+if [ -f "$FZFRESULT" ]
+then 
+    vi "$FZFRESULT"
+fi
