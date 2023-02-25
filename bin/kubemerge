@@ -4,7 +4,7 @@
 cp ~/.kube/config ~/.kube/config.bak 
 
 # Merge the two config files together into a new config file 
-KUBECONFIG=~/.kube/config:$@ kubectl config view --flatten > /tmp/config 
+KUBECONFIG=~/.kube/config:"$1" kubectl config view --flatten > /tmp/config 
 
 # Replace your old config with the new merged config 
 mv /tmp/config ~/.kube/config 

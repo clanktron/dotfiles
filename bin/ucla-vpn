@@ -1,8 +1,8 @@
 #!/bin/sh 
-USERNAME="${USERNAME:="invaliduser"}"
-PASSWD="${PASSWD:="invalidpassword"}"
-VPNTARGET="${VPNTARGET:="invalid target"}"
+USERNAME="${USERNAME:?}"
+PASSWD="${PASSWD:?}"
+VPNTARGET="${VPNTARGET:?}"
 
-sudo sh -c "printf '%s\n' \"$PASSWD\" | openconnect --protocol=anyconnect \
-    --user=\"$USERNAME\" \
-    --passwd-on-stdin \"$VPNTARGET\" "
+printf '%s\n' "$PASSWD" | openconnect --protocol=anyconnect \
+    --user="$USERNAME" \
+    --passwd-on-stdin "$VPNTARGET"

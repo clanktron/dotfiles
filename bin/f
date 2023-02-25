@@ -1,8 +1,10 @@
 #!/bin/sh
 
-FZFRESULT="$(fzf)"
-
-if [ -f "$FZFRESULT" ]
-then 
-    vi "$FZFRESULT"
+if [ -z "$1" ]
+then
+    FZFRESULT="$(fzf)"
+else 
+    FZFRESULT="$(fzf -q "$1")"
 fi
+
+vi "$FZFRESULT"
