@@ -18,7 +18,7 @@ lsp.ensure_installed({
     'jsonls',
     'tsserver',
     'ltex',
-    'sumneko_lua',
+    'lua_ls',
     'marksman',
     'pyright',
     'rust_analyzer',

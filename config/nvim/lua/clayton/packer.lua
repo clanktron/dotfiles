@@ -20,6 +20,8 @@ augroup end
 ]])
 
 return require('packer').startup(function(use)
+    -- TODO: norcalli/nvim-colorizer.lua
+    --
     -- packer manages itself
     use 'wbthomason/packer.nvim'
 

@@ -38,7 +38,7 @@ vim.keymap.set("n", ":Wq", ":wq")
 
 -- open directory
 vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR> <Cmd>set relativenumber<CR>")
--- keymap.set("n", "<leader>e", "<Esc>:E.<CR>")
+-- vim.keymap.set("n", "<leader>e", "<Esc>:E.<CR>")
 
 -- fast quit and save
 vim.keymap.set("n", "<leader>q", "<Esc>:q<CR>")

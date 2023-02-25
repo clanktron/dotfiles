@@ -10,7 +10,7 @@ set -gx test ~/Tests/
 set -gx PATH $HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
 # Use GNU coreutils instead of any mac builtins
 # set -px PATH /usr/local/opt/coreutils/libexec/gnubin
-set -gx GOPATH ~/Developer/go
+# set -gx GOPATH ~/Developer/go
 set -px PATH $GOPATH/bin
 set -px PATH ~/.local/bin
 set -px PATH ~/.cargo/bin
@@ -38,7 +38,7 @@ alias ll 'ls -lh'
 alias k kubectl
 alias kd 'kubectl describe'
 alias kg 'kubectl get'
-alias ka 'kubectl apply -f'
+alias ka 'kubectl apply'
 alias kc 'kubectx'
 alias docker 'nerdctl'
 alias c 'clear'
@@ -55,6 +55,7 @@ end
 function ide
     tmux split-window -v -p 30
     tmux split-window -h -p 53
+    vi
 end
 
 function ...
