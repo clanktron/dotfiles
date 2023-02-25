@@ -8,13 +8,7 @@ set -gx test ~/Tests/
 
 ## PATH
 set -gx PATH $HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
-# Use GNU coreutils instead of any mac builtins
-# set -px PATH /usr/local/opt/coreutils/libexec/gnubin
-# set -gx GOPATH ~/Developer/go
-set -px PATH $GOPATH/bin
 set -px PATH ~/.local/bin
-set -px PATH ~/.cargo/bin
-set -px PATH ~/.rd/bin
 
 # Fish defaults
 set fish_greeting ""
