@@ -1,0 +1,10 @@
+#!/bin/sh
+#
+# Desired functionality: remove specified entry from hosts file
+#
+# ip="${ip:=""}"
+# domain="${domain:=""}"
+# subdomain="${subdomain:=""}"
+#
+# Actually just removes last line in hosts
+gsed -i "\$d" /etc/hosts

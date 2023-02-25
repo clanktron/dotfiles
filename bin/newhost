@@ -1,0 +1,7 @@
+#!/bin/sh
+#
+# Add new entry to hosts file
+domain="${1:?}"
+ip="${2:?}"
+#
+echo "$ip" "$domain" >> /etc/hosts
