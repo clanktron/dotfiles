@@ -22,7 +22,6 @@ lsp.ensure_installed({
     'marksman',
     'pyright',
     'rust_analyzer',
-    'solang',
     'terraformls',
 })
 

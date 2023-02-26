@@ -17,9 +17,6 @@ vim.g.vimtex_view_method = 'zathura'
 -- vim.g.vimtex_imaps_leader = "-"
 vim.g.vimtex_compiler_method = 'latexmk'
 
--- Inesert mode leader key
-vim.g.vimtex_imaps_leader = "`"
-
 -- Most VimTeX mappings rely on localleader and this can be changed with the
 -- following line. The default is usually fine and is the symbol "\".
 vim.g.maplocalleader = "\\"
