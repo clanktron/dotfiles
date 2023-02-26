@@ -1,6 +1,6 @@
 # dotfiles
 
-![screenshot](images/screenshot.png)
+![screenshot](assets/screenshot.png)
 
 Configuration files for my development environment. Feel free to grab anything you like.
 
