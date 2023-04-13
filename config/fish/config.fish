@@ -8,6 +8,7 @@ set -gx test ~/Tests/
 
 ## PATH
 set -gx PATH $HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
+set -px PATH ~/go/bin
 set -px PATH ~/.local/bin
 
 # Fish defaults
@@ -25,7 +26,7 @@ set -g theme_hide_hostname no
 set -g theme_hostname always
 
 # General aliases
-alias ip "ifconfig | grep 'broadcast' | awk '{print \$2}'"
+# alias ip "ifconfig | grep 'broadcast' | awk '{print \$2}'"
 alias restart 'sudo shutdown -r now'
 alias la 'ls -a'
 alias ll 'ls -lh'
@@ -35,6 +36,7 @@ alias kg 'kubectl get'
 alias ka 'kubectl apply'
 alias kc 'kubectx'
 alias docker 'nerdctl'
+alias lg 'lazygit'
 alias c 'clear'
 alias ta 'tmux attach -t'
 

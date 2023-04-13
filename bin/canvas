@@ -11,6 +11,15 @@ canvasURL="${canvasURL:="bruinlearn.ucla.edu"}"
 # Get active enrollments
 curl https://"$canvasURL"/api/v1/courses -H "Authorization: Bearer $ACCESS_TOKEN" | jq '.[] | select(.enrollments) | select(.enrollments[].enrollment_state=="active")'
 
+# Get calendars
+# calendars=$(curl -s https://"$canvasURL"/api/v1/courses -H "Authorization: Bearer $ACCESS_TOKEN" | jq -r '.[] | select(.enrollments) | select(.enrollments[].enrollment_state=="active") | .calendar.ics')
+# 
+# echo "$calendars" | while read -r url; do
+#     echo "$url"
+#     curl -Os "$url" -H "Authorization: Bearer $ACCESS_TOKEN" 
+# done 
+
+
 # /:"$courseId"/
 
 # # Attempted graphql query
