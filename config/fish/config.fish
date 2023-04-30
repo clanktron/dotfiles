@@ -35,7 +35,6 @@ alias kd 'kubectl describe'
 alias kg 'kubectl get'
 alias ka 'kubectl apply'
 alias kc 'kubectx'
-alias docker 'nerdctl'
 alias lg 'lazygit'
 alias c 'clear'
 alias ta 'tmux attach -t'
@@ -91,4 +90,4 @@ switch (uname)
 end
 
 # Source local config
-source (dirname (status --current-filename))/local.fish
+# source (dirname (status --current-filename))/local.fish
