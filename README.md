@@ -14,11 +14,11 @@ Make sure your $HOME and $XDG_CONFIG_HOME environment variables are set properly
 
 This will link all config files and executables from this repository to their respective destinations:
 ```bash
-./install.sh link
+./install link
 ```
 This will copy all config files and executables from this repository to their respective destinations:
 ```bash
-./install.sh
+./install
 ```
 >both scripts are idempotent
 
@@ -26,7 +26,7 @@ This will copy all config files and executables from this repository to their re
 
 To remove all previously installed/linked files:
 ```bash
-./uninstall.sh
+./uninstall
 ```
 >Warning: This will remove the config directories installed, so if files were added to them after installation those will be removed as well.
 
