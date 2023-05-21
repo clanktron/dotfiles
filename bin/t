@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
-# store pwd in a variable
-ZOXIDE_RESULT=$(zoxide query "$1")
 
-# if empty exit
-if [ -z "$ZOXIDE_RESULT" ]; then
-  exit 0
+# Let zoxide determine the working directory for the session
+if [ -z "$1" ]; then
+    ZOXIDE_RESULT=$PWD
+else
+    ZOXIDE_RESULT=$(zoxide query "$1")
 fi
 
-# get folder name
+# name of working directory for session
 FOLDER=$(basename "$ZOXIDE_RESULT")
 
 # lookup tmux session name
-SESSION=$(tmux list-sessions | grep "$FOLDER" | awk '{print $1}')
+SESSION=$(tmux list-sessions | grep "$FOLDER" | awk '{print $3}')
 SESSION=${SESSION//:/}
 
 # check if variable is empty 
@@ -21,7 +21,7 @@ if [ -z "$TMUX" ]; then
   echo "is not tmux"
   if [ -z "$SESSION" ]; then
     # session does not exist
-    echo "session does not exist"
+    echo "session $SESSION does not exist"
     # jump to directory
     cd "$ZOXIDE_RESULT" || (echo "Failed to change directory."; exit 1)
     # create session
@@ -37,7 +37,7 @@ else
   echo "is tmux"
   if [ -z "$SESSION" ]; then
     # session does not exist
-    echo "session does not exist"
+    echo "session $SESSION does not exist"
     # jump to directory
     cd "$ZOXIDE_RESULT" || (echo "Failed to change directory."; exit 1)
     # create session
