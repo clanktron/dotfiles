@@ -1,15 +1,20 @@
 # ENVIRONMENT
-set -gx EDITOR nvim
 # set -gx EDITOR 'code --wait'
+# set -gx DBUS_SESSION_BUS_ADDRESS "unix:path=$DBUS_LAUNCHD_SESSION_BUS_SOCKET"
+set -gx EDITOR nvim
+set -gx XDG_CONFIG_HOME $HOME/.config
+set -gx GOPATH $HOME/.go
 set -gx HOMEBREW_NO_ENV_HINTS 1
-set -gx SOPS_AGE_KEY_FILE ~/.config/sops/age/age.agekey
-set -gx DBUS_SESSION_BUS_ADDRESS "unix:path=$DBUS_LAUNCHD_SESSION_BUS_SOCKET"
-set -gx test ~/Tests/
+set -gx SOPS_AGE_KEY_FILE $XDG_CONFIG_HOME/sops/age/age.agekey
+
+# Bind-keys
+# bind -M insert \t accept-autosuggestion
 
 ## PATH
-set -gx PATH $HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
-set -px PATH ~/go/bin
-set -px PATH ~/.local/bin
+set -gx PATH /usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
+set -px PATH $HOME/Developer/vendor/google-cloud-sdk/bin
+set -px PATH $HOME/.go/bin
+set -px PATH $HOME/.local/bin
 
 # Fish defaults
 set fish_greeting ""
@@ -29,7 +34,8 @@ set -g theme_hostname always
 # alias ip "ifconfig | grep 'broadcast' | awk '{print \$2}'"
 alias restart 'sudo shutdown -r now'
 alias la 'ls -a'
-alias ll 'ls -lh'
+alias ll 'ls -l'
+alias lh 'ls -d .*'
 alias k kubectl
 alias kd 'kubectl describe'
 alias kg 'kubectl get'

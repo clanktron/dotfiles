@@ -4,18 +4,23 @@ PS1='\[\e[32m\]\u@\e[37m\]\h \e[34m\]\w \e[37m\]>> '
 # ENVIRONMENT
 export EDITOR=nvim
 export XDG_CONFIG_HOME="$HOME"/.config
+export GOPATH="$HOME"/.go
 export bashrc=~/.bashrc
 # set -gx EDITOR 'code --wait'
 
 ## PATH
-# export PATH $HOME/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
-export PATH=~/.local/bin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
+export PATH=$HOME/Developer/vendor/google-cloud-sdk/bin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
+export PATH=$HOME/.go/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 
 # General aliases
 alias restart='shutdown -r now'
 alias ls='ls --color=auto'
 alias la='ls -a'
-alias ll='ls -lh'
+alias ll='ls -l'
+alias lh='ls -d .*'
 alias k=kubectl
 alias kd='kubectl describe'
 alias kg='kubectl get'
@@ -33,8 +38,8 @@ function kn() {
     kubectl config set-context --current --namespace="$1" && kubectl config view --minify | grep namespace:
 }
 
-function setenv() {
-    set -a; source .env; set +a
+function env-source() {
+    set -a; source "$PWD"/.env; set +a
 }
 
 function ide() {
