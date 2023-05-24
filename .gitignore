@@ -1,6 +1,7 @@
 # MacOS clutter
 .DS_Store
 **/.DS_Store
+mac.md
 
 # Neovim plugins
 config/nvim/plugin/*
