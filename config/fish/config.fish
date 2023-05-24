@@ -44,6 +44,7 @@ alias kc 'kubectx'
 alias lg 'lazygit'
 alias c 'clear'
 alias ta 'tmux attach -t'
+alias vm 'VBoxManage'
 
 # zoxide integration
 zoxide init fish | source
