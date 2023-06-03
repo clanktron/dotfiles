@@ -11,7 +11,7 @@ fi
 FOLDER=$(basename "$ZOXIDE_RESULT")
 
 # lookup tmux session name
-SESSION=$(tmux list-sessions | grep "$FOLDER" | awk '{print $3}')
+SESSION=$(tmux list-sessions | grep "$FOLDER" | awk '{print $1}')
 SESSION=${SESSION//:/}
 
 # check if variable is empty 
@@ -47,7 +47,6 @@ else
   else
     # session exists
     echo "session exists"
-    # attach to session
     # switch to tmux session
     tmux switch-client -t "$SESSION"
   fi
