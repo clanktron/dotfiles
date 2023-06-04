@@ -2,12 +2,13 @@
 HOME="${HOME:?}"
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:?}"
 PWD=$(git rev-parse --show-toplevel)
-install_action="cp -r"
-action_msg="Copying"
 
 if [ "$1" = "link" ]; then
-   install_action="ln -svf"
-   action_msg="Symlinking"
+    install_action="ln -svf"
+    action_msg="Symlinking"
+else
+    install_action="cp -r"
+    action_msg="Copying"
 fi
 
 ensure_paths() {
@@ -31,19 +32,7 @@ ensure_paths() {
 }
 
 remove_installation() {
-    printf "Removing current config...\n"
-    # Remove executables if they're installed
-    find ./bin -maxdepth 1 -exec basename {} \; | sed 1d | while read -r file; do 
-        if [ -e "${HOME:?}"/.local/bin/"$file" ]; then rm "${HOME:?}"/.local/bin/"$file"; fi
-    done
-    # Remove config directories if they're installed
-    find ./config -maxdepth 1 -exec basename {} \; | sed 1d | while read -r dir; do 
-        if [ -L "${XDG_CONFIG_HOME:?}"/"$dir" ]; then
-            rm "${XDG_CONFIG_HOME:?}"/"$dir"
-        else
-            if [ -e "${XDG_CONFIG_HOME:?}"/"$dir" ]; then rm -r "${XDG_CONFIG_HOME:?}"/"$dir"; fi
-        fi
-    done
+    ./uninstall
 }
 
 install_executables() {
@@ -61,7 +50,10 @@ install_config () {
         eval "$install_action" "$PWD"/config/"$dir" "$XDG_CONFIG_HOME/$dir"
     done
 
+    # these should eventually be migrated to some sort of generic function
     eval "$install_action" "$PWD"/.bashrc "$HOME"/.bashrc
+    mkdir "$HOME"/.hammerspoon
+    eval "$install_action" "$PWD"/config/hammerspoon/init.lua "$HOME"/.hammerspoon/init.lua
 }
 
 main () {
