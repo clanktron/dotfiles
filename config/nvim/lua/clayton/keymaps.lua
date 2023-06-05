@@ -36,50 +36,15 @@ vim.keymap.set("n", "<leader>o", "<C-w>s")
 vim.keymap.set("n", ":W", ":w")
 vim.keymap.set("n", ":Wq", ":wq")
 
--- open directory
-vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR> <Cmd>set relativenumber<CR>")
+-- open directory with netrw
 -- vim.keymap.set("n", "<leader>e", "<Esc>:E.<CR>")
 
 -- fast quit and save
 vim.keymap.set("n", "<leader>q", "<Esc>:q<CR>")
 vim.keymap.set("n", "<leader>w", "<Esc>:w<CR>")
 
--- telescope
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fk', builtin.keymaps, {})
-vim.keymap.set('n', '<leader>fs', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fc', builtin.grep_string, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-
 -- -- popup navigation
 -- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 -- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 -- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 -- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
-
--- silicon
-local silicon = require('silicon')
--- Generate image of lines in a visual selection
-vim.keymap.set('v', '<Leader>s', function() silicon.visualise_api({}) end )
--- Generate image of a whole buffer, with lines in a visual selection highlighted
-vim.keymap.set('v', '<Leader>bs', function() silicon.visualise_api({to_clip = true, show_buf = true}) end )
--- Generate visible portion of a buffer
-vim.keymap.set('n', '<Leader>s',  function() silicon.visualise_api({to_clip = true, visible = true}) end )
--- Generate current buffer line in normal mode
-vim.keymap.set('n', '<Leader>s',  function() silicon.visualise_api({to_clip = true}) end )
-
--- debugging
--- local dap = require('dap')
--- local dapui = require('dapui')
--- vim.keymap.set('n', "<F5>", function() dapui.toggle(1) end)
--- vim.keymap.set('n', "<F6>", function() dapui.toggle(2) end)
--- vim.keymap.set('n', "F6", function() dap.close() end)
--- vim.keymap.set('n', "<Up>", function() dap.continue() end)
--- vim.keymap.set('n', "<Down>", function() dap.step_over() end)
--- vim.keymap.set('n', "<Right>", function() dap.step_into() end)
--- vim.keymap.set('n', "<Left>", function() dap.step_out() end)
--- vim.keymap.set('n', "<Leader>b", function() dap.toggle_breakpoint() end)
--- vim.keymap.set('n', "<Leader>B", function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end) 
--- vim.keymap.set('n', "<leader>rc", function() dap.run_to_cursor() end)
