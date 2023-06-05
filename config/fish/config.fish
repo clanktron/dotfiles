@@ -31,19 +31,18 @@ set -g theme_hide_hostname no
 set -g theme_hostname always
 
 # General aliases
-# alias ip "ifconfig | grep 'broadcast' | awk '{print \$2}'"
-alias restart 'sudo shutdown -r now'
 alias la 'ls -a'
 alias ll 'ls -l'
 alias lh 'ls -d .*'
+alias c 'clear'
+alias gr 'cd $(git rev-parse --show-toplevel)'
+alias ta 'tmux attach -t'
 alias k kubectl
 alias kd 'kubectl describe'
 alias kg 'kubectl get'
 alias ka 'kubectl apply'
 alias kc 'kubectx'
 alias lg 'lazygit'
-alias c 'clear'
-alias ta 'tmux attach -t'
 alias vmbox 'VBoxManage'
 
 # zoxide integration

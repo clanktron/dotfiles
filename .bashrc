@@ -16,11 +16,11 @@ export PATH=$HOME/.go/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 
 # General aliases
-alias restart='shutdown -r now'
 alias ls='ls --color=auto'
 alias la='ls -a'
 alias ll='ls -l'
 alias lh='ls -d .*'
+alias gr='cd $(git rev-parse --show-toplevel)'
 alias k=kubectl
 alias kd='kubectl describe'
 alias kg='kubectl get'
