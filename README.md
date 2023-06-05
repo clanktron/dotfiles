@@ -30,10 +30,14 @@ To remove all previously installed/linked files:
 ```
 >Warning: This will remove the config directories installed, so if files were added to them after installation those will be removed as well.
 
-## Software
+## Configured Software
 
 * Terminal Emulator: [Alacritty](https://alacritty.org)
 * Shells: [fish](https://fishshell.com), [bash](https://www.gnu.org/software/bash/)
 * Multiplexer: [tmux](https://github.com/tmux/tmux/wiki)
 * Editor: [Neovim](https://neovim.io)
-* Package Manager: [Homebrew](https://brew.sh)
+* Kubernetes Management: [K9s](https://k9scli.io)
+* Mac Specific:
+    * Package Manager: [Homebrew](https://brew.sh)
+    * Window Manager: [Yabai](https://github.com/koekeishiya/yabai)
+    * General Scripting: [Hammerspoon](https://www.hammerspoon.org/)
