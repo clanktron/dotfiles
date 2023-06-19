@@ -35,7 +35,7 @@ alias la 'ls -a'
 alias ll 'ls -l'
 alias lh 'ls -d .*'
 alias c 'clear'
-alias gr 'cd $(git rev-parse --show-toplevel)'
+alias gitroot 'cd $(git rev-parse --show-toplevel)'
 alias ta 'tmux attach -t'
 alias k kubectl
 alias kd 'kubectl describe'

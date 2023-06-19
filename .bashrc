@@ -20,7 +20,7 @@ alias ls='ls --color=auto'
 alias la='ls -a'
 alias ll='ls -l'
 alias lh='ls -d .*'
-alias gr='cd $(git rev-parse --show-toplevel)'
+alias gitroot='cd $(git rev-parse --show-toplevel)'
 alias k=kubectl
 alias kd='kubectl describe'
 alias kg='kubectl get'
