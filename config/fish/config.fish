@@ -3,6 +3,7 @@
 # set -gx DBUS_SESSION_BUS_ADDRESS "unix:path=$DBUS_LAUNCHD_SESSION_BUS_SOCKET"
 set -gx EDITOR nvim
 set -gx XDG_CONFIG_HOME $HOME/.config
+set -gx KUEBCONFIG $HOME/.kube/config
 set -gx GOPATH $HOME/.go
 set -gx HOMEBREW_NO_ENV_HINTS 1
 set -gx SOPS_AGE_KEY_FILE $XDG_CONFIG_HOME/sops/age/age.agekey

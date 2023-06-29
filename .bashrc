@@ -4,6 +4,7 @@ PS1='\[\e[32m\]\u@\e[37m\]\h \e[34m\]\w \e[37m\]>> '
 # ENVIRONMENT
 export EDITOR=nvim
 export XDG_CONFIG_HOME="$HOME"/.config
+export KUEBCONFIG="$HOME"/.kube/config
 export GOPATH="$HOME"/.go
 export bashrc=~/.bashrc
 # set -gx EDITOR 'code --wait'
