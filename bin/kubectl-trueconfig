@@ -12,7 +12,7 @@ show_help() {
   echo "Commands:"
   echo "  delete-all <name>              Delete all entries (cluster/user/context) with the given name"
   echo "  merge <config>                 Merge the specified kubeconfig file into the current config"
-  echo "  rename-all <name> <new-name>   Rename all entries (cluster/user/context) with the given name"
+  # echo "  rename-all <name> <new-name>   Rename all entries (cluster/user/context) with the given name"
   # echo "  rename-cluster <name> <new-name> - Rename the cluster with the given name"
   # echo "  rename-user <name> <new-name>    - Rename the user with the given name"
 }
@@ -67,20 +67,28 @@ if [ "$command" = "delete-all" ]; then
   exit 0
 fi
 
-if [ "$command" = "rename-all" ]; then
-  if [ -z "$3" ]; then
-    missing_arg "<new-name>"
-    exit 1
-  fi
-  echo "Renaming all entries: $arg to $3"
-  # if GNU sed isn't available use BSD version (MacOS)
-  if sed --version >/dev/null 2>&1; then
-      sed -i "s/name: $arg/name: $3/g" "$KUBECONFIG"
-  else
-      sed -i.bak "s/name: $arg/name: $3/g" "$KUBECONFIG"
-  fi
-  exit 0
-fi
+# if [ "$command" = "rename-all" ]; then
+#   if [ -z "$3" ]; then
+#     missing_arg "<new-name>"
+#     exit 1
+#   fi
+#   echo "Renaming all entries: $arg to $3"
+#   # if GNU sed isn't available use BSD version (MacOS)
+#   if sed --version >/dev/null 2>&1; then
+#       sed -i "s/name: $arg/name: $3/g" "$KUBECONFIG"
+#       sed -i "s/context: $arg/context: $3/g" "$KUBECONFIG"
+#       sed -i "s/current-context: $arg/current-context: $3/g" "$KUBECONFIG"
+#       sed -i "/^clusters:/,/^$/ s/^\(\s\+-\s\+name:\s\)$arg$/\1$3/" "$KUBECONFIG"
+#       sed -i "/^users:/,/^$/ s/^\(\s\+-\s\+name:\s\)$arg$/\1$3/" "$KUBECONFIG"
+#   else
+#       sed -i.bak "s/name: $arg/name: $3/g" "$KUBECONFIG"
+#       sed -i.bak "s/context: $arg/context: $3/g" "$KUBECONFIG"
+#       sed -i.bak "s/current-context: $arg/current-context: $3/g" "$KUBECONFIG"
+#       sed -i.bak "/^clusters:/,/^$/ s/^\(\s\+-\s\+name:\s\)$arg$/\1$3/" "$KUBECONFIG"
+#       sed -i.bak "/^users:/,/^$/ s/^\(\s\+-\s\+name:\s\)$arg$/\1$3/" "$KUBECONFIG"
+#   fi
+#   exit 0
+# fi
 
 # if [ "$command" = "rename-cluster" ]; then
 #   if [ -z "$3" ]; then
