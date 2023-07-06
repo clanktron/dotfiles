@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
 
-# Let zoxide determine the working directory for the session
+# determine the path for the session
 if [ -z "$1" ]; then
     ZOXIDE_RESULT=$PWD
 else
     ZOXIDE_RESULT=$(zoxide query "$1")
+fi
+
+if [ -z "$ZOXIDE_RESULT" ]; then
+    exit 1
 fi
 
 # name of working directory for session
@@ -14,40 +18,25 @@ FOLDER=$(basename "$ZOXIDE_RESULT")
 SESSION=$(tmux list-sessions | grep "$FOLDER" | awk '{print $1}')
 SESSION=${SESSION//:/}
 
-# check if variable is empty 
-# if not currently in tmux
 if [ -z "$TMUX" ]; then
-  # tmux is not active
-  echo "is not tmux"
+  # echo "tmux is not active"
   if [ -z "$SESSION" ]; then
-    # session does not exist
-    echo "session $SESSION does not exist"
-    # jump to directory
+    # echo "session $SESSION does not exist"
     cd "$ZOXIDE_RESULT" || (echo "Failed to change directory."; exit 1)
-    # create session
     tmux new-session -s "$FOLDER"
   else
-    # session exists
-    echo "session exists"
-    # attach to session
+    # echo "session $SESSION exists"
     tmux attach -t "$SESSION"
   fi
 else
-  # tmux is active
-  echo "is tmux"
+  # echo "tmux is active"
   if [ -z "$SESSION" ]; then
-    # session does not exist
-    echo "session $SESSION does not exist"
-    # jump to directory
+    # echo "session $SESSION does not exist"
     cd "$ZOXIDE_RESULT" || (echo "Failed to change directory."; exit 1)
-    # create session
     tmux new-session -d -s "$FOLDER"
-    # attach to session
     tmux switch-client -t "$FOLDER"
   else
-    # session exists
-    echo "session exists"
-    # switch to tmux session
+    # echo "session exists"
     tmux switch-client -t "$SESSION"
   fi
 fi
