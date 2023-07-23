@@ -3,11 +3,12 @@ PS1='\[\e[32m\]\u@\e[37m\]\h \e[34m\]\w \e[37m\]>> '
 
 # ENVIRONMENT
 export EDITOR=nvim
+# set -gx EDITOR 'code --wait'
 export XDG_CONFIG_HOME="$HOME"/.config
 export KUEBCONFIG="$HOME"/.kube/config
 export GOPATH="$HOME"/.go
-export bashrc=~/.bashrc
-# set -gx EDITOR 'code --wait'
+export VENDOR_DIR="$HOME"/Developer/repos/vendor
+export BASHRC="$HOME"/.bashrc
 
 ## PATH
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
@@ -17,6 +18,7 @@ export PATH=$HOME/.go/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 
 # General aliases
+alias resource='. $BASHRC'
 alias ls='ls --color=auto'
 alias la='ls -a'
 alias ll='ls -l'

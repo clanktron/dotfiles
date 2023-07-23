@@ -3,10 +3,12 @@
 # set -gx DBUS_SESSION_BUS_ADDRESS "unix:path=$DBUS_LAUNCHD_SESSION_BUS_SOCKET"
 set -gx EDITOR nvim
 set -gx XDG_CONFIG_HOME $HOME/.config
-set -gx KUEBCONFIG $HOME/.kube/config
+set -gx KUBECONFIG $HOME/.kube/config
 set -gx GOPATH $HOME/.go
 set -gx HOMEBREW_NO_ENV_HINTS 1
 set -gx SOPS_AGE_KEY_FILE $XDG_CONFIG_HOME/sops/age/age.agekey
+set -gx VENDOR_DIR $HOME/Developer/repos/vendor
+set -gx FISHRC $HOME/.config/fish/config.fish
 
 # Bind-keys
 # bind -M insert \t accept-autosuggestion
@@ -32,6 +34,7 @@ set -g theme_hide_hostname no
 set -g theme_hostname always
 
 # General aliases
+alias resource '. $FISH_CONFIG'
 alias la 'ls -a'
 alias ll 'ls -l'
 alias lh 'ls -d .*'
@@ -45,6 +48,7 @@ alias ka 'kubectl apply'
 alias kc 'kubectx'
 alias lg 'lazygit'
 alias vmbox 'VBoxManage'
+alias get_idf '. $VENDOR/esp-idf/export.fish'
 
 # zoxide integration
 zoxide init fish | source
