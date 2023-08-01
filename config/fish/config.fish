@@ -34,7 +34,7 @@ set -g theme_hide_hostname no
 set -g theme_hostname always
 
 # General aliases
-alias resource '. $FISH_CONFIG'
+alias resource '. $FISHRC'
 alias la 'ls -a'
 alias ll 'ls -l'
 alias lh 'ls -d .*'
@@ -48,7 +48,7 @@ alias ka 'kubectl apply'
 alias kc 'kubectx'
 alias lg 'lazygit'
 alias vmbox 'VBoxManage'
-alias get_idf '. $VENDOR/esp-idf/export.fish'
+alias get_idf '. $VENDOR_DIR/esp-idf/export.fish'
 
 # zoxide integration
 zoxide init fish | source
