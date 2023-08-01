@@ -1,0 +1,105 @@
+#!/bin/sh
+
+HOME="${HOME:?}"
+BLOG_DIR="${BLOG_DIR:=$HOME/Developer/repos/clanktron/blog/src/contents}"
+SCRIPT_NAME=$(basename "$0")
+HELP_MSG="Usage: $SCRIPT_NAME [-u] <file>
+
+Description:
+   Moves markdown files to the contents dir of your blog and symlinks them back to your current directory.
+
+Options:
+   -u, --undo     Undo operation. If the specified file is a symlink, remove the symlink and move the original file back to the current directory.
+   -h, --help     Show this help message and exit.
+"
+
+# Initialize variables for the options
+undo_flag=0
+
+error() {
+    echo "Error: $1"
+    exit 1
+}
+
+check_args() {
+    # Check if arg is a valid markdown file
+    if [ ! -f "$absolute_path" ]; then
+        exit_code=1
+    fi
+    if ! is_markdown "$absolute_path"; then
+        echo "Error: The specified file is not a Markdown (.md) file."
+        exit_code=1
+    fi    
+
+    if [ "$exit_code" = 1 ]; then
+        echo "$HELP_MSG"
+        exit 1
+    fi
+}
+
+is_markdown() {
+    case "$1" in
+        *.md)
+            return 0
+            ;;
+        *)
+            return 1
+            ;;
+    esac
+}
+
+add_file_to_blog() {
+    mv "$absolute_path" "$BLOG_DIR/$filename" || error "Failed to move file to blog contents dir"
+    ln -s "$BLOG_DIR/$filename" "$absolute_path" || error "Failed to create symbolic link"
+    echo "File has been moved to your blog and relinked!" 
+}
+
+undo_symlink() {
+    if [ -L "$absolute_path" ]; then
+        original_file=$(readlink "$absolute_path")
+        rm "$absolute_path" || error "Failed to remove symlink"
+        mv "$original_file" . || error "Failed to move the original file back"
+        echo "Symlink removed, and the original file has been moved back to the current directory."
+    else
+        echo "The specified file is not a symlink."
+        exit 1
+    fi
+}
+
+main() {
+    while [ $# -gt 0 ]; do
+        case "$1" in
+            -u | --undo)
+                undo_flag=1
+                shift
+                ;;
+            -h | --help)
+                echo "$HELP_MSG"
+                exit 0
+                ;;
+            *)
+                break
+                ;;
+        esac
+    done
+
+    # Check if there is exactly one argument left (the filename)
+    if [ $# -ne 1 ]; then
+        echo "$HELP_MSG"
+        exit 1
+    fi
+
+    # Resolve the absolute path of the file
+    absolute_path=$(realpath -s "$1")
+    # Extract the filename from the absolute path
+    filename=$(basename "$absolute_path")
+
+    check_args
+    if [ $undo_flag -eq 1 ]; then
+        undo_symlink
+    else
+        add_file_to_blog
+    fi
+}
+
+main "$@"
