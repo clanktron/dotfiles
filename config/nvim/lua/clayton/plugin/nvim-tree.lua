@@ -6,7 +6,6 @@ vim.g.loaded_netrwPlugin = 1
 require("nvim-tree").setup{
     view = {
         width = 45,
-        height = 30
     }
 }
 

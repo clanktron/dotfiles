@@ -1,5 +1,5 @@
 require("clayton.keymaps")
 require("clayton.settings")
-require("clayton.packer")
+require("clayton.lazy")
 require("clayton.plugin")
 --print('hello clayton')
