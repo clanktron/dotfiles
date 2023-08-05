@@ -57,6 +57,8 @@ return require('packer').startup(function(use)
             {'neovim/nvim-lspconfig'},
             {'williamboman/mason.nvim'},
             {'williamboman/mason-lspconfig.nvim'},
+            -- LSP's not included in Mason
+            {'towolf/vim-helm'},
 
             -- Autocompletion
             {'hrsh7th/nvim-cmp'},
