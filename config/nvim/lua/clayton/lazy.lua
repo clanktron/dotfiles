@@ -27,7 +27,10 @@ require('lazy').setup({
     -- file explorer
     'nvim-tree/nvim-tree.lua',
     'kyazdani42/nvim-web-devicons',
-
+    {
+        "nvim-telescope/telescope-file-browser.nvim",
+        dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+    },
     -- statusline
     'nvim-lualine/lualine.nvim',
 
@@ -82,6 +85,11 @@ require('lazy').setup({
     -- go programming
     'ray-x/go.nvim',
 
+    -- lightweight vimwiki
+    {
+        'serenevoid/kiwi.nvim', dependencies = { 'nvim-lua/plenary.nvim' }
+    },
+
     -- code pics
     'narutoxy/silicon.lua',
 
@@ -110,10 +118,10 @@ require('lazy').setup({
     -- LaTeX
     'lervag/vimtex',
 
-    { -- Markdown
-        'iamcco/markdown-preview.nvim',
-        -- if this func doesn't auto run, run it with :call mkdp#util#install() 
-        config = function() vim.fn['mkdp#util#install']() end,
-    },
+    -- { -- Markdown
+    --     'iamcco/markdown-preview.nvim',
+    --     -- if this func doesn't auto run, run it with :call mkdp#util#install() 
+    --     config = function() vim.fn['mkdp#util#install']() end,
+    -- },
 
 })
