@@ -7,8 +7,9 @@ export EDITOR=nvim
 export XDG_CONFIG_HOME="$HOME"/.config
 export KUEBCONFIG="$HOME"/.kube/config
 export GOPATH="$HOME"/.go
-export VENDOR_DIR="$HOME"/Developer/repos/vendor
 export BASHRC="$HOME"/.bashrc
+export VENDOR_DIR="$HOME"/Developer/repos/vendor
+export BLOG_DIR="$HOME"/Developer/repos/clanktron/blog/src/contents
 
 ## PATH
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
@@ -24,6 +25,7 @@ alias la='ls -a'
 alias ll='ls -l'
 alias lh='ls -d .*'
 alias gitroot='cd $(git rev-parse --show-toplevel)'
+alias gr=gitroot
 alias k=kubectl
 alias kd='kubectl describe'
 alias kg='kubectl get'
