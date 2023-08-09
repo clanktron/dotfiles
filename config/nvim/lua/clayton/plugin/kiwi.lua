@@ -4,11 +4,15 @@ kiwi.setup({
   {
     name = "blog",
     path = os.getenv("BLOG_DIR")
+  },
+  {
+      name = "diary",
+      path = os.getenv("DIARY_DIR")
+  },
+  {
+    name = "wiki",
+    path = os.getenv("WIKI")
   }
-  -- {
-  --   name = "knowledge-base",
-  --   path = "/home/username/personal-wiki"
-  -- }
 })
 
 -- Necessary keybindings
