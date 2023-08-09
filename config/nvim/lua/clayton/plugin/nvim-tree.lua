@@ -10,7 +10,4 @@ require("nvim-tree").setup{
 }
 
 -- open directory
-vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR> <Cmd>set relativenumber<CR>")
-
--- -- open directory
--- vim.keymap.set("n", "<leader>e", ":E<CR> <Cmd>set relativenumber<CR>")
+vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr> <cmd>set relativenumber<cr>")
