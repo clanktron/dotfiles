@@ -7,9 +7,7 @@ set -gx KUBECONFIG $HOME/.kube/config
 set -gx GOPATH $HOME/.go
 set -gx HOMEBREW_NO_ENV_HINTS 1
 set -gx FISHRC $HOME/.config/fish/config.fish
-set -gx SOPS_AGE_KEY_FILE $XDG_CONFIG_HOME/sops/age/age.agekey
 set -gx VENDOR_DIR $HOME/Developer/repos/vendor
-set -gx BLOG_DIR $HOME/Developer/repos/clanktron/blog/src/contents
 
 # Bind-keys
 # bind -M insert \t accept-autosuggestion
@@ -103,4 +101,4 @@ switch (uname)
 end
 
 # Source local config
-# source (dirname (status --current-filename))/local.fish
+source (dirname (status --current-filename))/local.fish
