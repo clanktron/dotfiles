@@ -1,4 +1,6 @@
 #!/bin/sh 
+# Dependencies: openconnect
+
 USERNAME="${USERNAME:?}"
 PASSWD="${PASSWD:?}"
 VPNTARGET="${VPNTARGET:?}"

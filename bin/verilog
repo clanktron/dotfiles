@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Dependencies: iverilog, vvp
 
 # Shorthand for compiling and running Verilog code
 
