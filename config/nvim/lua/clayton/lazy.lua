@@ -118,10 +118,10 @@ require('lazy').setup({
     -- LaTeX
     'lervag/vimtex',
 
-    -- { -- Markdown
-    --     'iamcco/markdown-preview.nvim',
-    --     -- if this func doesn't auto run, run it with :call mkdp#util#install() 
-    --     config = function() vim.fn['mkdp#util#install']() end,
-    -- },
+    { -- Markdown
+        'iamcco/markdown-preview.nvim',
+        -- if this func doesn't auto run, run it with :call mkdp#util#install() 
+        build = function() vim.fn['mkdp#util#install']() end,
+    },
 
 })
