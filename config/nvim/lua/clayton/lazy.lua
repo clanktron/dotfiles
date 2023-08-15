@@ -50,6 +50,9 @@ require('lazy').setup({
     -- LSP's not included in Mason
     'towolf/vim-helm',
 
+    -- LSP-Zero automated setup 
+    'VonHeikemen/lsp-zero.nvim',
+
     -- Autocompletion
     'hrsh7th/nvim-cmp',
     'hrsh7th/cmp-buffer',
@@ -61,9 +64,6 @@ require('lazy').setup({
     -- Snippets
     'L3MON4D3/LuaSnip',
     'rafamadriz/friendly-snippets',
-
-    -- LSP-Zero automated setup 
-    'VonHeikemen/lsp-zero.nvim',
 
     -- auto closing
     'windwp/nvim-autopairs',
@@ -94,26 +94,24 @@ require('lazy').setup({
     'narutoxy/silicon.lua',
 
     -- fancy command line and messages
-    {
-      "folke/noice.nvim",
-      event = "VeryLazy",
-      opts = {
-        -- add any options here
-      },
-      dependencies = {
-        -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-        "MunifTanjim/nui.nvim",
-        -- OPTIONAL:
-        --   `nvim-notify` is only needed, if you want to use the notification view.
-        --   If not available, we use `mini` as the fallback
-        "rcarriga/nvim-notify",
-        }
-    },
-        -- harpoon
-    'theprimeagen/harpoon',
+    -- {
+    --   "folke/noice.nvim",
+    --   event = "VeryLazy",
+    --   opts = {
+    --     -- add any options here
+    --   },
+    --   dependencies = {
+    --     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+    --     "MunifTanjim/nui.nvim",
+    --     -- OPTIONAL:
+    --     --   `nvim-notify` is only needed, if you want to use the notification view.
+    --     --   If not available, we use `mini` as the fallback
+    --     "rcarriga/nvim-notify",
+    --     }
+    -- },
 
     -- harpoon
-    'mbbill/undotree',
+    'theprimeagen/harpoon',
 
     -- LaTeX
     'lervag/vimtex',
