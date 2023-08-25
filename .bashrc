@@ -17,6 +17,8 @@ export PATH=$HOME/Developer/vendor/google-cloud-sdk/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/.go/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.rd/bin:$PATH
+export PATH=$HOME/Developer/repos/clanktron/restic-backups:$PATH
 
 # General aliases
 alias resource='. $BASHRC'

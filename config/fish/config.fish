@@ -17,6 +17,8 @@ set -gx PATH /usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
 set -px PATH $HOME/Developer/vendor/google-cloud-sdk/bin
 set -px PATH $HOME/.go/bin
 set -px PATH $HOME/.local/bin
+set -px PATH $HOME/.rd/bin
+set -px PATH $HOME/Developer/repos/clanktron/restic-backups
 
 # Fish defaults
 set fish_greeting ""
