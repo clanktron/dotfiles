@@ -23,7 +23,7 @@ lsp_zero.ensure_installed({
     'html',
     'jsonls',
     'tsserver',
-    'ltex',
+    --'ltex',
     'lua_ls',
     'marksman',
     'pyright',
@@ -35,20 +35,20 @@ lsp_zero.nvim_workspace()
 
 lsp_zero.setup()
 
-lsp.ltex.setup({
-    autostart = false,
-    filetypes = {
-        "bib",
-        "gitcommit",
-        "org",
-        "plaintex",
-        "rst",
-        "rnoweb",
-        "tex",
-        "pandoc",
-        -- "markdown"
-    }
-})
+-- lsp.ltex.setup({
+--     autostart = false,
+--     filetypes = {
+--         "bib",
+--         -- "gitcommit",
+--         "org",
+--         "plaintex",
+--         "rst",
+--         "rnoweb",
+--         "tex",
+--         -- "pandoc",
+--         -- "markdown"
+--     }
+-- })
 
 lsp.lua_ls.setup({
     settings = {
