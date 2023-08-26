@@ -1,3 +1,3 @@
-require('clayton')
-
--- print('init.lua loaded')
+require('clayton.core')
+require('clayton.lazy')
+require('clayton.plugin')
