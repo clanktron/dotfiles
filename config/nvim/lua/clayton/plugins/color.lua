@@ -12,18 +12,22 @@ return {
                 floats = "transparent",
             }
         },
-        config = function ()
-           vim.cmd.colorscheme('tokyonight')
+        config = function(_, opts)
+            require("tokyonight").setup(opts)
+            vim.cmd.colorscheme('tokyonight')
         end,
     },
     {
         'EdenEast/nightfox.nvim',
+        lazy = true,
     },
     {
         'Tsuzat/NeoSolarized.nvim',
+        lazy = true,
     },
     {
         'Yazeed1s/oh-lucy.nvim',
+        lazy = true,
     },
 }
 -- TODO: norcalli/nvim-colorizer.lua

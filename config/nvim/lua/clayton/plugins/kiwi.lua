@@ -1,6 +1,7 @@
 return {
     -- lightweight vimwiki
     'serenevoid/kiwi.nvim',
+    lazy = true,
     dependencies = {
         'nvim-lua/plenary.nvim',
     },
@@ -18,13 +19,11 @@ return {
           path = os.getenv("WIKI")
         }
     },
-    config = function()
-        local kiwi = require("kiwi")
-        -- Necessary keybindings
-        vim.keymap.set('n', '<leader>kw', kiwi.open_wiki_index, {})
-        vim.keymap.set('n', '<leader>kd', kiwi.open_diary_index, {})
-        vim.keymap.set('n', '<leader>kn', kiwi.open_diary_new, {})
-        -- vim.keymap.set('n', '<leader-x>', kiwi.todo.toggle, {})
-    end,
+    keys = {
+        {'<leader>kw', function() require("kiwi").open_wiki_index {} end, desc = "Open VimWiki index"},
+        {'<leader>kd', function() require("kiwi").open_diary_index {} end, desc = "Open diary index"},
+        {'<leader>kn', function() require("kiwi").open_diary_new {} end, desc = "New diary entry"},
+        -- {'<leader-x>', require("kiwi").todo.toggle, desc = "Toggle VimWiki todo"},
+    },
 }
 

@@ -1,7 +1,18 @@
 return {
     {
         "nvim-telescope/telescope.nvim",
-        config = function ()
+        lazy = true,
+        dependencies = {
+            { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+            { "nvim-telescope/telescope-file-browser.nvim", enabled = true },
+            { "nvim-telescope/telescope-dap.nvim", enabled = false },
+        },
+        opts = {
+            "fzf",
+            "file_browser",
+            -- "dap"
+        },
+        config = function(_, opts)
             local telescope = require("telescope")
             local actions = require("telescope.actions")
             telescope.setup({
@@ -23,37 +34,20 @@ return {
                     }
                 }
             })
+
+            for _, extension in ipairs(opts) do
+                telescope.load_extension(extension)
+            end
         end,
-    },
-    {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        build = 'make',
-        config = function()
-            local telescope = require("telescope")
-            local builtin = require('telescope.builtin')
-            telescope.load_extension('fzf')
-            vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-            vim.keymap.set('n', '<leader>fk', builtin.keymaps, {})
-            vim.keymap.set('n', '<leader>fs', builtin.live_grep, {})
-        end,
-    },
-    {
-        "nvim-telescope/telescope-file-browser.nvim",
-        config = function()
-            local telescope = require("telescope")
-            telescope.load_extension('file_browser')
-        end,
-    },
-    {
-        "nvim-telescope/telescope-dap.nvim",
-        config = function()
-            local telescope = require("telescope")
-            telescope.load_extension('dap')
-        end,
-        enabled = false,
+        keys = {
+            { "<leader>ff", function() require('telescope.builtin').find_files {} end, desc = "Telescope fzf files" },
+            { "<leader>fk", function() require('telescope.builtin').keymaps {} end, desc = "Telescope fzf keymaps" },
+            { "<leader>fs", function() require('telescope.builtin').live_grep {} end, desc = "Telescope live grep" },
+            -- vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+            -- vim.keymap.set('n', '<leader>fc', builtin.grep_string, {})
+            -- vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+            { '<leader>fe', function() require('telescope').extensions.file_browser {} end, desc = "Telescope file browser"}
+        },
+        cmd = { "Telescope"}
     },
 }
--- vim.keymap.set('n', '<leader>e', "<cmd>Telescope file_browser<cr>", {})
--- vim.keymap.set('n', '<leader>fc', builtin.grep_string, {})
--- vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
--- vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})

@@ -141,7 +141,7 @@ key_bindings:
   - { key: K,        mods: Command,       chars: "\x01\x1b\x5b\x41" }
   - { key: L,        mods: Command,       chars: "\x01\x1b\x5b\x43" }
   - { key: T,        mods: Command,       chars: "\x01\x63" }
-  - { key: Tab,      mods: Shift,         chars: "\x01\x6e" }
+  # - { key: Tab,      mods: Shift,         chars: "\x01\x6e" }
   - { key: N,        mods: Alt,           chars: "\x01\x6e" }
   - { key: Key1,     mods: Command,       chars: "\x01\x30" }
   - { key: Key2,     mods: Command,       chars: "\x01\x31" }

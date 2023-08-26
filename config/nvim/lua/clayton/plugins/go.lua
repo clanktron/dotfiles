@@ -1,5 +1,7 @@
 return {
     'ray-x/go.nvim',
+    ft = "go",
+    lazy = true,
     config = function()
         local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
         vim.api.nvim_create_autocmd("BufWritePre", {
