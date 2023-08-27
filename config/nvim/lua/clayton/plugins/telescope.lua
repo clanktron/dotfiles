@@ -4,12 +4,12 @@ return {
         lazy = true,
         dependencies = {
             { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-            { "nvim-telescope/telescope-file-browser.nvim", enabled = true },
+            { "nvim-telescope/telescope-file-browser.nvim", enabled = false },
             { "nvim-telescope/telescope-dap.nvim", enabled = false },
         },
         opts = {
             "fzf",
-            "file_browser",
+            -- "file_browser",
             -- "dap"
         },
         config = function(_, opts)
@@ -46,7 +46,7 @@ return {
             -- vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
             -- vim.keymap.set('n', '<leader>fc', builtin.grep_string, {})
             -- vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-            { '<leader>fe', function() require('telescope').extensions.file_browser.file_browser() end, desc = "Telescope file browser"}
+            -- { '<leader>fe', function() require('telescope').extensions.file_browser.file_browser() end, desc = "Telescope file browser"}
         },
         cmd = { "Telescope"}
     },
