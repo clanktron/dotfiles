@@ -3,9 +3,6 @@
 **/.DS_Store
 mac.md
 
-# Neovim plugins
-config/nvim/plugin/*
-
 # Local fish variables and ssh key config
 config/fish/fish_variables
 config/fish/local.fish
@@ -13,4 +10,3 @@ config/fish/ssh.fish
 
 # k9s config changes when app is opened
 config/k9s/config.yml
-config/nvim/lazy-lock.json
