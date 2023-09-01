@@ -10,3 +10,4 @@ config/fish/ssh.fish
 
 # k9s config changes when app is opened
 config/k9s/config.yml
+config/brewfile/Brewfile.lock.json
