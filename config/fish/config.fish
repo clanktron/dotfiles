@@ -14,11 +14,12 @@ set -gx VENDOR_DIR $HOME/Developer/repos/vendor
 
 ## PATH
 set -gx PATH /usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
-set -px PATH $HOME/Developer/vendor/google-cloud-sdk/bin
-set -px PATH $HOME/.go/bin
+set -px PATH /opt/pkg/sbin:/opt/pkg/bin
 set -px PATH $HOME/.local/bin
-set -px PATH $HOME/.rd/bin
+set -px PATH $HOME/.go/bin
 set -px PATH $HOME/Developer/repos/clanktron/restic-backups
+set -px PATH $HOME/.rd/bin
+set -px PATH $HOME/Developer/vendor/google-cloud-sdk/bin
 
 # Fish defaults
 set fish_greeting ""

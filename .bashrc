@@ -13,6 +13,7 @@ export BLOG_DIR="$HOME"/Developer/repos/clanktron/blog/src/contents
 
 ## PATH
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
+export PATH=/opt/pkg/sbin:/opt/pkg/bin:$PATH
 export PATH=$HOME/Developer/vendor/google-cloud-sdk/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/.go/bin:$PATH
