@@ -44,7 +44,7 @@ return {
             options.desc = "See available code actions"
             vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, options) -- see available code actions, in visual mode will apply to selection
             options.desc = "Smart rename"
-            vim.keymap.set("n", "<leader>rn", ":IncRename ", options) -- smart rename
+            vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, options) -- smart rename
             options.desc = "Show buffer diagnostics"
             vim.keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", options) -- show  diagnostics for file
             options.desc = "Show line diagnostics"
