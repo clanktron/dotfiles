@@ -23,6 +23,8 @@ export PATH=$HOME/Developer/repos/clanktron/restic-backups:$PATH
 
 # General aliases
 alias resource='. $BASHRC'
+alias ..='cd ..'
+alias ...='cd ../..'
 alias ls='ls --color=auto'
 alias la='ls -a'
 alias ll='ls -l'
