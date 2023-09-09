@@ -41,7 +41,7 @@ alias la 'ls -a'
 alias ll 'ls -l'
 alias lh 'ls -d .*'
 alias c 'clear'
-alias gitroot 'cd $(git rev-parse --show-toplevel)'
+alias gitroot 'cd (git rev-parse --show-toplevel)'
 alias gr gitroot
 alias ta 'tmux attach -t'
 alias k kubectl
@@ -54,7 +54,9 @@ alias vmbox 'VBoxManage'
 alias get_idf '. $VENDOR_DIR/esp-idf/export.fish'
 
 # zoxide integration
-zoxide init fish | source
+if type -q zoxide
+    zoxide init fish | source
+end
 
 # Functions
 function kn
@@ -75,15 +77,17 @@ function ....
      cd ../../..
 end
 
-function search
-    open -a firefox https://google.com/search"?q=$argv"
+if type -q firefox
+    function search
+        open -a firefox https://google.com/search"?q=$argv"
+    end
 end
 
 function sudo 
     if test "$argv" = !!
-    eval command sudo $history[1]
-else
-    command sudo $argv
+        eval command sudo $history[1]
+    else
+        command sudo $argv
     end
 end
 
@@ -104,4 +108,6 @@ switch (uname)
 end
 
 # Source local config
-source (dirname (status --current-filename))/local.fish
+if [ -f (dirname (status --current-filename))/local.fish ]
+    source (dirname (status --current-filename))/local.fish
+end
