@@ -43,6 +43,9 @@ alias lh 'ls -d .*'
 alias c 'clear'
 alias gitroot 'cd (git rev-parse --show-toplevel)'
 alias gr gitroot
+alias gl 'git log'
+alias gs 'git status'
+alias ga 'git add'
 alias ta 'tmux attach -t'
 alias k kubectl
 alias kd 'kubectl describe'
