@@ -95,8 +95,7 @@ function sudo
 end
 
 # Start TMUX on login
-if status is-interactive 
-and not set -q TMUX
+if status is-interactive; and not set -q TMUX; and command -q tmux
     tmux attach -t main || tmux new -s main
 end
 
