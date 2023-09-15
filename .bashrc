@@ -25,7 +25,6 @@ export PATH=$HOME/Developer/repos/clanktron/restic-backups:$PATH
 alias resource='. $BASHRC'
 alias ..='cd ..'
 alias ...='cd ../..'
-alias ls='ls --color=auto'
 alias la='ls -a'
 alias ll='ls -l'
 alias lh='ls -d .*'
@@ -45,7 +44,9 @@ alias ta='tmux attach -t'
 alias vmbox='VBoxManage'
 
 # Enable zoxide integration
-eval "$(zoxide init bash)"
+if command -v zoxide; then
+	eval "$(zoxide init bash)"
+fi
 
 # Functions
 function kn() {
