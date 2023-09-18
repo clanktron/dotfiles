@@ -41,6 +41,7 @@ alias kc='kubectx'
 alias c='clear'
 alias lg='lazygit'
 alias ta='tmux attach -t'
+alias nas='ssh git@nas'
 alias vmbox='VBoxManage'
 
 # Enable zoxide integration
