@@ -1,4 +1,5 @@
 #!/bin/sh
+# Dependecies: kubectl
 # Get crossplane ec2 instance info
 if [ -z "$1" ]; then
     printf "NAME\t\tPUBLIC IP\n" && kubectl get instances.ec2.aws.upbound.io -o=jsonpath='{range .items[*]}{.metadata.name}{"\t"}{.status.atProvider.publicIp}{"\n"}{end}'
