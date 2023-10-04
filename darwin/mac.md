@@ -15,11 +15,13 @@ description:
 
 ## Todo
 import/export embedded preferences:
-- itsycal settings `com.mowglii.ItsycalApp`
 - login item settings
 - calendars?
 - mail?
 - hidutil  -caps to control [key](https://developer.apple.com/library/archive/technotes/tn2450/_index.html#//apple_ref/doc/uid/DTS40017618-CH1-KEY_TABLE_USAGES)
+- set key repeat to max
+- mouse movement to max
+- tap to click
 
 # Notes for mac setup
 > these should eventually be translated to an ansible or bash script (or some other iac tool)
