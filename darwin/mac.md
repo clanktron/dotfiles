@@ -12,6 +12,12 @@ ogImage: ""
 description:
   Mac Setup
 ---
+## Todo
+import/export embedded preferences:
+- itsycal settings `com.mowglii.ItsycalApp`
+- login item settings
+- calendars?
+- mail?
 
 # Notes for mac setup
 > these should eventually be translated to an ansible or bash script (or some other iac tool)
