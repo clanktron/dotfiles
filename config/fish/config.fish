@@ -5,7 +5,6 @@ set -gx EDITOR nvim
 set -gx XDG_CONFIG_HOME $HOME/.config
 set -gx KUBECONFIG $HOME/.kube/config
 set -gx GOPATH $HOME/.go
-set -gx HOMEBREW_NO_ENV_HINTS 1
 set -gx FISHRC $HOME/.config/fish/config.fish
 set -gx VENDOR_DIR $HOME/Developer/repos/vendor
 
