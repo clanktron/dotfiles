@@ -1,0 +1,6 @@
+{
+    MJShowDockIconKey = 0;
+    MJShowMenuIconKey = 0;
+    MJSkipDockMenuIconProblemAlertKey = 1;
+    SUEnableAutomaticChecks = 0;
+}

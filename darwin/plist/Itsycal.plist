@@ -1,0 +1,9 @@
+{
+    ClockFormat = "E MMM d";
+    HideIcon = 1;
+    SUEnableAutomaticChecks = 0;
+    ShowEventDays = 7;
+    ShowLocation = 1;
+    SizePreference = 2;
+    UseOutlineIcon = 0;
+}
