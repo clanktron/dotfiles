@@ -8,20 +8,22 @@ else
     echo "Homebrew is already installed, proceeding..."
 fi
 # Select profile
+BASE_BREWFILE=./Brewfile
 echo "Which brew bundle would you like to install? (mbp, mb-air)"
 read -r profile
 case "$profile" in
   mbp | complete)
     echo "Setting brewfile bundle to mbp profile..."
-    HOMEBREW_BREWFILE=../config/brewfile/Brewfile.mbp
+    BREWFILE=./mbp/Brewfile
     ;;
   mb-air | minimal)
     echo "Setting brewfile bundle to mb-air profile..."
-    HOMEBREW_BREWFILE=../config/brewfile/Brewfile.mb-air
+    BREWFILE=./mb-air/Brewfile
     ;;
   *)
     echo "Invalid choice. Please choose mbp or mb-air."
     ;;
 esac
-# brew bundle install
-echo "installing $HOMEBREW_BREWFILE"
+echo "installing brewfile contents..."
+HOMEBREW_CASK_OPTS=--no-quarantine brew bundle install --file="$BASE_BREWFILE" --file="$BREWFILE"
+echo "Done!"
