@@ -37,27 +37,20 @@ set_plist() {
     DOMAIN=$2
     plist_file="$PLIST_DIR"/"$APP".plist
     [ ! -f "$plist_file" ] && warn "no plist file to import, skipping..." && return
-    info "Checking for $APP domain with defaults utility..."
-    if defaults domains | grep "$DOMAIN" > /dev/null; then
-        info "Importing $APP preferences with defaults utility..."
-        if defaults import "$DOMAIN" "$plist_file"; then
-            info "$APP preferences set!"
-            info "restarting $APP for changes to take effect..."
-            if pkill "$APP" ; then
-                info "successfully killed $APP process"
-                if open -a "$APP"; then
-                    info "restarted $APP!"
-                else
-                    error "$APP failed to start again"
-                fi
-            else
-                error "failed to kill $APP process, skipping restart"
-            fi
-        else
-            error "failed to import $APP preferences"
-        fi
-    else 
-        error "$APP domain is missing from system, skipping preferences import"
+    if pgrep "$APP" > /dev/null; then
+        info "$APP is running, killing process before import"
+        pkill "$APP"
+    fi
+    info "Importing $APP preferences with defaults utility..."
+    if defaults import "$DOMAIN" "$plist_file"; then
+        info "$APP preferences set!"
+    else
+        error "Failed to import $APP preferences"
+    fi
+    if open -a "$APP"; then
+        info "Restarted $APP!"
+    else
+        error "Failed to restart $APP" 
     fi
 }
 
