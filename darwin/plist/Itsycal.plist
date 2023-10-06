@@ -2,8 +2,7 @@
     ClockFormat = "E MMM d";
     HideIcon = 1;
     SUEnableAutomaticChecks = 0;
+    "NSStatusItem Preferred Position ItsycalStatusItem" = 90;
     ShowEventDays = 7;
-    ShowLocation = 1;
     SizePreference = 2;
-    UseOutlineIcon = 0;
 }
