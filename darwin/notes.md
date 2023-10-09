@@ -14,7 +14,6 @@ description:
 ---
 
 ## Todo
-- trust installed homebrew apps
 import/export embedded preferences:
 - calendars?
 - mail?
@@ -31,14 +30,9 @@ import/export embedded preferences:
 # Notes for mac setup
 > these should eventually be translated to an ansible or posix script (or some other iac tool)
 
-## symlink mac system utilities as their linux equivalents
-```bash
-ln -sf /usr/sbin/diskutil /usr/local/sbin/lsblk
-# this is the only one i've found a reason to do so far
-```
 ## usb port continuous disconnect reconnect
 ```bash
-# dunno why killing this daemon solved it
+# dunno why killing the daemon solved it
 # it lowers power output (when killed)
 sudo killall -STOP -c usbd
 ```
