@@ -103,6 +103,39 @@ if defaults import com.apple.dock ./mbp/dock.plist; then
 else 
     error "Error setting dock preferences"
 fi
+# InitialKeyRepeat minimum is 15 (225 ms)
+# KeyRepeat minimum is 2 (30 ms)
+# both of these can go lower than their "normal" minimum
+info "Setting key repeat speed to normal minimum delay..."
+if defaults write -g InitialKeyRepeat -int 15 && defaults write -g KeyRepeat -int 2; then
+    info "Key repeat speed set!"
+else
+    error "Failed to set keyrepeat values"
+fi
+# remap capslock to "left" control
+info "Remapping capslock to control..."
+# official reference table https://developer.apple.com/library/archive/technotes/tn2450/_index.html#//apple_ref/doc/uid/DTS40017618-CH1-KEY_TABLE_USAGES
+if cp ./launchd/local.capslockToControl.plist "$HOME"/Library/LaunchAgents/ \
+    && launchctl load ~/Library/LaunchAgents/local.hidutilKeyMapping.plist \
+    && launchctl start local.hidutilKeyMapping; then
+    info "capslock is now control!"
+else
+    error "Failed to remap capslock"
+fi
+# tap to touch
+info "Enabling tap to touch..."
+if defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true \
+    && defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true \
+    && defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1 \
+    && defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1; then
+    info "Tap to touch is now enabled!"
+else
+    error "failed to enable tap to touch"
+fi
+# trackpad speed (doesn't work even after reboot)
+# defaults write -g com.apple.mouse.scaling 5.0
+# apply settings
+/System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
 
 APP=Stats
 DOMAIN=eu.exelban.Stats
@@ -146,4 +179,4 @@ login_item=1
 set_plist=0
 configure_app "$APP" "$DOMAIN" "$login_item" "$set_plist"
 
-info "Done!"
+info "Finished settings system preferences!"
