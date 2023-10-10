@@ -1,0 +1,3 @@
+#!/bin/sh
+# start rancher desktop in background (cuz the option in rancher desktop settings doesn't work)
+osascript -e 'run application "Rancher Desktop"'

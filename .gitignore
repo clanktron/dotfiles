@@ -1,7 +1,6 @@
 # MacOS clutter
 .DS_Store
 **/.DS_Store
-mac.md
 
 # Local fish variables and ssh key config
 config/fish/fish_variables

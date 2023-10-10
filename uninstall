@@ -1,13 +1,36 @@
 #!/bin/sh
+DOTFILES_DIR=$(dirname "$(realpath "$0")")
+# text attributes
+# bold=$(tput bold)
+green=$(tput setaf 2)
+orange=$(tput setaf 166)
+red=$(tput setaf 1)
+light_green=$(tput setaf 178)
+light_orange=$(tput setaf 208)
+light_red=$(tput setaf 196)
+reset=$(tput sgr0)
+
+info() {
+    echo "${green}[ INFO ]${reset} ${light_green}$1${reset}"
+}
+
+warn() {
+    echo "${orange}[ WARN ]${reset} ${light_orange}$1${reset}"
+}
+
+error() {
+    echo "${red}[ ERROR ]${reset} ${light_red}$1${reset}"
+}
+
 
 remove_installation() {
-    printf "Removing current config...\n"
+    info "Removing current config..."
     # Remove executables if they're installed
-    find ./bin -maxdepth 1 -exec basename {} \; | sed 1d | while read -r file; do 
+    find "$DOTFILES_DIR"/bin -maxdepth 1 -exec basename {} \; | sed 1d | while read -r file; do 
         if [ -e "${HOME:?}"/.local/bin/"$file" ]; then rm "${HOME:?}"/.local/bin/"$file"; fi
     done
     # Remove config directories if they're installed
-    find ./config -maxdepth 1 -exec basename {} \; | sed 1d | while read -r dir; do 
+    find "$DOTFILES_DIR"/config -maxdepth 1 -exec basename {} \; | sed 1d | while read -r dir; do 
         if [ -L "${XDG_CONFIG_HOME:?}"/"$dir" ]; then
             rm "${XDG_CONFIG_HOME:?}"/"$dir"
         else
@@ -21,7 +44,7 @@ remove_installation() {
 
 main() {
     remove_installation
-    printf "Done!\n"
+    info "Finished removing existing config!"
 }
 
 main

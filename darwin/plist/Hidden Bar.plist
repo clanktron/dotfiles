@@ -1,0 +1,8 @@
+{
+    "NSStatusItem Preferred Position hiddenbar_expandcollapse" = 300;
+    "NSStatusItem Preferred Position hiddenbar_separate" = 615;
+    isAutoHide = 0;
+    isAutoStart = 0;
+    isShowPreferences = 0;
+    useFullStatusBarOnExpandEnabled = 0;
+}

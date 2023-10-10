@@ -1,9 +1,58 @@
 #!/bin/sh
-HOME="${HOME:?}"
-XDG_CONFIG_HOME="${XDG_CONFIG_HOME:?}"
-PWD=$(git rev-parse --show-toplevel)
+# text attributes
+# bold=$(tput bold)
+green=$(tput setaf 2)
+orange=$(tput setaf 166)
+red=$(tput setaf 1)
+light_green=$(tput setaf 178)
+light_orange=$(tput setaf 208)
+light_red=$(tput setaf 196)
+reset=$(tput sgr0)
 
-if [ "$1" = "link" ]; then
+info() {
+    echo "${green}[ INFO ]${reset} ${light_green}$1${reset}"
+}
+
+warn() {
+    echo "${orange}[ WARN ]${reset} ${light_orange}$1${reset}"
+}
+
+error() {
+    echo "${red}[ ERROR ]${reset} ${light_red}$1${reset}"
+}
+
+HOME="${HOME:?}"
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-"$HOME/.config"}"
+DOTFILES_DIR=$(dirname "$(realpath "$0")")
+OS=$(uname)
+
+# Flags
+LINK_FLAG=false
+BREW_FLAG=false
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -l)
+      LINK_FLAG=true
+      shift
+      ;;
+    -b)
+      export BREW_FLAG=true
+      shift
+      ;;
+    -lb)
+      LINK_FLAG=true
+      export BREW_FLAG=true
+      shift
+      ;;
+    *)
+      # If it's not a flag, assume it's an argument
+      # arg="$1"
+      shift
+      ;;
+  esac
+done
+
+if [ "$LINK_FLAG" = "true" ]; then
     install_action="ln -svf"
     action_msg="Symlinking"
 else
@@ -14,15 +63,15 @@ fi
 ensure_paths() {
     # Ensure ~/.config path is available
     if [ ! -d "$HOME"/.config ]; then
-        echo "Creating $HOME/.config directory..."
+        info "Creating $HOME/.config directory..."
         mkdir "$HOME"/.config
     fi
 
     # Ensure ~/.local/bin path is available for install
     if [ ! -d "$HOME"/.local ]; then
-        echo "Creating $HOME/.local directory..."
+        info "Creating $HOME/.local directory..."
         mkdir "$HOME"/.local
-        echo "Creating $HOME/.local/bin directory..."
+        info "Creating $HOME/.local/bin directory..."
         mkdir "$HOME"/.local/bin
     else
         if [ ! -d "$HOME"/.local/bin ]; then
@@ -32,36 +81,47 @@ ensure_paths() {
 }
 
 remove_installation() {
-    ./uninstall
+    "$DOTFILES_DIR"/uninstall
 }
 
-install_executables() {
+install_packages() {
+    if [ "$OS" = "Darwin" ]; then
+        "$DOTFILES_DIR"/darwin/install.sh
+    fi
+}
+
+install_scripts() {
+    install_action="$1"
+    action_msg="$2"
     # Softlink all executables in bin directory to ~/.local/bin
-    printf "%s scripts/excecutables...\n" "$action_msg"
-    find ./bin -maxdepth 1 -exec basename {} \; | sed 1d | while read -r file; do 
-        eval "$install_action" "$PWD"/bin/"$file" "$HOME"/.local/bin/"$file"
+    info "$action_msg scripts/excecutables..."
+    find "$DOTFILES_DIR"/bin -maxdepth 1 -exec basename {} \; | sed 1d | while read -r file; do 
+        eval "$install_action" "$DOTFILES_DIR"/bin/"$file" "$HOME"/.local/bin/"$file"
     done
 }
 
 install_config () {
+    install_action="$1"
+    action_msg="$2"
     # Install all directories in ./config to ~/.config
-    printf "%s config folders...\n" "$action_msg"
-    find ./config -maxdepth 1 -exec basename {} \; | sed 1d | while read -r dir; do 
-        eval "$install_action" "$PWD"/config/"$dir" "$XDG_CONFIG_HOME/$dir"
+    info "$action_msg config folders..."
+    find "$DOTFILES_DIR"/config -maxdepth 1 -exec basename {} \; | sed 1d | while read -r dir; do 
+        eval "$install_action" "$DOTFILES_DIR"/config/"$dir" "$XDG_CONFIG_HOME/$dir"
     done
 
     # these should eventually be migrated to some sort of generic function
-    eval "$install_action" "$PWD"/.bashrc "$HOME"/.bashrc
+    eval "$install_action" "$DOTFILES_DIR"/.bashrc "$HOME"/.bashrc
     mkdir "$HOME"/.hammerspoon
-    eval "$install_action" "$PWD"/config/hammerspoon/init.lua "$HOME"/.hammerspoon/init.lua
+    eval "$install_action" "$DOTFILES_DIR"/config/hammerspoon/init.lua "$HOME"/.hammerspoon/init.lua
 }
 
 main () {
     ensure_paths
     remove_installation
-    install_config
-    install_executables
-    printf "Done!\n"
+    install_config "$install_action" "$action_msg"
+    install_scripts "$install_action" "$action_msg"
+    install_packages 
+    info "Done!"
 }
 
 main

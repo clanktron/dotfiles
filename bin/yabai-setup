@@ -1,0 +1,16 @@
+#!/bin/sh
+# yabai post-install setup
+YABAI=$(which yabai)
+HASH=$(shasum -a 256 "$YABAI")
+
+user="${1:-clayton}"
+yabai_sudoers_file=/private/etc/sudoers.d/yabai
+
+echo "$user ALL=(root) NOPASSWD: sha256:$HASH --load-sa" | sudo EDITOR='tee' visudo -f "$yabai_sudoers_file"
+
+# enable service daemons
+echo "Attempting to install yabai service..." && yabai --install-service \
+    || echo "Already installed, starting now..." && yabai --start-service && sudo yabai --load-sa && echo "Successfully started yabai and loaded scripting addon!"
+
+echo "Attempting to install skhd service..." && skhd --install-service \
+    || echo "Already installed, starting now..." && skhd --start-service && echo "Successfully started skhd!"
