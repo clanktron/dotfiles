@@ -81,7 +81,7 @@ ensure_paths() {
 }
 
 remove_installation() {
-    ./uninstall
+    "$DOTFILES_DIR"/uninstall
 }
 
 install_packages() {

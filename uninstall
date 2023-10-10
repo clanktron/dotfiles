@@ -1,4 +1,5 @@
 #!/bin/sh
+DOTFILES_DIR=$(dirname "$(realpath "$0")")
 # text attributes
 # bold=$(tput bold)
 green=$(tput setaf 2)
@@ -25,11 +26,11 @@ error() {
 remove_installation() {
     info "Removing current config..."
     # Remove executables if they're installed
-    find ./bin -maxdepth 1 -exec basename {} \; | sed 1d | while read -r file; do 
+    find "$DOTFILES_DIR"/bin -maxdepth 1 -exec basename {} \; | sed 1d | while read -r file; do 
         if [ -e "${HOME:?}"/.local/bin/"$file" ]; then rm "${HOME:?}"/.local/bin/"$file"; fi
     done
     # Remove config directories if they're installed
-    find ./config -maxdepth 1 -exec basename {} \; | sed 1d | while read -r dir; do 
+    find "$DOTFILES_DIR"/config -maxdepth 1 -exec basename {} \; | sed 1d | while read -r dir; do 
         if [ -L "${XDG_CONFIG_HOME:?}"/"$dir" ]; then
             rm "${XDG_CONFIG_HOME:?}"/"$dir"
         else
