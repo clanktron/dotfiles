@@ -1,29 +1,56 @@
 #!/bin/sh
+WORKDIR=$(dirname "$(realpath "$0")")
+# text attributes
+# bold=$(tput bold)
+green=$(tput setaf 2)
+orange=$(tput setaf 166)
+red=$(tput setaf 1)
+light_green=$(tput setaf 178)
+light_orange=$(tput setaf 208)
+light_red=$(tput setaf 196)
+reset=$(tput sgr0)
+
+info() {
+    echo "${green}[ INFO ]${reset} ${light_green}$1${reset}"
+}
+
+warn() {
+    echo "${orange}[ WARN ]${reset} ${light_orange}$1${reset}"
+}
+
+error() {
+    echo "${red}[ ERROR ]${reset} ${light_red}$1${reset}"
+}
+
 # Install homebrew
-echo "Checking if Homebrew is installed..."
+info "Checking if Homebrew is installed..."
 if ! brew --version > /dev/null; then
-    echo "Homebrew isn't installed, installing now..."
+    info "Homebrew isn't installed, installing now..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
-    echo "Homebrew is already installed, proceeding..."
+    info "Homebrew is already installed, proceeding..."
 fi
 # Select profile
-BASE_BREWFILE=./Brewfile
-echo "Which brew bundle would you like to install? (mbp, mb-air)"
-read -r profile
-case "$profile" in
-  mbp | complete)
-    echo "Setting brewfile bundle to mbp profile..."
-    BREWFILE=./mbp/Brewfile
+BASE_BREWFILE="$WORKDIR"/Brewfile
+if [ -z "$BREWFILE" ]; then
+    echo "Which brew bundle would you like to install? (base, mbp, mb-air, none) default: none"
+    read -r BREWFILE
+fi
+case "$BREWFILE" in
+  base | default )
+    info "Installing base brewfile bundle..."
+    HOMEBREW_CASK_OPTS=--no-quarantine brew bundle install --file="$BASE_BREWFILE"
     ;;
-  mb-air | minimal)
-    echo "Setting brewfile bundle to mb-air profile..."
-    BREWFILE=./mb-air/Brewfile
+  macbook-air | mb-air )
+    info "Installing macbook air brewfile bundle..."
+    HOMEBREW_CASK_OPTS=--no-quarantine brew bundle install --file="$BASE_BREWFILE" --file="$WORKDIR/mb-air/Brewfile"
     ;;
-  *)
-    echo "Invalid choice. Please choose mbp or mb-air."
+  macbook-pro | mbp )
+    info "Installing macbook pro brewfile bundle..."
+    HOMEBREW_CASK_OPTS=--no-quarantine brew bundle install --file="$BASE_BREWFILE" --file="$WORKDIR/mbp/Brewfile"
+    ;;
+  none | *)
+    info "No valid bundle specified, skipping..."
     ;;
 esac
-echo "installing brewfile contents..."
-HOMEBREW_CASK_OPTS=--no-quarantine brew bundle install --file="$BASE_BREWFILE" --file="$BREWFILE"
-echo "Done!"
+info "Finished installing homebrew and packages!"

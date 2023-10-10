@@ -1,9 +1,9 @@
 #!/bin/sh
-DOTFILES_DIR=$(git rev-parse --show-toplevel)
-ASSETS_DIR="${ASSETS_DIR:-$DOTFILES_DIR/assets}"
+WORKDIR=$(dirname "$(realpath "$0")")
+ASSETS_DIR="$(realpath "$WORKDIR"/../assets)"
 WALLPAPER="${WALLPAPER:-$ASSETS_DIR/black-grey-mountain.png}"
 PROFILE_PICTURE="${PROFILE_PICTURE:-$ASSETS_DIR/profile-rose.jpeg}"
-PLIST_DIR="${PLIST_DIR:-$DOTFILES_DIR/darwin/plist}"
+PLIST_DIR="${PLIST_DIR:-$WORKDIR/plist}"
 
 # text attributes
 # bold=$(tput bold)
@@ -96,7 +96,7 @@ else
 fi
 # Dock Preferences
 info "Importing dock preferences from binary plist with defaults utility..."
-if defaults import com.apple.dock ./mbp/dock.plist; then
+if defaults import com.apple.dock "$WORKDIR"/mbp/dock.plist; then
     info "  restarting dock..."
     killall Dock
     info "Dock preferences set!"
@@ -115,9 +115,9 @@ fi
 # remap capslock to "left" control
 info "Remapping capslock to control..."
 # official reference table https://developer.apple.com/library/archive/technotes/tn2450/_index.html#//apple_ref/doc/uid/DTS40017618-CH1-KEY_TABLE_USAGES
-if cp ./launchd/local.capslockToControl.plist "$HOME"/Library/LaunchAgents/ \
-    && launchctl load ~/Library/LaunchAgents/local.hidutilKeyMapping.plist \
-    && launchctl start local.hidutilKeyMapping; then
+if cp "$WORKDIR"/launchd/local.capslockToControl.plist "$HOME"/Library/LaunchAgents/; then
+#     && launchctl load ~/Library/LaunchAgents/local.hidutilKeyMapping.plist \
+#     && launchctl start local.hidutilKeyMapping; then
     info "capslock is now control!"
 else
     error "Failed to remap capslock"
@@ -167,6 +167,12 @@ login_item=1
 set_plist=1
 configure_app "$APP" "$DOMAIN" "$login_item" "$set_plist"
 
+APP="Bitwarden"
+DOMAIN=com.bitwarden.desktop
+login_item=0
+set_plist=1
+configure_app "$APP" "$DOMAIN" "$login_item" "$set_plist"
+
 APP="Proton Mail Bridge"
 DOMAIN=com.protonmail.bridge
 login_item=1
@@ -176,7 +182,7 @@ configure_app "$APP" "$DOMAIN" "$login_item" "$set_plist"
 APP="Tailscale"
 DOMAIN=io.tailscale.ipn.macsys
 login_item=1
-set_plist=0
+set_plist=1
 configure_app "$APP" "$DOMAIN" "$login_item" "$set_plist"
 
 info "Finished settings system preferences!"
