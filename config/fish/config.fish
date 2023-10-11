@@ -2,6 +2,7 @@
 # set -gx EDITOR 'code --wait'
 # set -gx DBUS_SESSION_BUS_ADDRESS "unix:path=$DBUS_LAUNCHD_SESSION_BUS_SOCKET"
 set -gx EDITOR nvim
+set -gx GPG_TTY (tty)
 set -gx XDG_CONFIG_HOME $HOME/.config
 set -gx KUBECONFIG $HOME/.kube/config
 set -gx GOPATH $HOME/.go

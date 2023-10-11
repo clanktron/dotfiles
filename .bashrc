@@ -3,6 +3,7 @@ PS1='\[\e[32m\]\u@\e[37m\]\h \e[34m\]\w \e[37m\]>> '
 
 # ENVIRONMENT
 export EDITOR=nvim
+GPG_TTY="$(tty)" && export GPG_TTY="$GPG"
 # set -gx EDITOR 'code --wait'
 export XDG_CONFIG_HOME="$HOME"/.config
 export KUEBCONFIG="$HOME"/.kube/config
