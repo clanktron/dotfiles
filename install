@@ -23,6 +23,8 @@ error() {
 
 HOME="${HOME:?}"
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-"$HOME/.config"}"
+export HOME
+export XDG_CONFIG_HOME
 DOTFILES_DIR=$(dirname "$(realpath "$0")")
 OS=$(uname)
 
