@@ -148,6 +148,7 @@ DOMAIN=com.mowglii.ItsycalApp
 login_item=1
 set_plist=1
 configure_app "$APP" "$DOMAIN" "$login_item" "$set_plist"
+# defaults write com.mowglii.ItsycalApp ShowLocation -bool YES (bug #231)
 
 APP=Hammerspoon
 DOMAIN=org.hammerspoon.Hammerspoon
