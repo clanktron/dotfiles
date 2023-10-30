@@ -96,11 +96,6 @@ function sudo
     end
 end
 
-# Start TMUX on login
-if status is-interactive; and not set -q TMUX; and command -q tmux
-    tmux new -s main || tmux attach -t main
-end
-
 # Source additional config based on OS
 switch (uname)
   case Darwin
@@ -115,3 +110,9 @@ end
 if [ -f (dirname (status --current-filename))/local.fish ]
     source (dirname (status --current-filename))/local.fish
 end
+
+# Start TMUX on login
+if status is-interactive; and not set -q TMUX; and command -q tmux
+    tmux new -s main || tmux attach -t
+end
+
