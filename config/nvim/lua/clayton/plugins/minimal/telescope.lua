@@ -6,6 +6,7 @@ return {
             { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
             { "nvim-telescope/telescope-file-browser.nvim", enabled = false },
             { "nvim-telescope/telescope-dap.nvim", enabled = false },
+            { 'nvim-lua/plenary.nvim' },
         },
         opts = {
             "fzf",

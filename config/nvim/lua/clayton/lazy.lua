@@ -14,7 +14,8 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup(
     {
-        { import = "clayton.plugins" },
+        -- { import = "clayton.plugins" },
+        { import = "clayton.plugins.minimal" },
     },
     {
       install = {
