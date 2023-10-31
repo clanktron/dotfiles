@@ -74,7 +74,7 @@ output * bg /home/clayton/Documents/foggy-forest.png fill
     bindsym $super+e exec $term
 
     # Kill focused window
-    bindsym $mod+Shift+q kill
+    bindsym $super+q kill
 
     # Start your launcher
     bindsym $super+space exec $menu
@@ -211,6 +211,14 @@ gaps outer 3
 # Border <something|none|pixel>
 default_border pixel 3
 default_floating_border pixel 3
+
+# Volume Control
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 
 #
 # Status Bar:
