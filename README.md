@@ -43,3 +43,5 @@ To remove all previously installed/linked files:
     * Package Manager: [Homebrew](https://brew.sh)
     * Window Manager: [Yabai](https://github.com/koekeishiya/yabai)
     * General Scripting: [Hammerspoon](https://www.hammerspoon.org/)
+* Arch Specific:
+    * Window Manager/Compositor: [Sway](https://swaywm.org)
