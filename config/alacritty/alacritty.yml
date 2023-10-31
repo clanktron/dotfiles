@@ -10,13 +10,13 @@ import:
 
 window:
   # Window dimensions in character columns and lines (r)
-  dimensions:
-    columns: 120
-    lines: 61
+  # dimensions:
+  #   columns: 120
+  #   lines: 61
 
-  position:
-    x: 920
-    y: 30
+  # position:
+  #   x: 920
+  #   y: 30
 
   # Startup Mode (changes require restart)
   # Values for `startup_mode`:
@@ -31,8 +31,8 @@ window:
   # Units are physical pixels; this is not DPI aware.
   # (change requires restart)
   padding:
-    x: 10
-    y: 10
+    x: 5
+    y: 5
 
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: true
@@ -41,11 +41,12 @@ window:
 
   # Background opacity
   # opacity: 1
-  opacity: 0.97
+  opacity: 0.85
 
   # Window decoration
   # Full, Transparent, Buttonless, None
-  decorations: buttonless
+  # decorations: buttonless
+  decorations: none
 
 # When true, bold text is drawn using the bright variant of colors.
 draw_bold_text_with_bright_colors: true
@@ -60,18 +61,18 @@ scrolling:
 font:
  # The normal (roman) font face to use.
   normal:
-    family: FiraCode Nerd Font
+    family: JetBrains Mono Nerd Font
     style: Regular
  
   # The bold font face
   bold:
-    family: FiraCode Nerd Font
+    family: JetBrains Mono Nerd Font
     style: Bold
  
   # The italic font face
   italic:
-    family: Menlo
-    style: Regular Italic
+    family: JetBrains Mono Nerd Font
+    style: Italic
  
  # Point size of the font
   size: 14.0
@@ -118,43 +119,44 @@ live_config_reload: true
 # Shell
 # Entries in shell.args are passed unmodified as arguments to the shell.
 shell:
-  program: /usr/local/bin/fish
+  # program: /usr/local/bin/fish
+  program: /usr/bin/fish
   args:
     - --login
 
 
 # Key bindings
 key_bindings:
-  - { key: N, mods: Command, action: CreateNewWindow }
-  - { key: Return,   mods: Command, action: ToggleSimpleFullscreen }
-  - { key: V,        mods: Command, action: Paste                        }
-  - { key: C,        mods: Command, action: Copy                         }
-  - { key: Q,        mods: Command, action: Quit                         }
-  - { key: N,        mods: Command, command: { program: "open", args: ["-nb", "io.alacritty"] } }
-  - { key: Equals,   mods: Command, action: IncreaseFontSize             }
-  - { key: Minus,    mods: Command, action: DecreaseFontSize             }
-  - { key: W,        mods: Command,       chars: "\x04" }
-  - { key: L,        mods: Command,       chars: "\x63\x6c\x65\x61\x72\x0a" } # Hex is equivalent to typing "clear"  
-    # - { key: L,        mods: Command,       chars: "\x03\x63\x6c\x65\x61\x72\x0a" } # Hex is equivalent to typing "clear"  
-  - { key: H,        mods: Command,       chars: "\x01\x1b\x5b\x44" }
-  - { key: J,        mods: Command,       chars: "\x01\x1b\x5b\x42" }
-  - { key: K,        mods: Command,       chars: "\x01\x1b\x5b\x41" }
-  - { key: L,        mods: Command,       chars: "\x01\x1b\x5b\x43" }
-  - { key: T,        mods: Command,       chars: "\x01\x63" }
+  - { key: N, mods: Super, action: CreateNewWindow }
+    # - { key: Return,   mods: Super, action: ToggleSimpleFullscreen }
+  - { key: V,        mods: Super, action: Paste                        }
+  - { key: C,        mods: Super, action: Copy                         }
+  - { key: Q,        mods: Super, action: Quit                         }
+    # - { key: N,        mods: Super, command: { program: "open", args: ["-nb", "io.alacritty"] } }
+  - { key: Equals,   mods: Super, action: IncreaseFontSize             }
+  - { key: Minus,    mods: Super, action: DecreaseFontSize             }
+  - { key: W,        mods: Super,       chars: "\x04" }
+  - { key: L,        mods: Super,       chars: "\x63\x6c\x65\x61\x72\x0a" } # Hex is equivalent to typing "clear"
+    # - { key: L,        mods: Super,       chars: "\x03\x63\x6c\x65\x61\x72\x0a" } # Hex is equivalent to typing "clear"
+  - { key: H,        mods: Super,       chars: "\x01\x1b\x5b\x44" }
+  - { key: J,        mods: Super,       chars: "\x01\x1b\x5b\x42" }
+  - { key: K,        mods: Super,       chars: "\x01\x1b\x5b\x41" }
+  - { key: L,        mods: Super,       chars: "\x01\x1b\x5b\x43" }
+  - { key: T,        mods: Super,       chars: "\x01\x63" }
   # - { key: Tab,      mods: Shift,         chars: "\x01\x6e" }
   - { key: N,        mods: Alt,           chars: "\x01\x6e" }
-  - { key: Key1,     mods: Command,       chars: "\x01\x30" }
-  - { key: Key2,     mods: Command,       chars: "\x01\x31" }
-  - { key: Key3,     mods: Command,       chars: "\x01\x32" }
-  - { key: Key4,     mods: Command,       chars: "\x01\x33" }
-  - { key: Key5,     mods: Command,       chars: "\x01\x34" }
-  - { key: Key6,     mods: Command,       chars: "\x01\x35" }
-  - { key: Key7,     mods: Command,       chars: "\x01\x36" }
-  - { key: Key8,     mods: Command,       chars: "\x01\x37" }
-  - { key: Key9,     mods: Command,       chars: "\x01\x38" }
-  - { key: Key0,     mods: Command,       chars: "\x01\x39" }
-  - { key: R,        mods: Command,       chars: "\x01\x7b" }
-    #  - { key: Left,     mods: Command,       chars: "\x13\x1b\x5b\x44" }
-    #  - { key: Down,     mods: Command,       chars: "\x13\x1b\x5b\x42" }
-    #  - { key: Up,       mods: Command,       chars: "\x13\x1b\x5b\x41" }
-    #  - { key: Right,    mods: Command,       chars: "\x13\x1b\x5b\x43" }
+  - { key: Key0,     mods: Super,       chars: "\x01\x30" }
+  - { key: Key1,     mods: Super,       chars: "\x01\x31" }
+  - { key: Key2,     mods: Super,       chars: "\x01\x32" }
+  - { key: Key3,     mods: Super,       chars: "\x01\x33" }
+  - { key: Key4,     mods: Super,       chars: "\x01\x34" }
+  - { key: Key5,     mods: Super,       chars: "\x01\x35" }
+  - { key: Key6,     mods: Super,       chars: "\x01\x36" }
+  - { key: Key7,     mods: Super,       chars: "\x01\x37" }
+  - { key: Key8,     mods: Super,       chars: "\x01\x38" }
+  - { key: Key9,     mods: Super,       chars: "\x01\x39" }
+  - { key: R,        mods: Super,       chars: "\x01\x7b" }
+    #  - { key: Left,     mods: Super,       chars: "\x13\x1b\x5b\x44" }
+    #  - { key: Down,     mods: Super,       chars: "\x13\x1b\x5b\x42" }
+    #  - { key: Up,       mods: Super,       chars: "\x13\x1b\x5b\x41" }
+    #  - { key: Right,    mods: Super,       chars: "\x13\x1b\x5b\x43" }
