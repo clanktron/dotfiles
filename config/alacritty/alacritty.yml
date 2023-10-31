@@ -13,10 +13,9 @@ window:
   # dimensions:
   #   columns: 120
   #   lines: 61
-
   # position:
-  #   x: 920
-  #   y: 30
+  #  x: 920
+  #  y: 30
 
   # Startup Mode (changes require restart)
   # Values for `startup_mode`:
@@ -31,8 +30,8 @@ window:
   # Units are physical pixels; this is not DPI aware.
   # (change requires restart)
   padding:
-    x: 5
-    y: 5
+    x: 9
+    y: 9
 
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: true
@@ -41,12 +40,12 @@ window:
 
   # Background opacity
   # opacity: 1
-  opacity: 0.85
+  opacity: 0.95
 
   # Window decoration
   # Full, Transparent, Buttonless, None
-  # decorations: buttonless
-  decorations: none
+  decorations: buttonless
+  # decorations: None
 
 # When true, bold text is drawn using the bright variant of colors.
 draw_bold_text_with_bright_colors: true
@@ -61,17 +60,17 @@ scrolling:
 font:
  # The normal (roman) font face to use.
   normal:
-    family: JetBrains Mono Nerd Font
+    family: JetBrainsMono Nerd Font
     style: Regular
  
   # The bold font face
   bold:
-    family: JetBrains Mono Nerd Font
+    family: JetBrainsMono Nerd Font
     style: Bold
  
   # The italic font face
   italic:
-    family: JetBrains Mono Nerd Font
+    family: JetBrainsMono Nerd Font
     style: Italic
  
  # Point size of the font
@@ -119,8 +118,7 @@ live_config_reload: true
 # Shell
 # Entries in shell.args are passed unmodified as arguments to the shell.
 shell:
-  # program: /usr/local/bin/fish
-  program: /usr/bin/fish
+  program: /usr/local/bin/fish
   args:
     - --login
 
