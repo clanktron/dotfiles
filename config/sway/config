@@ -90,7 +90,7 @@ output * bg /home/clayton/Developer/repos/clanktron/dotfiles/assets/foggy-forest
     bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $super+Shift+XF86Eject exec zenity --question --text='Logout?' && swaymwg exit
+    bindsym $super+Shift+XF86Eject exec zenity --question --text='Logout?' && swaymsg exit
 #
 # Moving around:
 #
