@@ -54,7 +54,6 @@ alias kg 'kubectl get'
 alias ka 'kubectl apply'
 alias kc 'kubectx'
 alias lg 'lazygit'
-alias nas 'ssh git@nas'
 alias vmbox 'VBoxManage'
 alias get_idf '. $VENDOR_DIR/esp-idf/export.fish'
 
