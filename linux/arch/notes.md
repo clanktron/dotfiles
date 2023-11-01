@@ -1,4 +1,5 @@
 # Misc Arch Notes
+>keep in mind this is all for a wayland setup
 
 ## Beep kernel mod
 the builtin "beeper" PC speaker can be disabled with
@@ -10,6 +11,9 @@ or add a blacklist entry in /etc/modprobe.d/blacklist
 blacklist pcspkr
 blacklist snd_pcsp
 ```
+# Keyboard maps
+[wev](https://aur.archlinux.org/packages/wev)
+- useful for finding keybindsym for sway
 
 # Systemd Servies
 list of services to manually enable since they aren't by default:
