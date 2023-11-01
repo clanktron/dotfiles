@@ -44,7 +44,7 @@ window:
 
   # Window decoration
   # Full, Transparent, Buttonless, None
-  decorations: None
+  decorations: buttonless
   # decorations: None
 
 # When true, bold text is drawn using the bright variant of colors.
@@ -127,12 +127,12 @@ shell:
 key_bindings:
   - { key: N, mods: Super, action: CreateNewWindow }
     # - { key: Return,   mods: Super, action: ToggleSimpleFullscreen }
-  - { key: V,        mods: Super, action: Paste }
-  - { key: C,        mods: Super, action: Copy }
-  - { key: Q,        mods: Super, action: Quit }
+  - { key: V,        mods: Super, action: Paste                        }
+  - { key: C,        mods: Super, action: Copy                         }
+  - { key: Q,        mods: Super, action: Quit                         }
     # - { key: N,        mods: Super, command: { program: "open", args: ["-nb", "io.alacritty"] } }
-  - { key: Equals,   mods: Super, action: IncreaseFontSize }
-  - { key: Minus,    mods: Super, action: DecreaseFontSize }
+  - { key: Equals,   mods: Super, action: IncreaseFontSize             }
+  - { key: Minus,    mods: Super, action: DecreaseFontSize             }
   - { key: W,        mods: Super,       chars: "\x04" }
   - { key: L,        mods: Super,       chars: "\x63\x6c\x65\x61\x72\x0a" } # Hex is equivalent to typing "clear"
     # - { key: L,        mods: Super,       chars: "\x03\x63\x6c\x65\x61\x72\x0a" } # Hex is equivalent to typing "clear"
