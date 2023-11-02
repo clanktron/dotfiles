@@ -28,6 +28,8 @@ imagemagick
 imv
 intel-media-driver
 intel-ucode
+jq
+k9s
 lazygit
 libpulse
 linux
@@ -118,6 +120,7 @@ wl-clipboard
 xdg-utils
 xorg-xwayland
 yazi
+yq
 zathura
 zathura-pdf-mupdf
 zoxide
