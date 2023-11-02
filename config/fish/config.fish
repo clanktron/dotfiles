@@ -105,6 +105,11 @@ switch (uname)
     source (dirname (status --current-filename))/os/windows.fish
 end
 
+# Start ssh agent
+if test -z (pgrep ssh-agent)
+    eval (ssh-agent -c)
+end
+
 # Source local config
 if [ -f (dirname (status --current-filename))/local.fish ]
     source (dirname (status --current-filename))/local.fish
