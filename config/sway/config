@@ -60,6 +60,8 @@ output * bg /home/clayton/Developer/repos/clanktron/dotfiles/assets/foggy-forest
 #   }
    input type:keyboard {
 	xkb_options ctrl:nocaps
+    repeat_rate 75
+    repeat_delay 225
    }
 
 # You can get the names of your inputs by running: swaymsg -t get_inputs
@@ -70,7 +72,6 @@ output * bg /home/clayton/Developer/repos/clanktron/dotfiles/assets/foggy-forest
 # Basics:
 #
     # Start a terminal
-    bindsym $mod+Return exec $term
     bindsym $super+e exec $term
 
     # Kill focused window
@@ -213,8 +214,8 @@ default_border pixel 3
 default_floating_border pixel 3
 
 # Volume Control
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +6.25%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -6.25%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
