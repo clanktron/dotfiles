@@ -1,4 +1,4 @@
 #!/bin/sh
 # add all keys in dir to agent
-DIR="${1:-/Volumes/MINI}"
+DIR="${1:-$HOME/.ssh/keyring}"
 grep -slR "PRIVATE" "$DIR" | xargs ssh-add

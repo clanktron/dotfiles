@@ -1,0 +1,37 @@
+#!/bin/sh
+
+start_agent() {
+    # Start agent and store agent connection info.
+    (umask 066; ssh-agent -s > ~/.ssh-agent)
+    eval "$(<~/.ssh-agent)" >/dev/null
+}
+
+load_stored_agent_env() {
+    eval "$(<~/.ssh-agent)" >/dev/null
+}
+
+agent_is_unreachable() {
+    ssh-add -l &>/dev/null
+    [ "$?" == 2 ]
+}
+
+load_all_keys() {
+    DIR="$1"
+    [ -d "$DIR" ] && grep -slR "PRIVATE" "$DIR" | xargs ssh-add
+}
+
+if agent_is_unreachable; then
+    if [ -f ~/.ssh-agent ]; then
+        load_stored_agent_env
+    else
+        start_agent
+        load_all_keys $HOME/ssh/keyring
+        exit 0
+    fi
+fi
+
+if agent_is_unreachable; then
+    rm ~/.ssh-agent
+    load_all_keys $HOME/ssh/keyring
+    start_agent
+fi

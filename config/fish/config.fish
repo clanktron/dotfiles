@@ -106,9 +106,7 @@ switch (uname)
 end
 
 # Start ssh agent
-if test -z (pgrep ssh-agent)
-    eval (ssh-agent -c)
-end
+ensure-agent
 
 # Source local config
 if [ -f (dirname (status --current-filename))/local.fish ]
