@@ -74,7 +74,7 @@ font:
     style: Italic
  
  # Point size of the font
-  size: 14.0
+  size: 19
 
 debug:
   # Should display the render timer
@@ -154,7 +154,3 @@ key_bindings:
   - { key: Key8,     mods: Super,       chars: "\x01\x38" }
   - { key: Key9,     mods: Super,       chars: "\x01\x39" }
   - { key: R,        mods: Super,       chars: "\x01\x7b" }
-    #  - { key: Left,     mods: Super,       chars: "\x13\x1b\x5b\x44" }
-    #  - { key: Down,     mods: Super,       chars: "\x13\x1b\x5b\x42" }
-    #  - { key: Up,       mods: Super,       chars: "\x13\x1b\x5b\x41" }
-    #  - { key: Right,    mods: Super,       chars: "\x13\x1b\x5b\x43" }

@@ -106,7 +106,7 @@ switch (uname)
 end
 
 # Start ssh agent
-ensure-agent
+# ensure-agent
 
 # Source local config
 if [ -f (dirname (status --current-filename))/local.fish ]
