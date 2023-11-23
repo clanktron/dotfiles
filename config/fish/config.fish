@@ -38,6 +38,7 @@ set -g theme_hostname always
 
 # General aliases
 alias resource '. $FISHRC'
+alias l 'ls -l'
 alias la 'ls -a'
 alias ll 'ls -l'
 alias lh 'ls -d .*'
