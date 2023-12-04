@@ -88,10 +88,10 @@ output * bg /home/clayton/Developer/repos/clanktron/dotfiles/assets/foggy-forest
     floating_modifier $mod normal
 
     # Reload the configuration file
-    bindsym $mod+Shift+c reload
+    bindsym $super+Shift+R reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $super+Shift+XF86Eject exec zenity --question --text='Logout?' && swaymsg exit
+    bindsym $super+Ctrl+XF86Eject exec zenity --question --text='Logout?' && swaymsg exit
 #
 # Moving around:
 #
