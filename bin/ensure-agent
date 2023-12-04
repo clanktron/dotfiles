@@ -1,9 +1,46 @@
 #!/bin/sh
+# the stdout of this script is meant to be evaulated by the given shell
+#
+interactive_shell=$(basename "$SHELL")
+script_name=$(basename $0)
+usage="Usage: eval \$($script_name)"
+shell_type=""
+
+validate_shell() {
+    echo "$interactive_shell shell detected"
+    case "$interactive_shell" in
+        "fish")
+            shell_type="fish" 
+        ;;
+        "zsh"|"dash"|"bash"|"sh")
+            shell_type="posix"
+        ;;
+        *) echo "$usage"; echo "$interactive_shell shell not supported"; return 1
+        ;;
+    esac
+    echo "$shell_type"
+    return
+}
+
+emit_agent_env() {
+    case "$shell_type" in
+        "fish")
+            echo "set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK"
+            echo "set -Ux SSH_AGENT_PID $SSH_AGENT_PID"
+        ;;
+        "posix")
+            echo "SSH_AUTH_SOCK=$SSH_AUTH_SOCK; export SSH_AUTH_SOCK"
+            echo "SSH_AGENT_PID=$SSH_AGENT_PID; export SSH_AGENT_PID"
+        ;;
+        *) echo "invalid shell_type; exiting..."
+        ;;
+    esac
+}
 
 start_agent() {
     # Start agent and store agent connection info.
     (umask 066; ssh-agent -s > ~/.ssh-agent)
-    eval "$(<~/.ssh-agent)" >/dev/null
+    load_stored_agent_env
 }
 
 load_stored_agent_env() {
@@ -20,18 +57,24 @@ load_all_keys() {
     [ -d "$DIR" ] && grep -slR "PRIVATE" "$DIR" | xargs ssh-add
 }
 
-if agent_is_unreachable; then
-    if [ -f ~/.ssh-agent ]; then
-        load_stored_agent_env
-    else
-        start_agent
-        load_all_keys $HOME/ssh/keyring
-        exit 0
+main() {
+    validate_shell || exit 1
+    echo "hello?"
+    if agent_is_unreachable; then
+        if [ -f ~/.ssh-agent ]; then
+            load_stored_agent_env
+            if agent_is_unreachable; then
+                rm ~/.ssh-agent
+                start_agent
+                load_all_keys $HOME/ssh/keyring
+            fi
+            emit_agent_env "$1"
+        else
+            start_agent
+            load_all_keys $HOME/ssh/keyring
+            emit_agent_env "$1"
+        fi
     fi
-fi
+}
 
-if agent_is_unreachable; then
-    rm ~/.ssh-agent
-    load_all_keys $HOME/ssh/keyring
-    start_agent
-fi
+main "$@"
