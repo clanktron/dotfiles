@@ -16,6 +16,7 @@ require('lazy').setup(
     {
         -- { import = "clayton.plugins" },
         { import = "clayton.plugins.minimal" },
+        { import = "clayton.plugins.lsp" },
     },
     {
       install = {
