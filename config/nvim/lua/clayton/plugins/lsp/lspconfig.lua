@@ -17,7 +17,8 @@ return {
         'gopls',
         'html',
         'jsonls',
-        'tsserver',
+        -- 'tsserver',
+        'volar', -- vue
         --'ltex',
         'lua_ls',
         'marksman',
@@ -97,6 +98,10 @@ return {
                 on_attach = on_attach,
             })
         end
+
+        lspconfig["volar"].setup{
+          filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
+        }
 
         -- configure lua server (with special settings)
         lspconfig["lua_ls"].setup({
