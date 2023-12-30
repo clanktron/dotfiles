@@ -1,6 +1,6 @@
 return {
     -- lightweight vimwiki
-    dir = '/Users/clayton/Developer/repos/vendor/kiwi.nvim',
+    'serenevoid/kiwi.nvim',
     lazy = true,
     dependencies = {
         'nvim-lua/plenary.nvim',
