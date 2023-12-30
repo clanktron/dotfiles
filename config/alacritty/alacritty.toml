@@ -1,0 +1,463 @@
+import = ["/Users/clayton/.config/alacritty/color.toml"]
+live_config_reload = true
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[cursor]
+unfocused_hollow = false
+
+[cursor.style]
+shape = "Block"
+
+[debug]
+render_timer = false
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 19
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[[hints.enabled]]
+command = "xdg-open"
+hyperlinks = true
+post_processing = true
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-<>\"\\s{-}\\^⟨⟩`]+"
+
+[hints.enabled.binding]
+key = "U"
+mods = "Control|Shift"
+
+[hints.enabled.mouse]
+enabled = true
+mods = "None"
+
+[[keyboard.bindings]]
+action = "CreateNewWindow"
+key = "N"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "Quit"
+key = "Q"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Equals"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "Minus"
+mods = "Super"
+
+[[keyboard.bindings]]
+chars = "\u0004"
+key = "W"
+mods = "Super"
+
+[[keyboard.bindings]]
+chars = """
+clear
+"""
+key = "L"
+mods = "Super"
+
+[[keyboard.bindings]]
+chars = "\u0001\u001B[D"
+key = "H"
+mods = "Super"
+
+[[keyboard.bindings]]
+chars = "\u0001\u001B[B"
+key = "J"
+mods = "Super"
+
+[[keyboard.bindings]]
+chars = "\u0001\u001B[A"
+key = "K"
+mods = "Super"
+
+[[keyboard.bindings]]
+chars = "\u0001\u001B[C"
+key = "L"
+mods = "Super"
+
+[[keyboard.bindings]]
+chars = "\u0001c"
+key = "T"
+mods = "Super"
+
+[[keyboard.bindings]]
+chars = "\u0001n"
+key = "N"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u00010"
+key = "Key0"
+mods = "Super"
+
+[[keyboard.bindings]]
+chars = "\u00011"
+key = "Key1"
+mods = "Super"
+
+[[keyboard.bindings]]
+chars = "\u00012"
+key = "Key2"
+mods = "Super"
+
+[[keyboard.bindings]]
+chars = "\u00013"
+key = "Key3"
+mods = "Super"
+
+[[keyboard.bindings]]
+chars = "\u00014"
+key = "Key4"
+mods = "Super"
+
+[[keyboard.bindings]]
+chars = "\u00015"
+key = "Key5"
+mods = "Super"
+
+[[keyboard.bindings]]
+chars = "\u00016"
+key = "Key6"
+mods = "Super"
+
+[[keyboard.bindings]]
+chars = "\u00017"
+key = "Key7"
+mods = "Super"
+
+[[keyboard.bindings]]
+chars = "\u00018"
+key = "Key8"
+mods = "Super"
+
+[[keyboard.bindings]]
+chars = "\u00019"
+key = "Key9"
+mods = "Super"
+
+[[keyboard.bindings]]
+chars = "\u0001{"
+key = "R"
+mods = "Super"
+
+[[keyboard.bindings]]
+action = "ToggleViMode"
+key = "Space"
+mode = "~Search"
+mods = "Shift|Control"
+
+[[keyboard.bindings]]
+action = "ScrollToBottom"
+key = "Space"
+mode = "Vi|~Search"
+mods = "Shift|Control"
+
+[[keyboard.bindings]]
+action = "ClearSelection"
+key = "Escape"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "ToggleViMode"
+key = "I"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "ScrollToBottom"
+key = "I"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "ToggleViMode"
+key = "C"
+mode = "Vi|~Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ScrollLineUp"
+key = "Y"
+mode = "Vi|~Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ScrollLineDown"
+key = "E"
+mode = "Vi|~Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ScrollToTop"
+key = "G"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "ScrollToBottom"
+key = "G"
+mode = "Vi|~Search"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ScrollPageUp"
+key = "B"
+mode = "Vi|~Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ScrollPageDown"
+key = "F"
+mode = "Vi|~Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ScrollHalfPageUp"
+key = "U"
+mode = "Vi|~Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ScrollHalfPageDown"
+key = "D"
+mode = "Vi|~Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "Y"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "ClearSelection"
+key = "Y"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "ClearSelection"
+key = "Copy"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "ToggleNormalSelection"
+key = "V"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "ToggleLineSelection"
+key = "V"
+mode = "Vi|~Search"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ToggleBlockSelection"
+key = "V"
+mode = "Vi|~Search"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ToggleSemanticSelection"
+key = "V"
+mode = "Vi|~Search"
+mods = "Alt"
+
+[[keyboard.bindings]]
+action = "Open"
+key = "Return"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "CenterAroundViCursor"
+key = "Z"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "Up"
+key = "K"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "Down"
+key = "J"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "Left"
+key = "H"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "Right"
+key = "L"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "Up"
+key = "Up"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "Down"
+key = "Down"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "Left"
+key = "Left"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "Right"
+key = "Right"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "First"
+key = "Key0"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "Last"
+key = "Key4"
+mode = "Vi|~Search"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "FirstOccupied"
+key = "Key6"
+mode = "Vi|~Search"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "High"
+key = "H"
+mode = "Vi|~Search"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "Middle"
+key = "M"
+mode = "Vi|~Search"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "Low"
+key = "L"
+mode = "Vi|~Search"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "SemanticLeft"
+key = "B"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "SemanticRight"
+key = "W"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "SemanticRightEnd"
+key = "E"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "WordLeft"
+key = "B"
+mode = "Vi|~Search"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "WordRight"
+key = "W"
+mode = "Vi|~Search"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "WordRightEnd"
+key = "E"
+mode = "Vi|~Search"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "Bracket"
+key = "Key5"
+mode = "Vi|~Search"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "SearchForward"
+key = "Slash"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "SearchBackward"
+key = "Slash"
+mode = "Vi|~Search"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "SearchNext"
+key = "N"
+mode = "Vi|~Search"
+
+[[keyboard.bindings]]
+action = "SearchPrevious"
+key = "N"
+mode = "Vi|~Search"
+mods = "Shift"
+
+[mouse]
+hide_when_typing = true
+
+[scrolling]
+history = 100000
+multiplier = 1
+
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ",│`|:\"' ()[]{}<>"
+
+[shell]
+args = ["--login"]
+program = "/usr/local/bin/fish"
+
+[window]
+decorations = "None"
+dynamic_padding = true
+dynamic_title = true
+opacity = 0.95
+startup_mode = "Windowed"
+
+[window.padding]
+x = 9
+y = 9
