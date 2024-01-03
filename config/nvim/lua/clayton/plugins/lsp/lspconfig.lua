@@ -100,7 +100,9 @@ return {
         end
 
         lspconfig["volar"].setup{
-          filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
+            capabilities = capabilities,
+            on_attach = on_attach,
+            filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
         }
 
         -- configure lua server (with special settings)
