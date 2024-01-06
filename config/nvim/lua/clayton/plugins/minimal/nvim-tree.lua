@@ -7,7 +7,7 @@ return {
         },
         opts = {
             view = {
-                width = 45,
+                width = 35,
             }
         },
         keys = {
