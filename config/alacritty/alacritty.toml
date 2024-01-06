@@ -1,5 +1,30 @@
-import = ["/Users/clayton/.config/alacritty/color.toml"]
+import = ["~/.config/alacritty/colors/TokyoNightStorm.toml", "~/.config/alacritty/darwin.toml"]
 live_config_reload = true
+
+[mouse]
+hide_when_typing = true
+
+[scrolling]
+history = 100000
+multiplier = 1
+
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ",│`|:\"' ()[]{}<>"
+
+[shell]
+args = ["--login"]
+program = "/usr/local/bin/fish"
+
+[window]
+dynamic_padding = true
+dynamic_title = true
+opacity = 0.95
+startup_mode = "Windowed"
+
+[window.padding]
+x = 9
+y = 9
 
 [colors]
 draw_bold_text_with_bright_colors = true
@@ -435,29 +460,3 @@ action = "SearchPrevious"
 key = "N"
 mode = "Vi|~Search"
 mods = "Shift"
-
-[mouse]
-hide_when_typing = true
-
-[scrolling]
-history = 100000
-multiplier = 1
-
-[selection]
-save_to_clipboard = true
-semantic_escape_chars = ",│`|:\"' ()[]{}<>"
-
-[shell]
-args = ["--login"]
-program = "/usr/local/bin/fish"
-
-[window]
-decorations = "None"
-dynamic_padding = true
-dynamic_title = true
-opacity = 0.95
-startup_mode = "Windowed"
-
-[window.padding]
-x = 9
-y = 9
