@@ -63,39 +63,6 @@ if type -q zoxide
     zoxide init fish | source
 end
 
-# Functions
-function kn
-    kubectl config set-context --current --namespace="$argv" && kubectl config view --minify | grep namespace:
-end
-
-function ide
-    tmux split-window -v -p 30
-    tmux split-window -h -p 53
-    vi
-end
-
-function ...
-     cd ../..
-end
-
-function ....
-     cd ../../..
-end
-
-if type -q firefox
-    function search
-        open -a firefox https://google.com/search"?q=$argv"
-    end
-end
-
-function sudo 
-    if test "$argv" = !!
-        eval command sudo $history[1]
-    else
-        command sudo $argv
-    end
-end
-
 # Source additional config based on OS
 switch (uname)
   case Darwin
@@ -119,3 +86,7 @@ if status is-interactive; and not set -q TMUX; and command -q tmux
     tmux new -s main || tmux attach -t
 end
 
+if opam > /dev/null;
+    echo "Set opam env"
+    eval (opam env)
+end
