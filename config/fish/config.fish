@@ -76,6 +76,10 @@ end
 # Start ssh agent
 # eval (ensure-agent)
 
+if opam > /dev/null;
+    eval (opam env)
+end
+
 # Source local config
 if [ -f (dirname (status --current-filename))/local.fish ]
     source (dirname (status --current-filename))/local.fish
@@ -84,9 +88,4 @@ end
 # Start TMUX on login
 if status is-interactive; and not set -q TMUX; and command -q tmux
     tmux new -s main || tmux attach -t
-end
-
-if opam > /dev/null;
-    echo "Set opam env"
-    eval (opam env)
 end
