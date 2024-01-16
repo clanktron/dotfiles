@@ -1,8 +1,9 @@
+# Transparent skin
 # Preserve your terminal session background color
 k9s:
   body:
     bgColor: default
-  promt:
+  prompt:
     bgColor: default
   info:
     sectionColor: default
@@ -32,6 +33,8 @@ k9s:
       bgColor: default
       indicator:
         bgColor: default
+        toggleOnColor: default
+        toggleOffColor: default
     yaml:
       colonColor: default
       valueColor: default
