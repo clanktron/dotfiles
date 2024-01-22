@@ -17,6 +17,7 @@ return {
         'gopls',
         'html',
         'jsonls',
+        'ocamllsp',
         -- 'tsserver',
         'volar', -- vue
         --'ltex',
