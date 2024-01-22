@@ -73,8 +73,12 @@ switch (uname)
     source (dirname (status --current-filename))/os/windows.fish
 end
 
-# Start ssh agent
-# eval (ensure-agent)
+# Ensure ssh agent
+if test -z (pgrep ssh-agent)
+  eval (ssh-agent -c)
+  set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
+  set -Ux SSH_AGENT_PID $SSH_AGENT_PID
+end
 
 if type -q opam
     eval (opam env)
