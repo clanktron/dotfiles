@@ -46,7 +46,7 @@ alias nas='ssh git@nas'
 alias vmbox='VBoxManage'
 
 # Enable zoxide integration
-if command -v zoxide; then
+if command -v zoxide > /dev/null; then
 	eval "$(zoxide init bash)"
 fi
 

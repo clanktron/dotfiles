@@ -76,7 +76,7 @@ end
 # Start ssh agent
 # eval (ensure-agent)
 
-if opam > /dev/null;
+if type -q opam
     eval (opam env)
 end
 
