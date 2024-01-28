@@ -91,5 +91,5 @@ end
 
 # Start TMUX on login
 if status is-interactive; and not set -q TMUX; and command -q tmux
-    tmux new -s main || tmux attach -t
+    tmux new -s main || tmux attach -t main
 end
