@@ -17,6 +17,7 @@ config.color_scheme = 'Tokyo Night Storm'
 config.window_background_opacity = 0.7
 config.window_decorations = "TITLE|RESIZE"
 config.enable_tab_bar = false
+config.window_close_confirmation = 'NeverPrompt'
 
 -- and finally, return the configuration to wezterm
 return config
