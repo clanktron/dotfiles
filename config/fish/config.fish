@@ -90,6 +90,6 @@ if [ -f (dirname (status --current-filename))/local.fish ]
 end
 
 # Start TMUX on login
-if status is-interactive; and not set -q TMUX; and command -q tmux
-    tmux new -s main || tmux attach -t main
+if status is-interactive; and command -q tmux
+    tmux new -s main > /dev/null 2>&1 || tmux attach -t main > /dev/null 2>&1
 end
