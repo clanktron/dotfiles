@@ -14,8 +14,23 @@ end
 
 -- For example, changing the color scheme:
 config.color_scheme = 'Tokyo Night Storm'
-config.window_background_opacity = 0.7
-config.window_decorations = "TITLE|RESIZE"
+config.freetype_load_flags = 'NO_HINTING'
+config.window_background_opacity = 0.95
+config.font_size = 19
+config.font = wezterm.font 'JetBrains Mono'
+config.font_rules = {
+	{
+		intensity = "Bold",
+		italic = false,
+		font = wezterm.font("JetBrains Mono", { weight = "Bold", stretch = "Normal", style = "Normal" }),
+	},
+	{
+		intensity = "Bold",
+		italic = true,
+		font = wezterm.font("JetBrains Mono", { weight = "Bold", stretch = "Normal", style = "Italic" }),
+	},
+}
+config.window_decorations = "RESIZE"
 config.enable_tab_bar = false
 config.window_close_confirmation = 'NeverPrompt'
 
