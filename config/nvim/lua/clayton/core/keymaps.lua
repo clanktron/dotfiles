@@ -24,6 +24,9 @@ vim.keymap.set("n", "<leader>h", "<Esc>gT")
 vim.keymap.set("n", "<leader>v", "<C-w>v")
 vim.keymap.set("n", "<leader>s", "<C-w>s")
 
+-- alternative escape
+vim.keymap.set("n", "<cmd>.", "<Esc>")
+
 -- -- popup navigation
 -- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 -- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
