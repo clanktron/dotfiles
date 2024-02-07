@@ -4,4 +4,7 @@ if test -z $DISPLAY; and test (tty) = "/dev/tty1"
 end
 
 # Aliases
-alias docker "sudo nerdctl"
+# alias docker "sudo nerdctl"
+
+# PATH
+set -px PATH /var/lib/flatpak/exports/bin
