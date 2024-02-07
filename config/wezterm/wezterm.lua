@@ -30,7 +30,7 @@ config.font_rules = {
 		font = wezterm.font("JetBrains Mono", { weight = "Bold", stretch = "Normal", style = "Italic" }),
 	},
 }
-config.window_decorations = "RESIZE"
+config.window_decorations = "TITLE|RESIZE"
 config.enable_tab_bar = false
 config.window_close_confirmation = 'NeverPrompt'
 
