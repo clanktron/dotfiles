@@ -16,7 +16,7 @@ Make sure your $HOME and $XDG_CONFIG_HOME environment variables are set properly
 
 This will link all config files and executables from this repository to their respective destinations:
 ```bash
-./install link
+./install -l
 ```
 This will copy all config files and executables from this repository to their respective destinations:
 ```bash
@@ -33,8 +33,8 @@ To remove all previously installed/linked files:
 
 ## Configured Software
 
-* Terminal Emulator: [Alacritty](https://alacritty.org)
-* Shells: [fish](https://fishshell.com), [bash](https://www.gnu.org/software/bash/)
+* Terminal Emulator(s): [Wezterm](https://wezfurlong.org/wezterm), [Alacritty](https://alacritty.org)
+* Shell(s): [fish](https://fishshell.com), [bash](https://www.gnu.org/software/bash)
 * Multiplexer: [tmux](https://github.com/tmux/tmux/wiki)
 * Editor: [Neovim](https://neovim.io)
     * Plugin Manager: [lazy.nvim](https://github.com/folke/lazy.nvim)
@@ -43,5 +43,5 @@ To remove all previously installed/linked files:
     * Package Manager: [Homebrew](https://brew.sh)
     * Window Manager: [Yabai](https://github.com/koekeishiya/yabai)
     * General Scripting: [Hammerspoon](https://www.hammerspoon.org/)
-* Arch Specific:
-    * Window Manager/Compositor: [Sway](https://swaywm.org)
+* Linux Specific:
+    * Window Manager/Compositor(s): [Hyprland](https://hyprland.org), [Sway](https://swaywm.org)
