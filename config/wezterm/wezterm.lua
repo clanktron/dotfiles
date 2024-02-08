@@ -33,6 +33,13 @@ config.font_rules = {
 config.window_decorations = "TITLE|RESIZE"
 config.enable_tab_bar = false
 config.window_close_confirmation = 'NeverPrompt'
+config.keys = {
+  {
+    key = 'w',
+    mods = 'CMD',
+    action = wezterm.action.CloseCurrentTab { confirm = false },
+  },
+}
 
 -- and finally, return the configuration to wezterm
 return config
