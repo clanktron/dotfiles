@@ -1,9 +1,10 @@
 #!/bin/sh
 APP="${1:-org.wezfurlong.wezterm}"
+APP_PATH="${2:-$APP}"
 if hyprctl clients | grep class:."$APP" > /dev/null; then
     wlrctl window focus "$APP"
 else
- "$APP" &
+ "$APP_PATH" &
 fi
 
 
