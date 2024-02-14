@@ -1,101 +1,53 @@
-
+/* Global Styles */
 * {
-    border: none;
-    border-radius: 0;
-    font-family: "Ubuntu Nerd Font";
-    font-size: 13px;
-    min-height: 0;
+    margin: 0;
+    padding: 0;
+    font-family: "Ubuntu Nerd Font", sans-serif;
 }
 
-window#waybar {
-    background: transparent;
-    color: white;
+/* Waybar Styles */
+#waybar {
+    background: linear-gradient(to right, #39424f, #1f2833);
+    color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-#window {
-    font-weight: bold;
-    font-family: "Ubuntu";
-}
-/*
-#workspaces {
-    padding: 0 5px;
-}
-*/
-
+/* Workspace Button Styles */
 #workspaces button {
-    padding: 0 5px;
+    padding: 10px 20px;
     background: transparent;
-    color: white;
-    border-top: 2px solid transparent;
+    color: #ffffff;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+#workspaces button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 #workspaces button.focused {
-    color: #c9545d;
-    border-top: 2px solid #c9545d;
+    background-color: #c9545d;
 }
 
-#mode {
-    background: #64727D;
-    border-bottom: 3px solid white;
+/* Widget Styles */
+#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray {
+    padding: 10px 15px;
+    margin: 0 5px;
 }
 
-#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode {
-    padding: 0 3px;
-    margin: 0 2px;
-}
-
-#clock {
-    font-weight: bold;
-}
-
-#battery {
-}
-
+/* Battery Styles */
 #battery icon {
-    color: red;
-}
-
-#battery.charging {
-}
-
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: black;
-    }
+    color: #ff4136;
 }
 
 #battery.warning:not(.charging) {
-    color: white;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+    animation: blink 0.5s linear infinite alternate;
 }
 
-#cpu {
-}
-
-#memory {
-}
-
-#network {
-}
-
-#network.disconnected {
-    background: #f53c3c;
-}
-
-#pulseaudio {
-}
-
-#pulseaudio.muted {
-}
-
-#custom-spotify {
-    color: rgb(102, 220, 105);
-}
-
-#tray {
+/* Animation */
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
 }
