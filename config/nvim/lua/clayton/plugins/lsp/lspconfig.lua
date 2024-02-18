@@ -99,20 +99,24 @@ return {
                 on_attach = on_attach,
             })
         end
-
-        lspconfig["volar"].setup{
+        lspconfig.volar.setup{
             capabilities = capabilities,
             on_attach = on_attach,
             filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
         }
-
-        -- configure lua server (with special settings)
-        lspconfig["lua_ls"].setup({
+        lspconfig.java_language_server.setup{
             capabilities = capabilities,
             on_attach = on_attach,
-            settings = { -- custom settings for lua
+            filetypes = {'java'},
+            cmd = {'java-language-server'},
+            root_dir = lspconfig.util.root_pattern('*.java', '.git', 'pom.xml', 'build.gradle')
+        }
+        lspconfig.lua_ls.setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+            settings = {
             Lua = {
-                -- make the language server recognize "vim" global
+                -- recognize "vim" global
                 diagnostics = {
                     globals = { "vim" },
                 },
