@@ -14,6 +14,8 @@ return {
         'cmake',
         'cssls',
         'dockerls',
+        'dartls',
+        'emmet_language_server',
         'gopls',
         'html',
         'jsonls',
@@ -23,7 +25,9 @@ return {
         'marksman',
         'ocamllsp',
         'pyright',
+        'prolog_ls',
         'rust_analyzer',
+        'racket_langserver',
         'terraformls',
         -- 'tsserver',
         'volar', -- vue
@@ -101,21 +105,39 @@ return {
             cmd = {'java-language-server'},
             root_dir = lspconfig.util.root_pattern('*.java', '.git', 'pom.xml', 'build.gradle')
         }
+        lspconfig.racket_langserver.setup{
+            capabilities = capabilities,
+            on_attach = on_attach,
+            root_dir = lspconfig.util.root_pattern('*.rkt', '.git')
+        }
+        local lua_runtime = vim.split(package.path, ';')
+        table.insert(lua_runtime, 'lua/?.lua')
+        table.insert(lua_runtime, 'lua/?/init.lua')
+        table.insert(lua_runtime, vim.env.VIMRUNTIME)
         lspconfig.lua_ls.setup({
             capabilities = capabilities,
             on_attach = on_attach,
             settings = {
             Lua = {
-                -- recognize "vim" global
-                diagnostics = {
-                    globals = { "vim" },
+                runtime = {
+                    version = 'LuaJIT',
+        			path = {
+        				'lua/?.lua',
+        				'lua/?/init.lua',
+        			},
                 },
+                --  diagnostics = {
+                --      globals = { "vim" },
+                --  },
                 workspace = {
-                    -- make language server aware of runtime files
-                    library = {
-                        [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                        [vim.fn.stdpath("config") .. "/lua"] = true,
-                    },
+                    checkThirdParty = false,
+                    library = lua_runtime
+                },
+                telemetry = {
+                    enable = false,
+                },
+                hint = {
+                    enable = true,
                 },
             },
         },
