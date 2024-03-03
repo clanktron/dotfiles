@@ -1,0 +1,53 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Ubuntu Nerd Font", sans-serif;
+}
+
+/* Waybar Styles */
+#waybar {
+    background: linear-gradient(to right, #39424f, #1f2833);
+    color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Workspace Button Styles */
+#workspaces button {
+    padding: 10px 20px;
+    background: transparent;
+    color: #ffffff;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+#workspaces button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+#workspaces button.focused {
+    background-color: #c9545d;
+}
+
+/* Widget Styles */
+#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray {
+    padding: 10px 15px;
+    margin: 0 5px;
+}
+
+/* Battery Styles */
+#battery icon {
+    color: #ff4136;
+}
+
+#battery.warning:not(.charging) {
+    animation: blink 0.5s linear infinite alternate;
+}
+
+/* Animation */
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
