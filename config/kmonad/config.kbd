@@ -16,7 +16,7 @@
 )
 
 (deflayer default
-  _    brdn brup _    _  bldn blup prev pp   next mute vold volu
+  _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
   ctl    _    _    _    _    _    _    _    _    _    _    _    _

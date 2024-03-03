@@ -1,0 +1,19 @@
+#!/bin/sh
+increment="${1:-5}"
+dev="${2:-dev:/dev/i2c-10}"
+brightness=$(ddccontrol -r 0x10 "$dev" 2> /dev/null | awk '/Brightness/ {split($3, arr, "/"); print arr[2]}' )
+newBrightness=$(expr "$brightness" + "$increment")
+
+if [ "$newBrightness" -lt 0 ]; then
+    newBrightness=0
+elif [ "$newBrightness" -gt 100 ]; then
+    newBrightness=100
+fi
+
+setBrightness() {
+    ddccontrol -r 0x10 -w "$1" "$dev" > /dev/null 2>&1
+}
+
+echo "current brightness is $brightness..."
+echo "setting brightness to $newBrightness..."
+setBrightness "$newBrightness"
