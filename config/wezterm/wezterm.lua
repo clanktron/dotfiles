@@ -16,7 +16,7 @@ end
 config.color_scheme = 'Tokyo Night Storm'
 config.freetype_load_flags = 'NO_HINTING'
 config.window_background_opacity = 0.95
-config.font_size = 19
+config.font_size = 16
 config.font = wezterm.font 'JetBrains Mono'
 config.font_rules = {
 	{
