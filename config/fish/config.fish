@@ -20,6 +20,7 @@ set -px PATH /nix/var/nix/profiles/default/bin
 set -px PATH $HOME/.local/bin
 set -px PATH $HOME/.local/share/nvim/mason/bin
 set -px PATH $HOME/.go/bin
+set -px PATH $HOME/.cargo/bin
 set -px PATH $HOME/Developer/repos/clanktron/restic-backups
 set -px PATH $HOME/.rd/bin
 set -px PATH $HOME/Developer/vendor/google-cloud-sdk/bin
