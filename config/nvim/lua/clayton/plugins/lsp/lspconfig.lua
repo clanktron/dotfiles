@@ -105,6 +105,21 @@ return {
             cmd = {'java-language-server'},
             root_dir = lspconfig.util.root_pattern('*.java', '.git', 'pom.xml', 'build.gradle')
         }
+        --  lspconfig.rust_analyzer.setup{
+        --      settings = {
+        --          ['rust-analyzer'] = {
+        --              cargo = {
+        --                  allFeatures = true,
+        --              },
+        --              diagnostics = {
+        --                  enable = true,
+        --                  experimental = {
+        --                      enable = true,
+        --                  }
+        --              }
+        --          }
+        --      }
+        --  }
         lspconfig.racket_langserver.setup{
             capabilities = capabilities,
             on_attach = on_attach,
@@ -118,29 +133,29 @@ return {
             capabilities = capabilities,
             on_attach = on_attach,
             settings = {
-            Lua = {
-                runtime = {
-                    version = 'LuaJIT',
-        			path = {
-        				'lua/?.lua',
-        				'lua/?/init.lua',
-        			},
+                Lua = {
+                    runtime = {
+                        version = 'LuaJIT',
+                        path = {
+                            'lua/?.lua',
+                            'lua/?/init.lua',
+                        },
+                    },
+                    --  diagnostics = {
+                        --      globals = { "vim" },
+                        --  },
+                        workspace = {
+                            checkThirdParty = false,
+                            library = lua_runtime
+                        },
+                        telemetry = {
+                            enable = false,
+                        },
+                        hint = {
+                            enable = true,
+                        },
+                    },
                 },
-                --  diagnostics = {
-                --      globals = { "vim" },
-                --  },
-                workspace = {
-                    checkThirdParty = false,
-                    library = lua_runtime
-                },
-                telemetry = {
-                    enable = false,
-                },
-                hint = {
-                    enable = true,
-                },
-            },
-        },
-    })
-end,
-}
+            })
+        end,
+    }
