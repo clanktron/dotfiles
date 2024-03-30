@@ -1,19 +1,18 @@
 #!/bin/sh
-WORKDIR=$(dirname "$(realpath "$0")")
+DOTFILES_DIR="${DOTFILES_DIR:?}"
+. "$DOTFILES_DIR"/formatting.sh
 
-homebrew() {
-    "$WORKDIR"/homebrew.sh
-}
+echo "Would you like to install homebrew and/or your preferred bundle of applications?"
+read -r response
+case $response in
+    Yes | yes | Y | y )
+        ./homebrew.sh
+    ;;
+    *)
+        echo "Skipping..."
+    ;;
+esac
 
-preferences() {
-    "$WORKDIR"/preferences.sh
-}
-
-main() {
-    if [ "$BREW_FLAG" = "true" ]; then
-        homebrew
-    fi
-    preferences
-}
-
-main
+"$DARWIN_DIR"/system-preferences.sh
+"$DARWIN_DIR"/app-defaults.sh
+"$DARWIN_DIR"/launchd.sh
