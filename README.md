@@ -38,6 +38,7 @@ To remove all previously installed/linked files:
 * Multiplexer: [tmux](https://github.com/tmux/tmux/wiki)
 * Editor: [Neovim](https://neovim.io)
     * Plugin Manager: [lazy.nvim](https://github.com/folke/lazy.nvim)
+* Keyboard Manager: [Kmonad](https://github.com/kmonad/kmonad)
 * Kubernetes Management: [K9s](https://k9scli.io)
 * Mac Specific:
     * Package Manager: [Homebrew](https://brew.sh)
@@ -45,3 +46,5 @@ To remove all previously installed/linked files:
     * General Scripting: [Hammerspoon](https://www.hammerspoon.org/)
 * Linux Specific:
     * Window Manager/Compositor(s): [Hyprland](https://hyprland.org), [Sway](https://swaywm.org)
+    * Widgets: [Ags](https://github.com/aylur/ags), [Wlogout](https://github.com/ArtsyMacaw/wlogout)
+    * Launcher: [Wofi](https://hg.sr.ht/~scoopta/wofi)
