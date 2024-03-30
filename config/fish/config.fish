@@ -16,6 +16,7 @@ set -gx VENDOR_DIR $HOME/Developer/repos/vendor
 ## PATH
 set -gx PATH /usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
 set -px PATH /opt/pkg/sbin:/opt/pkg/bin
+set -px PATH /usr/local/go/bin
 set -px PATH /nix/var/nix/profiles/default/bin
 set -px PATH $HOME/.local/bin
 set -px PATH $HOME/.local/share/nvim/mason/bin
@@ -62,7 +63,7 @@ alias vmbox 'VBoxManage'
 alias get_idf '. $VENDOR_DIR/esp-idf/export.fish'
 
 # zoxide integration
-if type -q zoxide
+if command -q zoxide
     zoxide init fish | source
 end
 
@@ -83,7 +84,7 @@ if test -z (pgrep ssh-agent | string collect)
   set -Ux SSH_AGENT_PID $SSH_AGENT_PID
 end
 
-if type -q opam
+if command -q opam
     eval (opam env)
 end
 
@@ -93,6 +94,6 @@ if [ -f (dirname (status --current-filename))/local.fish ]
 end
 
 # Start TMUX on login
-if status is-interactive; and command -q tmux
+if status is-interactive; and command -q tmux; and not set -q TMUX
     tmux new -s main > /dev/null 2>&1 || tmux attach -t main > /dev/null 2>&1
 end

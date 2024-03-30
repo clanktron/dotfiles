@@ -1,66 +1,25 @@
 #!/bin/sh
-# text attributes
-# bold=$(tput bold)
-green=$(tput setaf 2)
-orange=$(tput setaf 166)
-red=$(tput setaf 1)
-light_green=$(tput setaf 178)
-light_orange=$(tput setaf 208)
-light_red=$(tput setaf 196)
-reset=$(tput sgr0)
+. ./vars.sh
+. ./formatting.sh
 
-info() {
-    echo "${green}[ INFO ]${reset} ${light_green}$1${reset}"
-}
-
-warn() {
-    echo "${orange}[ WARN ]${reset} ${light_orange}$1${reset}"
-}
-
-error() {
-    echo "${red}[ ERROR ]${reset} ${light_red}$1${reset}"
-}
-
-HOME="${HOME:?}"
-XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-"$HOME/.config"}"
-export HOME
-export XDG_CONFIG_HOME
-DOTFILES_DIR=$(dirname "$(realpath "$0")")
-OS=$(uname)
-
-# Flags
-LINK_FLAG=false
-BREW_FLAG=false
+INSTALL="cp -r"
+INSTALL_MSG="Copying"
 while [ $# -gt 0 ]; do
   case "$1" in
-    -l)
-      LINK_FLAG=true
-      shift
-      ;;
-    -b)
-      export BREW_FLAG=true
-      shift
-      ;;
-    -lb)
-      LINK_FLAG=true
-      export BREW_FLAG=true
-      shift
-      ;;
+    -l | --link)
+        INSTALL="ln -svf"
+        INSTALL_MSG="Symlinking"
+        shift
+        ;;
     *)
-      # If it's not a flag, assume it's an argument
-      # arg="$1"
-      shift
-      ;;
-  esac
+        # If it's not a flag, assume it's an argument
+        # arg="$1"
+        shift
+        ;;
+esac
 done
-
-if [ "$LINK_FLAG" = "true" ]; then
-    install_action="ln -svf"
-    action_msg="Symlinking"
-else
-    install_action="cp -r"
-    action_msg="Copying"
-fi
+export INSTALL
+export INSTALL_MSG
 
 ensure_paths() {
     # Ensure ~/.config path is available
@@ -68,7 +27,6 @@ ensure_paths() {
         info "Creating $HOME/.config directory..."
         mkdir "$HOME"/.config
     fi
-
     # Ensure ~/.local/bin path is available for install
     if [ ! -d "$HOME"/.local ]; then
         info "Creating $HOME/.local directory..."
@@ -86,44 +44,37 @@ remove_installation() {
     "$DOTFILES_DIR"/uninstall
 }
 
-install_packages() {
-    if [ "$OS" = "Darwin" ]; then
+OS_script() {
+    if [ "$(uname)" = "Darwin" ]; then
         "$DOTFILES_DIR"/darwin/install.sh
     fi
 }
 
 install_scripts() {
-    install_action="$1"
-    action_msg="$2"
     # Softlink all executables in bin directory to ~/.local/bin
-    info "$action_msg scripts/excecutables..."
-    find "$DOTFILES_DIR"/bin -maxdepth 1 -exec basename {} \; | sed 1d | while read -r file; do 
-        eval "$install_action" "$DOTFILES_DIR"/bin/"$file" "$HOME"/.local/bin/"$file"
+    info "$INSTALL_MSG scripts/excecutables..."
+    BIN_DIR="$DOTFILES_DIR"/bin
+    find "$BIN_DIR" -maxdepth 1 -exec basename {} \; | sed 1d | while read -r file; do 
+        eval "$INSTALL" "$BIN_DIR"/"$file" "$HOME"/.local/bin/"$file"
     done
 }
 
 install_config () {
-    install_action="$1"
-    action_msg="$2"
     # Install all directories in ./config to ~/.config
-    info "$action_msg config folders..."
-    find "$DOTFILES_DIR"/config -maxdepth 1 -exec basename {} \; | sed 1d | while read -r dir; do 
-        eval "$install_action" "$DOTFILES_DIR"/config/"$dir" "$XDG_CONFIG_HOME/$dir"
+    info "$INSTALL_MSG config folders..."
+    CONFIG_DIR="$DOTFILES_DIR"/config
+    find "$CONFIG_DIR" -maxdepth 1 -exec basename {} \; | sed 1d | while read -r dir; do 
+        eval "$INSTALL" "$CONFIG_DIR"/"$dir" "$XDG_CONFIG_HOME/$dir"
     done
-
     # these should eventually be migrated to some sort of generic function
-    eval "$install_action" "$DOTFILES_DIR"/.bashrc "$HOME"/.bashrc
+    eval "$INSTALL" "$DOTFILES_DIR"/.bashrc "$HOME"/.bashrc
     mkdir "$HOME"/.hammerspoon
-    eval "$install_action" "$DOTFILES_DIR"/config/hammerspoon/init.lua "$HOME"/.hammerspoon/init.lua
+    eval "$INSTALL" "$CONFIG_DIR"/hammerspoon/init.lua "$HOME"/.hammerspoon/init.lua
 }
 
-main () {
-    ensure_paths
-    remove_installation
-    install_config "$install_action" "$action_msg"
-    install_scripts "$install_action" "$action_msg"
-    install_packages 
-    info "Done!"
-}
-
-main
+ensure_paths
+remove_installation
+install_config
+install_scripts
+OS_script
+info "Done!"
