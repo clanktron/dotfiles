@@ -7,7 +7,7 @@
 
 "modules-left": ["sway/mode","cpu","memory","network","mpd"],
 "modules-center": ["sway/workspaces","hyprland/workspaces"],
-"modules-right":  ["tray","idle_inhibitor","pulseaudio","backlight","battery","clock"],
+"modules-right":  ["tray","pulseaudio","backlight","battery","clock"],
 
 "battery": {
   "states": {
@@ -28,9 +28,6 @@
     "max-length": 200,
     "separate-outputs": true
 },
-"sway/mode": {
-    "format": "<span style=\"italic\">{}</span>"
-},
 "tray": {
     "icon-size": 16,
     "spacing": 6
@@ -43,7 +40,6 @@
 "cpu": {
     "format": "&#8239;{usage}%",
     "tooltip": false,
-    "on-click": "kitty -e 'htop'"
 },
 "memory": {
     "interval": 30,
@@ -64,13 +60,7 @@
   "max-length": 20,
   "min-length": 6,
   "format-alt": "{essid}",
-},
-"idle_inhibitor": {
-    "format": "{icon}",
-    "format-icons": {
-        "activated": "",
-        "deactivated": ""
-    }
+  "on-click": 
 },
 "backlight": {
     // "device": "acpi_video1",
