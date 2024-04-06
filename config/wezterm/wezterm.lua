@@ -32,6 +32,7 @@ config.font_rules = {
 }
 config.window_decorations = "TITLE|RESIZE"
 config.enable_tab_bar = false
+config.enable_wayland = false
 config.window_close_confirmation = 'NeverPrompt'
 config.keys = {
   {
