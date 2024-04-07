@@ -28,6 +28,9 @@
     "max-length": 200,
     "separate-outputs": true
 },
+"sway/mode": {
+    "format": "<span style=\"italic\">{}</span>"
+},
 "tray": {
     "icon-size": 16,
     "spacing": 6
@@ -40,6 +43,7 @@
 "cpu": {
     "format": "&#8239;{usage}%",
     "tooltip": false,
+    "on-click": "wezterm -e 'htop'"
 },
 "memory": {
     "interval": 30,
@@ -47,7 +51,8 @@
     "max-length": 10,
     "tooltip": false,
     "warning": 70,
-    "critical": 90
+    "critical": 90,
+    "on-click": "wezterm -e 'htop'"
 },
 "network": {
   "interval": 2,
@@ -60,7 +65,13 @@
   "max-length": 20,
   "min-length": 6,
   "format-alt": "{essid}",
-  "on-click": 
+},
+"idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+        "activated": "",
+        "deactivated": ""
+    }
 },
 "backlight": {
     // "device": "acpi_video1",
@@ -75,7 +86,6 @@
   "format-bluetooth": "{icon} {volume}% {format_source}",
   "format-bluetooth-muted": " {format_source}",
   "format-muted": "  {format_source}",
-  "format-source": " {volume}%",
   "format-source-muted": "",
   "format-icons": {
     "headphone": "",
