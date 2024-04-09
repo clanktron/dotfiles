@@ -4,7 +4,7 @@ if test -z $DISPLAY; and test (tty) = "/dev/tty1"
 end
 
 # Aliases
-# alias docker "sudo nerdctl"
+alias poke pokemon-showdown
 
 # PATH
 set -px PATH /var/lib/flatpak/exports/bin
