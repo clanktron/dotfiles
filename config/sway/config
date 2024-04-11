@@ -5,7 +5,7 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term org.wezfurlong.wezterm
+set $term alacritty
 set $menu wofi
 
 ## Autostart applications
