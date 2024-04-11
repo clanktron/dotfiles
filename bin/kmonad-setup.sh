@@ -7,4 +7,8 @@ if ! cat /etc/group | grep uinput > /dev/null; then
     sudo usermod -aG input,uinput "$user"
 fi
 
-sudo sh -c 'echo "KERNEL=="uinput", MODE="0660", GROUP="uinput", OPTIONS+="static_node=uinput"" > /etc/udev/rules.d/99-kmonad-udev.rules'
+sudo sh -c 'echo "KERNEL==\"uinput\", MODE=\"0660\", GROUP=\"uinput\", OPTIONS+=\"static_node=uinput\"" > /etc/udev/rules.d/99-kmonad-udev.rules'
+
+sudo udevadm control -R
+sudo modprobe -r uinput
+sudo modprobe uinput
