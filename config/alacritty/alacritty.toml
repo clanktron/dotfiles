@@ -14,7 +14,7 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
 [shell]
 args = ["--login"]
-program = "/usr/local/bin/fish"
+program = "/usr/bin/fish"
 
 [window]
 dynamic_padding = true
@@ -42,18 +42,18 @@ render_timer = false
 TERM = "xterm-256color"
 
 [font]
-size = 19
+size = 15
 
 [font.bold]
-family = "JetBrainsMono Nerd Font"
+family = "Source Code Pro"
 style = "Bold"
 
 [font.italic]
-family = "JetBrainsMono Nerd Font"
+family = "Source Code Pro"
 style = "Italic"
 
 [font.normal]
-family = "JetBrainsMono Nerd Font"
+family = "Source Code Pro"
 style = "Regular"
 
 [[hints.enabled]]
