@@ -12,7 +12,7 @@ k9s:
     crumbsless: false
     reactive: false
     noIcons: false
-    skin: nightfox
+    skin: transparent
   skipLatestRevCheck: false
   disablePodCounting: false
   shellPod:
