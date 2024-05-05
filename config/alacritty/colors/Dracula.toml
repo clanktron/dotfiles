@@ -40,10 +40,6 @@ yellow = "#f1fa8c"
 background = "#282a36"
 foreground = "#f8f8f2"
 
-[colors.search."colors.footer_bar"]
-background = "#282a36"
-foreground = "#f8f8f2"
-
 [colors.search.focused_match]
 background = "#ffb86c"
 foreground = "#44475a"
