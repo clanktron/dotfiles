@@ -1,8 +1,7 @@
 return {
     {
         'folke/tokyonight.nvim',
-        lazy = false,
-        priority = 100,
+        lazy = true,
         opts = {
             style = "storm",
             transparent = true,
@@ -12,21 +11,21 @@ return {
                 floats = "transparent",
             }
         },
-        config = function(_, opts)
-            require("tokyonight").setup(opts)
-            vim.cmd.colorscheme('tokyonight')
-        end,
     },
     {
         'EdenEast/nightfox.nvim',
+        opts = {
+            options = {
+                transparent = true,
+            }
+        },
         lazy = true,
     },
     {
         'Tsuzat/NeoSolarized.nvim',
-        lazy = true,
-    },
-    {
-        'Yazeed1s/oh-lucy.nvim',
+        opts = {
+            transparent = true,
+        },
         lazy = true,
     },
 }
