@@ -20,6 +20,7 @@ program = "/usr/bin/fish"
 dynamic_padding = true
 dynamic_title = true
 opacity = 0.95
+blur = true
 startup_mode = "Windowed"
 
 [window.padding]
