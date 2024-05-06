@@ -3,11 +3,12 @@ return {
         'nvim-tree/nvim-tree.lua',
         lazy = true,
         dependencies = {
-            'kyazdani42/nvim-web-devicons',
+            'nvim-tree/nvim-web-devicons',
         },
         opts = {
             view = {
                 width = 35,
+                preserve_window_proportions = true,
                 float = {
                     enable = false,
                     open_win_config = {
