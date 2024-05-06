@@ -4,6 +4,8 @@ return {
         dependencies = {
           "williamboman/mason-lspconfig.nvim",
         },
+        lazy = true,
+        cmd = {"Mason", "MasonInstall", "MasonUninstall", "MasonLog", "MasonUninstallAll", "MasonUpdate"},
         -- opts = {
         --     'ansiblels',
         --     'arduino_language_server',
