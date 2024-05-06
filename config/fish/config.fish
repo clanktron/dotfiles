@@ -1,6 +1,14 @@
+if not status --is-interactive
+    exit
+end
+
+# Attach to tmux session if it already exists
+if command -q TMUX; and not set -q TMUX
+    tmux attach > /dev/null 2>&1
+end
+
 # ENVIRONMENT
 # set -gx EDITOR 'code --wait'
-# set -gx DBUS_SESSION_BUS_ADDRESS "unix:path=$DBUS_LAUNCHD_SESSION_BUS_SOCKET"
 set -gx EDITOR nvim
 set -gx GPG_TTY (tty)
 set -gx XDG_CONFIG_HOME $HOME/.config
@@ -9,9 +17,6 @@ set -gx KUBECONFIG $HOME/.kube/config
 set -gx GOPATH $HOME/.go
 set -gx FISHRC $HOME/.config/fish/config.fish
 set -gx VENDOR_DIR $HOME/Developer/repos/vendor
-
-# Bind-keys
-# bind -M insert \t accept-autosuggestion
 
 ## PATH
 set -gx PATH /usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
@@ -29,16 +34,15 @@ set -px PATH $HOME/Developer/vendor/google-cloud-sdk/bin
 # Fish defaults
 set fish_greeting ""
 fish_vi_key_bindings
-
-# Colorscheme
-set COLOR tokyonight 
-source (dirname (status --current-filename))/colors/$COLOR.fish
-
-# Prompt
+## Prompt
 set -g fish_prompt_pwd_dir_length 1
 set -g theme_display_user yes
 set -g theme_hide_hostname no
 set -g theme_hostname always
+
+# Colorscheme
+set COLOR nightfox
+source (dirname (status --current-filename))/colors/$COLOR.fish
 
 # General aliases
 alias resource '. $FISHRC'
@@ -52,7 +56,7 @@ alias gr gitroot
 alias gl 'git log'
 alias gs 'git status'
 alias ga 'git add'
-alias ta 'tmux attach -t'
+alias ta 'tmux attach'
 alias k kubectl
 alias kd 'kubectl describe'
 alias kg 'kubectl get'
@@ -67,6 +71,17 @@ if command -q zoxide
     zoxide init fish | source
 end
 
+if command -q opam
+    eval (opam env)
+end
+
+# Ensure ssh agent
+if test -z (pgrep ssh-agent | string collect)
+  eval (ssh-agent -c)
+  set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
+  set -Ux SSH_AGENT_PID $SSH_AGENT_PID
+end
+
 # Source additional config based on OS
 switch (uname)
   case Darwin
@@ -77,23 +92,12 @@ switch (uname)
     source (dirname (status --current-filename))/os/windows.fish
 end
 
-# Ensure ssh agent
-if test -z (pgrep ssh-agent | string collect)
-  eval (ssh-agent -c)
-  set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
-  set -Ux SSH_AGENT_PID $SSH_AGENT_PID
-end
-
-if command -q opam
-    eval (opam env)
-end
-
 # Source local config
 if [ -f (dirname (status --current-filename))/local.fish ]
     source (dirname (status --current-filename))/local.fish
 end
 
 # Start TMUX on login
-if status is-interactive; and command -q tmux; and not set -q TMUX
-    tmux new -s main > /dev/null 2>&1 || tmux attach -t main > /dev/null 2>&1
+if command -q tmux; and not set -q TMUX
+    tmux new -s main
 end
