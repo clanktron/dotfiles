@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 # yabai post-install setup
 YABAI=$(which yabai)
 HASH=$(shasum -a 256 "$YABAI")
