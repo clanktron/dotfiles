@@ -41,7 +41,7 @@ set -g theme_hide_hostname no
 set -g theme_hostname always
 
 # Colorscheme
-set COLOR nightfox
+set COLOR tokyonight
 source (dirname (status --current-filename))/colors/$COLOR.fish
 
 # General aliases
