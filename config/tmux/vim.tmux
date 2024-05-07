@@ -1,6 +1,3 @@
-# Display lazygit
-bind -r g display-popup -d '#{pane_current_path}' -w80% -h80% -E lazygit
-
 # Smart pane switching with awareness of Vim splits.
 # See: https://github.com/christoomey/vim-tmux-navigator
 is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
