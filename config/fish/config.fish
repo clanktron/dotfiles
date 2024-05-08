@@ -3,7 +3,7 @@ if not status --is-interactive
 end
 
 # Attach to tmux session if it already exists
-if command -q TMUX; and not set -q TMUX
+if command -q tmux; and not set -q TMUX
     tmux attach > /dev/null 2>&1
 end
 
@@ -99,5 +99,5 @@ end
 
 # Start TMUX on login
 if command -q tmux; and not set -q TMUX
-    tmux new -s main
+    tmux new -s main > /dev/null
 end
