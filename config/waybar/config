@@ -2,6 +2,7 @@
 "layer": "top",
 "position": "top",
 "height": 30,
+"reload_style_on_change": true,
 
 "modules-left": ["sway/workspaces","hyprland/workspaces"],
 "modules-center": ["clock"],
@@ -37,18 +38,16 @@
     "locale": "C", 
     "format-alt": " {:%a,%b %d  %I:%M %p}",
     "format": " {:%I:%M %p}",
-    "on-double-click": "gnome-calendar"
+    "on-click-right": "gnome-calendar"
 },
 "cpu": {
     "format": "&#8239;{usage}%",
-    "tooltip": false,
     "on-double-click": "gnome-system-monitor"
 },
 "memory": {
     "interval": 30,
     "format": " {used:0.2f}GB",
     "max-length": 10,
-    "tooltip": false,
     "warning": 70,
     "critical": 90,
     "on-double-click": "gnome-system-monitor"
@@ -60,9 +59,11 @@
   "format-linked": " {ipaddr}",
   "format-disconnected": " Disconnected",
   "format-disabled": "",
-  "tooltip": false,
+  "tooltip-format": "Up: {bandwidthUpBits} \nDown: {bandwidthDownBits}",
+  "tooltip-format-ethernet": "Up: {bandwidthUpBits} \nDown: {bandwidthDownBits}",
+  "tooltip-format-wifi": "{essid} - {frequency}\nUp: {bandwidthUpBits} \nDown: {bandwidthDownBits}",
   "max-length": 20,
-  "on-click": "nm-connection-editor"
+  "on-click-right": "nm-connection-editor"
 },
 "backlight": {
     // "device": "acpi_video1",
