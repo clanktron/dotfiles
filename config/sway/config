@@ -26,8 +26,6 @@ bindsym $super+space exec $menu
 floating_modifier $mod normal
 # Reload the configuration file
 bindsym $super+Shift+R reload
-# Exit sway (logs you out of your Wayland session)
-bindsym $super+Ctrl+XF86Eject exec zenity --question --text='Logout?' && swaymsg exit
 # Logout menu
 bindsym $super+Shift+Q exec wlogout
 
