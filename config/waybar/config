@@ -1,11 +1,16 @@
 {
 "layer": "top",
 "position": "top",
+"height": 30,
 
 "modules-left": ["sway/workspaces","hyprland/workspaces"],
 "modules-center": ["clock"],
-"modules-right":  ["tray","cpu","memory","network","pulseaudio","backlight","battery"],
+"modules-right":  ["tray","cpu","memory","network","pulseaudio","backlight","battery","custom/power"],
 
+"custom/power": {
+    "on-click": "wlogout",
+    "format": "&#x23FB;",
+},
 "battery": {
   "states": {
   "warning": 30,
@@ -18,7 +23,7 @@
 },
 "hyprland/workspaces": {
      "sort-by-name": true,
-     "on-click": "activate"
+     "on-click": "activate",
 },
 "hyprland/window": {
     "max-length": 200,
@@ -26,18 +31,18 @@
 },
 "tray": {
     "icon-size": 16,
-    "spacing": 6
+    "spacing": 7
 },
 "clock": {
     "locale": "C", 
     "format-alt": " {:%a,%b %d  %I:%M %p}",
     "format": " {:%I:%M %p}",
-    "on-click": "gnome-calendar"
+    "on-double-click": "gnome-calendar"
 },
 "cpu": {
     "format": "&#8239;{usage}%",
     "tooltip": false,
-    "on-click": "gnome-system-monitor"
+    "on-double-click": "gnome-system-monitor"
 },
 "memory": {
     "interval": 30,
@@ -46,7 +51,7 @@
     "tooltip": false,
     "warning": 70,
     "critical": 90,
-    "on-click": "gnome-system-monitor"
+    "on-double-click": "gnome-system-monitor"
 },
 "network": {
   "interval": 2,
