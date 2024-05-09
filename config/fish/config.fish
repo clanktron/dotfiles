@@ -7,6 +7,8 @@ if command -q tmux; and not set -q TMUX
     tmux attach > /dev/null 2>&1
 end
 
+set fish_dir (dirname (status --current-filename))
+
 # ENVIRONMENT
 # set -gx EDITOR 'code --wait'
 set -gx EDITOR nvim
@@ -31,20 +33,7 @@ set -px PATH $HOME/Developer/repos/clanktron/restic-backups
 set -px PATH $HOME/.rd/bin
 set -px PATH $HOME/Developer/vendor/google-cloud-sdk/bin
 
-# Fish defaults
-set fish_greeting ""
-fish_vi_key_bindings
-## Prompt
-set -g fish_prompt_pwd_dir_length 1
-set -g theme_display_user yes
-set -g theme_hide_hostname no
-set -g theme_hostname always
-
-# Colorscheme
-set COLOR tokyonight
-source (dirname (status --current-filename))/colors/$COLOR.fish
-
-# General aliases
+# Aliases
 alias resource '. $FISHRC'
 alias l 'ls -l'
 alias la 'ls -a'
@@ -65,6 +54,20 @@ alias kc 'kubectx'
 alias lg 'lazygit'
 alias vmbox 'VBoxManage'
 alias get_idf '. $VENDOR_DIR/esp-idf/export.fish'
+alias core "sensors | grep Core"
+
+# Fish defaults
+set fish_greeting ""
+fish_vi_key_bindings
+## Prompt
+set -g fish_prompt_pwd_dir_length 1
+set -g theme_display_user yes
+set -g theme_hide_hostname no
+set -g theme_hostname always
+
+# Colorscheme
+set COLOR tokyonight
+source "$fish_dir"/colors/$COLOR.fish
 
 # zoxide integration
 if command -q zoxide
@@ -85,16 +88,16 @@ end
 # Source additional config based on OS
 switch (uname)
   case Darwin
-    source (dirname (status --current-filename))/os/mac.fish
+    source "$fish_dir"/os/mac.fish
   case Linux
-    source (dirname (status --current-filename))/os/linux.fish
+    source "$fish_dir"/os/linux.fish
   case '*'
-    source (dirname (status --current-filename))/os/windows.fish
+    source "$fish_dir"/os/windows.fish
 end
 
 # Source local config
-if [ -f (dirname (status --current-filename))/local.fish ]
-    source (dirname (status --current-filename))/local.fish
+if [ -f "$fish_dir"/local.fish ]
+    source "$fish_dir"/local.fish
 end
 
 # Start TMUX on login
