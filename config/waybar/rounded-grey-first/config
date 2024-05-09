@@ -1,6 +1,8 @@
 {
 "layer": "top",
 "position": "top",
+"height": 10,
+"margin": 7,
 
 "modules-left": ["sway/workspaces","hyprland/workspaces"],
 "modules-center": ["clock"],
