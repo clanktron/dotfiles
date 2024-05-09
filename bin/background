@@ -1,0 +1,3 @@
+#!/bin/sh
+img="${1:-$HOME/.config/background}"
+[ -e "$img" ] && swww img "$img"
