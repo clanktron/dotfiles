@@ -75,6 +75,8 @@ output DP-1 resolution 1920x1080 scale 1
     repeat_delay 225
    }
 
+bindsym End exec swaymsg input type:touchpad events toggle enabled disabled
+
 # Moving around:
 # Move your focus around
 bindsym $mod+$left focus left
