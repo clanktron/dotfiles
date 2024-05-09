@@ -3,44 +3,47 @@
 }
 window {
 	background-color: rgba(12, 12, 12, 0.5);
+    background-size: 10%;
 }
 button {
-    color: #FFFFFF;
-	background-color: rgba(30,30,30,0.85);
-	border-style: solid;
-    border-radius: 15px;
-    border-color: #FFFFFF;
-	border-width: 2px;
+	background-color: rgba(0,0,0,0.85);
+    border-radius: 0;
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 25%;
+    padding-right: 10px;
 }
 
 button:focus, button:active, button:hover {
-	background-color: #262626;
+	border-style: solid;
+    border-color: #FFFFFF;
+	border-width: 2px;
 	outline-style: none;
 }
 
 #lock {
-    background-image: image(url("./icons/lock.png"));
+    background-image: image(url("./icons/lock.svg"));
 }
 
 #logout {
-    background-image: image(url("./icons/logout.png"));
+    background-image: image(url("./icons/logout.svg"));
 }
 
 #suspend {
-    background-image: image(url("./icons/suspend.png"));
+    background-image: image(url("./icons/pause2.svg"));
+    background-size: 15%;
 }
 
 #shutdown {
-    background-image: image(url("./icons/shutdown.png"));
+    background-image: image(url("./icons/power.svg"));
+    background-size: 20%;
 }
 
 #reboot {
-    background-image: image(url("./icons/reboot.png"));
+    background-image: image(url("./icons/reboot.svg"));
+    background-size: 20%;
 }
 
-#windows {
-    background-image: image(url("./icons/windows-11.png"));
+#efi {
+    background-image: image(url("./icons/settings.svg"));
 }

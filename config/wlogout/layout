@@ -29,8 +29,8 @@
     "keybind" : "r"
 }
 {
-    "label" : "windows",
-    "action" : "sudo efibootmgr --bootnext 0007 && systemctl reboot",
-    "text" : "Windows 11",
+    "label" : "efi",
+    "action" : "systemctl reboot --firmware-setup",
+    "text" : "EFI",
     "keybind" : "w"
 }
