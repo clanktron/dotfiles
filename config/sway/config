@@ -215,4 +215,4 @@ bindsym XF86AudioPrev exec playerctl previous
 #     }
 # }
 
-# include /etc/sway/config.d/*
+include /etc/sway/config.d/*
