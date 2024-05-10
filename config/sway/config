@@ -192,6 +192,12 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
+# Brightness
+bindsym XF86KbdBrightnessUp exec brightnessctl set 6.25%+ -d '*kbd_backlight*'
+bindsym XF86KbdBrightnessDown exec brightnessctl set 6.25%- -d '*kbd_backlight*'
+bindsym XF86MonBrightnessUp exec brightnessctl set 10%+
+bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
+
 # Gestures
 bindgesture swipe:3:right workspace next
 bindgesture swipe:3:left workspace prev
