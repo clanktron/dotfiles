@@ -38,10 +38,12 @@ window#waybar {
 #custom-audiorec,
 #battery, 
 #clock, 
+#custom-power,
 #network {
 	padding: 0 10px;
 }
 #custom-power {
-    font-size: 16;
+    font-size: 14px;
+	padding-top: 6px;
 	padding-right: 15px;
 }
