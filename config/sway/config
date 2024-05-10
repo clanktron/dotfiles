@@ -8,9 +8,6 @@ set $right l
 set $term alacritty
 set $menu wofi
 
-## Autostart applications
-exec swww-daemon --format xrgb
-
 ### Key bindings
 bindsym $super+e exec $term
 # Kill focused window
@@ -199,9 +196,34 @@ bindsym XF86AudioPrev exec playerctl previous
 bindgesture swipe:3:right workspace next
 bindgesture swipe:3:left workspace prev
 
-# Bar
+# Toggle notification sidebar
+set $toggle_notification "swaync-client -t -sw"
+bindsym $super+ctrl+n exec $toggle_notification
+
+# Status Bar
 bar {
 	swaybar_command waybar
 }
+
+exec_always {
+	swaync
+	swww-daemon --format xrgb
+}
+
+## Floats
+# for_window [app_id="(Calculator|Power-statistics|Control-center)"] floating enable
+for_window [app_id="nm-connection-editor"] floating enable
+for_window [app_id="nemo"] floating enable
+for_window [app_id="evolution-alarm-notify"] floating enable
+for_window [app_id="evolution" title="Compose Message"] floating enable
+for_window [app_id="evolution" title="Re(.*)"] floating enable
+for_window [app_id="evolution" title="Fwd(.*)"] floating enable
+for_window [app_id="firefox" title="Pushbullet"] floating enable
+for_window [app_id="firefox" title="Firefox — Sharing Indicator"] floating enable
+for_window [app_id="firefox" title="Picture-in-Picture"] floating enable
+for_window [app_id="firefox" title="Pushbullet – Mozilla Firefox"] floating enable
+for_window [app_id="firefox" title="About Mozilla Firefox"] floating enable
+# Brave, chrome, chromium
+for_window [title="Picture-in-picture"] floating enable
 
 include /etc/sway/config.d/*
