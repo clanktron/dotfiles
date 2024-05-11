@@ -1,0 +1,91 @@
+#!/bin/sh
+# Kubectl plugin for simplified cluster config management
+target_kubeconfig=""
+kubeconfig_to_merge_into_target=""
+
+# Help function
+show_help() {
+    echo "Usage: kubectl merge <file1> <file2>"
+}
+
+parse_args() {
+    # Ensure necessary arguments
+    if [ $# -eq 0 ]; then
+        echo "error: missing arg"
+        show_help
+        exit 1
+    fi
+
+    if [ $# -eq 1 ]; then
+        # If KUBECONFIG is unset use default
+        printf 'Defaulting to KUBECONFIG env variable...\n'
+        if [ -z "$KUBECONFIG" ]; then
+            printf 'KUBECONFIG is unset, using ~/.kube/config...\n'
+            target_kubeconfig=~/.kube/config
+        else
+            target_kubeconfig="$KUBECONFIG"
+        fi
+        if [ -f "$1" ]; then
+            kubeconfig_to_merge_into_target="$1"
+        else
+            echo "error: the specified kubeconfig is not a valid file"
+            exit 1
+        fi
+    fi
+
+    if [ $# -eq 2 ]; then
+        if [ ! -f "$1" ] || [ ! -f "$2" ]; then
+           echo "error: one of your kubeconfigs is not a valid file"
+           exit 1
+        fi
+        target_kubeconfig="$1"
+        kubeconfig_to_merge_into_target="$2"
+    fi
+
+    if [ $# -gt 2 ]; then
+        echo "error: too many args"
+        show_help
+        exit 1
+    fi
+}
+
+backup_kubeconfig() {
+    # Make a copy of your existing config
+    if [ -f "$target_kubeconfig" ]; then
+        cp "$target_kubeconfig" "$target_kubeconfig".bak
+    else
+        echo "error: The current kubeconfig file ($target_kubeconfig) does not exist or is not accessible."
+        exit 1
+    fi
+}
+
+merge_kubeconfig() {
+
+    tmp_kubeconfig_path=/tmp/kubeconfig
+
+    # Merge the two config files together into a new config file
+    echo "Merging kubeconfig..."
+    if ! KUBECONFIG="$target_kubeconfig":"$kubeconfig_to_merge_into_target" kubectl config view --flatten > "$tmp_kubeconfig_path"; then
+        exit 1
+    fi
+
+    # Replace your old config with the new merged config
+    if [ -f "$tmp_kubeconfig_path" ]; then
+        mv "$tmp_kubeconfig_path" "$target_kubeconfig"
+        echo "Merged kubeconfig saved to: $target_kubeconfig"
+    else
+        echo "error: Failed to create the merged kubeconfig file."
+        exit 1
+    fi
+
+    # (optional) Delete the backup
+    # rm "$target_kubeconfig".bak
+}
+
+main() {
+    parse_args "$@"
+    backup_kubeconfig
+    merge_kubeconfig
+}
+
+main "$@"
