@@ -24,6 +24,8 @@ floating_modifier $mod normal
 bindsym $super+Shift+R reload
 # Logout menu
 bindsym $super+Shift+Q exec wlogout
+# Lock Screen
+bindsym $super+L exec hyprlock
 
 ### Output configuration
 # You can get the names of your outputs by running: swaymsg -t get_outputs
@@ -58,7 +60,6 @@ input type:touchpad {
     accel_profile "adaptive"
 }
 input type:keyboard {
- xkb_options ctrl:nocaps
  repeat_rate 75
  repeat_delay 225
 }
@@ -207,14 +208,20 @@ bindgesture swipe:3:left workspace prev
 set $toggle_notification "swaync-client -t -sw"
 bindsym $super+ctrl+n exec $toggle_notification
 
+
 # Status Bar
 bar {
 	swaybar_command waybar
 }
 
 exec_always {
-	swaync
-	swww-daemon --format xrgb
+    swww-daemon --format xrgb
+    swaync
+    swayidle -w \
+        timeout 300 'hyprlock' \
+        timeout 600 'swaymsg "output * dpms off"' \
+            resume 'swaymsg "output * dpms on"' \
+        before-sleep 'hyprlock'
 }
 
 ## Floats
