@@ -6,7 +6,7 @@
 
 "modules-left": ["sway/workspaces","hyprland/workspaces"],
 "modules-center": ["clock"],
-"modules-right":  ["tray","cpu","memory","network","pulseaudio","backlight","battery","custom/power"],
+"modules-right":  ["tray","cpu","memory","network","pulseaudio","backlight","custom/monitor","battery","custom/power"],
 
 "custom/power": {
     "on-click": "wlogout",
@@ -41,7 +41,7 @@
 },
 "cpu": {
     "format": " {usage}%",
-    "on-double-click": "gnome-system-monitor"
+    "on-double-click": "alacritty -e top"
 },
 "memory": {
     "interval": 30,
@@ -63,6 +63,12 @@
   "tooltip-format-wifi": "{essid} - {frequency}Ghz\nUp: {bandwidthUpBits} \nDown: {bandwidthDownBits}",
   "max-length": 20,
   "on-click-right": "nm-connection-editor"
+},
+"custom/monitor": {
+    "format": "{icon}{}%",
+    "format-icons": ["☀ "],
+    "interval": 1,
+    "exec": "monitor-brightness",
 },
 "backlight": {
     // "device": "acpi_video1",
