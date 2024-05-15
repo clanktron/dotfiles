@@ -199,18 +199,18 @@ bindsym XF86KbdBrightnessUp exec brightnessctl set 10%+ -d '*kbd_backlight*'
 bindsym XF86KbdBrightnessDown exec brightnessctl set 10%- -d '*kbd_backlight*'
 bindsym XF86MonBrightnessUp exec brightnessctl set 10%+
 bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
-bindsym = XF86MonBrightnessUp, exec, ~/.local/bin/set-monitor-brightness 10
-bindsym = XF86MonBrightnessDown, exec, ~/.local/bin/set-monitor-brightness -10
+bindsym $super+XF86MonBrightnessUp exec ~/.local/bin/set-monitor-brightness 10
+bindsym $super+XF86MonBrightnessDown exec ~/.local/bin/set-monitor-brightness -10
 
 # Monitor Control (Acer KA242Y)
 ## switch to hdmi
-bindsym = Num_Lock, exec, ddccontrol -r 0x60 -w 17 dev:/dev/i2c-10
+bindsym Num_Lock exec ddccontrol -r 0x60 -w 17 dev:/dev/i2c-10
 ## switch to vga
-bindsym = KP_Divide, exec, ddccontrol -r 0x60 -w 1 dev:/dev/i2c-10
+bindsym KP_Divide exec ddccontrol -r 0x60 -w 1 dev:/dev/i2c-10
 ## power on
-bindsym = Control_L, Up, exec, ddccontrol -r 0xd6 -w 1 dev:/dev/i2c-10 
+bindsym ctrl+up exec ddccontrol -r 0xd6 -w 1 dev:/dev/i2c-10 
 ## power off
-bindsym = KP_Subtract, exec, ddccontrol -r 0xd6 -w 5 dev:/dev/i2c-10 
+bindsym KP_Subtract exec ddccontrol -r 0xd6 -w 5 dev:/dev/i2c-10 
 
 # Gestures
 bindgesture swipe:3:right workspace next

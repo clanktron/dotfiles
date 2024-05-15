@@ -68,7 +68,7 @@
     "format": "{icon}{}%",
     "format-icons": ["☀ "],
     "interval": 1,
-    "exec": "monitor-brightness",
+    "exec": "~/.local/bin/monitor-brightness",
 },
 "backlight": {
     // "device": "acpi_video1",
