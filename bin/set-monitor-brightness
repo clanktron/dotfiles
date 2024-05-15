@@ -1,0 +1,4 @@
+#!/bin/sh
+increment="${1:?}"
+dev="${2:-dev:/dev/i2c-10}"
+ddccontrol -r 0x10 -W "$increment" "$dev" > /dev/null 2>&1

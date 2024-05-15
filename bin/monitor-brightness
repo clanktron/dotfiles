@@ -1,19 +1,66 @@
 #!/bin/sh
-increment="${1:-5}"
 dev="${2:-dev:/dev/i2c-10}"
-brightness=$(ddccontrol -r 0x10 "$dev" 2> /dev/null | awk '/Brightness/ {split($3, arr, "/"); print arr[2]}' )
-newBrightness=$(expr "$brightness" + "$increment")
+brightness=""
 
-if [ "$newBrightness" -lt 0 ]; then
-    newBrightness=0
-elif [ "$newBrightness" -gt 100 ]; then
-    newBrightness=100
-fi
-
-setBrightness() {
-    ddccontrol -r 0x10 -w "$1" "$dev" > /dev/null 2>&1
+split() {
+    read -r line
+    # Disable globbing.
+    # This ensures that the word-splitting is safe.
+    set -f
+    # Store the current value of 'IFS' so we
+    # can restore it later.
+    old_ifs=$IFS
+    # Change the field separator to what we're
+    # splitting on.
+    IFS=$1
+    # Create an argument list splitting at each
+    # occurance of '$2'.
+    #
+    # This is safe to disable as it just warns against
+    # word-splitting which is the behavior we expect.
+    # shellcheck disable=2086
+    set -- $line
+    # Print each list value on its own line.
+    printf '%s\n' "$@"
+    # Restore the value of 'IFS'.
+    IFS=$old_ifs
+    # Re-enable globbing.
+    set +f
 }
 
-echo "current brightness is $brightness..."
-echo "setting brightness to $newBrightness..."
-setBrightness "$newBrightness"
+lstrip() {
+    read -r line
+    # Usage: lstrip "pattern"
+    printf '%s' "${line##"$1"}"
+}
+
+rstrip() {
+    read -r line
+    # Usage: rstrip "pattern"
+    printf '%s' "${line%%"$1"}"
+}
+
+get_line() {
+    line_num=0
+    while IFS= read -r line; do
+        line_num=$((line_num + 1))
+        if [ "$line_num" -eq "$1" ]; then
+            echo "$line"
+            return
+        fi
+    done
+}
+
+while IFS= read -r line; do
+        case $line in
+            *Control*)
+                brightness=$(printf "%s" "$line" | rstrip " C [Brightness]" | lstrip "Control 0x10: " | split "/" | get_line 2)
+            ;;
+        esac
+done << EOF
+$(ddccontrol -r 0x10 "$dev" 2> /dev/null)
+EOF
+if [ "$brightness" = "" ]; then
+    exit 1
+fi
+printf "%s" "$brightness"
