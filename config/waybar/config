@@ -8,10 +8,6 @@
 "modules-center": ["clock"],
 "modules-right":  ["tray","cpu","memory","network","pulseaudio","backlight","custom/monitor","battery","custom/power"],
 
-"custom/power": {
-    "on-click": "wlogout",
-    "format": "&#x23FB;",
-},
 "battery": {
   "states": {
   "warning": 30,
@@ -20,14 +16,6 @@
   "format": "{icon}{capacity}%",
   "format-charging": " {capacity}%",
   "format-alt": "{icon} {time}",
-},
-"hyprland/workspaces": {
-     "sort-by-name": true,
-     "on-click": "activate",
-},
-"hyprland/window": {
-    "max-length": 200,
-    "separate-outputs": true
 },
 "tray": {
     "icon-size": 16,
@@ -44,7 +32,7 @@
     "on-double-click": "alacritty -e top"
 },
 "memory": {
-    "interval": 30,
+    "interval": 10,
     "format": " {used:0.2f}GB",
     "max-length": 10,
     "warning": 70,
@@ -54,34 +42,19 @@
 "network": {
   "interval": 2,
   "format-wifi": " {signalStrength}%",
-  "format-ethernet": " ",
+  "format-ethernet": "",
   "format-linked": " {ipaddr}",
   "format-disconnected": " Disconnected",
   "format-disabled": "",
   "tooltip-format": "Up: {bandwidthUpBits} \nDown: {bandwidthDownBits}",
   "tooltip-format-ethernet": "Up: {bandwidthUpBits} \nDown: {bandwidthDownBits}",
   "tooltip-format-wifi": "{essid} - {frequency}Ghz\nUp: {bandwidthUpBits} \nDown: {bandwidthDownBits}",
-  "max-length": 20,
   "on-click-right": "nm-connection-editor"
 },
-"custom/monitor": {
-    "format": "{icon}{}%",
-    "format-icons": ["☀ "],
-    "interval": 1,
-    "exec": "~/.local/bin/monitor-brightness",
-},
-"backlight": {
-    // "device": "acpi_video1",
-    "format": "{icon}{percent}%",
-    "format-icons": ["☀ "],
-    "on-scroll-down": "brightnessctl -c backlight set 1%-",
-    "on-scroll-up": "brightnessctl -c backlight set +1%"
-},
 "pulseaudio": {
-  // "scroll-step": 1, // %, can be a float
   "format": "{icon} {volume}% {format_source}",
   "format-bluetooth": "{icon} {volume}% {format_source}",
-  "format-muted": "🔇  {format_source}",
+  "format-muted": "🔇 {format_source}",
   "format-source-muted": "",
   "format-icons": {
     "headphone": " ",
@@ -93,5 +66,21 @@
     "default": [" ", " ", " "]
   },
   "on-click": "pavucontrol"
-}
+},
+"backlight": {
+    "format": "{icon}{percent}%",
+    "format-icons": ["☀ "],
+    "on-scroll-down": "brightnessctl -c backlight set 1%-",
+    "on-scroll-up": "brightnessctl -c backlight set +1%"
+},
+"custom/monitor": {
+    "format": "{icon}{}%",
+    "format-icons": ["☀ "],
+    "interval": 1,
+    "exec": "~/.local/bin/monitor-brightness",
+},
+"custom/power": {
+    "on-click": "wlogout",
+    "format": "&#x23FB;",
+},
 }
