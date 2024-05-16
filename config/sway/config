@@ -236,6 +236,9 @@ exec_always {
         before-sleep 'hyprlock'
 }
 
+# Ensure games idle inhibit
+for_window [app_id="steam-app*"] inhibit_idle focus
+
 ## Floats
 # for_window [app_id="(Calculator|Power-statistics|Control-center)"] floating enable
 for_window [app_id="nm-connection-editor"] floating enable
