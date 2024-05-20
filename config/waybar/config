@@ -34,20 +34,27 @@
 "memory": {
     "interval": 10,
     "format": " {used:0.2f}GB",
-    "max-length": 10,
+    "max-length": 8,
+    "min-length": 8,
     "warning": 70,
     "critical": 90,
     "on-double-click": "gnome-system-monitor"
+},
+"network#netinfo": {
+  "interval": 1,
+  "format": "↑  {bandwidthUpBits}\n↓  {bandwidthDownBits}",
+  "min-length": 9,
+  "format-disabled": "",
+  "on-click-right": "nm-connection-editor"
 },
 "network": {
   "interval": 2,
   "format-wifi": " {signalStrength}%",
   "format-ethernet": "",
-  "format-linked": " {ipaddr}",
+  "format-linked": "{ipaddr}",
   "format-disconnected": " Disconnected",
   "format-disabled": "",
-  "tooltip-format": "Up: {bandwidthUpBits} \nDown: {bandwidthDownBits}",
-  "tooltip-format-ethernet": "Up: {bandwidthUpBits} \nDown: {bandwidthDownBits}",
+  "tooltip-format": "↑  {bandwidthUpBits}\n↓  {bandwidthDownBits}",
   "tooltip-format-wifi": "{essid} - {frequency}Ghz\nUp: {bandwidthUpBits} \nDown: {bandwidthDownBits}",
   "on-click-right": "nm-connection-editor"
 },
