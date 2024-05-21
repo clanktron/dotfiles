@@ -96,9 +96,8 @@ switch (uname)
 end
 
 # Source local config
-if [ -f "$fish_dir"/local.fish ]
-    source "$fish_dir"/local.fish
-end
+source-if-exists "$fish_dir"/local.fish
+source-if-exists "$fish_dir"/secrets.fish
 
 # Start TMUX on login
 if command -q tmux; and not set -q TMUX
