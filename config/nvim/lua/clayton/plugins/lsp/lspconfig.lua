@@ -105,26 +105,25 @@ return {
             cmd = {'java-language-server'},
             root_dir = lspconfig.util.root_pattern('*.java', '.git', 'pom.xml', 'build.gradle')
         }
-        --  lspconfig.rust_analyzer.setup{
-        --      settings = {
-        --          ['rust-analyzer'] = {
-        --              cargo = {
-        --                  allFeatures = true,
-        --              },
-        --              diagnostics = {
-        --                  enable = true,
-        --                  experimental = {
-        --                      enable = true,
-        --                  }
-        --              }
-        --          }
-        --      }
-        --  }
+        lspconfig.helm_ls.setup {
+            capabilities = capabilities,
+            on_attach = on_attach,
+            filetypes = {'helm'},
+            settings = {
+              ['helm-ls'] = {
+                yamlls = {
+                  enabled = false,
+                }
+              }
+            },
+            root_dir = lspconfig.util.root_pattern('Chart.yaml', 'values.yaml')
+        }
         lspconfig.racket_langserver.setup{
             capabilities = capabilities,
             on_attach = on_attach,
             root_dir = lspconfig.util.root_pattern('*.rkt', '.git')
         }
+
         local lua_runtime = vim.split(package.path, ';')
         table.insert(lua_runtime, 'lua/?.lua')
         table.insert(lua_runtime, 'lua/?/init.lua')
@@ -158,4 +157,4 @@ return {
                 },
             })
         end,
-    }
+}
