@@ -6,17 +6,8 @@
 
 "modules-left": ["sway/workspaces","hyprland/workspaces"],
 "modules-center": ["clock"],
-"modules-right":  ["tray","cpu","memory","network","pulseaudio","backlight","custom/monitor","battery","custom/power"],
+"modules-right":  ["tray","temperature","cpu","memory","network","pulseaudio","backlight","custom/monitor","battery","custom/power"],
 
-"battery": {
-  "states": {
-  "warning": 30,
-  "critical": 15
-  },
-  "format": "{icon}{capacity}%",
-  "format-charging": " {capacity}%",
-  "format-alt": "{icon} {time}",
-},
 "tray": {
     "icon-size": 16,
     "spacing": 7
@@ -27,12 +18,20 @@
     "format": " {:%I:%M %p}",
     "on-click-right": "gnome-calendar"
 },
+"temperature": {
+    "interval": 2,
+    "format": " {temperatureC:3}°C",
+},
 "cpu": {
+    "interval": 2,
     "format": " {usage}%",
-    "on-double-click": "alacritty -e top"
+    "max-length": 7,
+    "min-length": 7,
+    "on-double-click": "alacritty -e top",
 },
 "memory": {
-    "interval": 10,
+    "interval": 2,
+    "tooltip": false,
     "format": " {used:0.2f}GB",
     "max-length": 8,
     "min-length": 8,
@@ -42,27 +41,27 @@
 },
 "network#netinfo": {
   "interval": 1,
-  "format": "↑  {bandwidthUpBits}\n↓  {bandwidthDownBits}",
+  "format": "↑ {bandwidthUpBits}\n↓ {bandwidthDownBits}",
   "min-length": 9,
   "format-disabled": "",
-  "on-click-right": "nm-connection-editor"
+  "on-double-click": "nm-connection-editor"
 },
 "network": {
   "interval": 2,
-  "format-wifi": " {signalStrength}%",
+  "format-wifi": " ",
   "format-ethernet": "",
   "format-linked": "{ipaddr}",
   "format-disconnected": " Disconnected",
   "format-disabled": "",
-  "tooltip-format": "↑  {bandwidthUpBits}\n↓  {bandwidthDownBits}",
-  "tooltip-format-wifi": "{essid} - {frequency}Ghz\nUp: {bandwidthUpBits} \nDown: {bandwidthDownBits}",
-  "on-click-right": "nm-connection-editor"
+  "tooltip-format": "↑ {bandwidthUpBits}\n↓ {bandwidthDownBits}",
+  "tooltip-format-wifi": "{essid} - {frequency}Ghz\n↑ {bandwidthUpBits} \n↓ {bandwidthDownBits}",
+  "on-double-click": "nm-connection-editor"
 },
 "pulseaudio": {
   "format": "{icon} {volume}% {format_source}",
   "format-bluetooth": "{icon} {volume}% {format_source}",
-  "format-muted": "🔇 {format_source}",
-  "format-source-muted": "",
+  "format-muted": "{format_source}",
+  "format-source-muted": " ",
   "format-icons": {
     "headphone": " ",
     "hands-free": " ",
@@ -76,6 +75,7 @@
 },
 "backlight": {
     "format": "{icon}{percent}%",
+    "tooltip": false,
     "format-icons": ["☀ "],
     "on-scroll-down": "brightnessctl -c backlight set 1%-",
     "on-scroll-up": "brightnessctl -c backlight set +1%"
@@ -86,8 +86,23 @@
     "interval": 1,
     "exec": "~/.local/bin/monitor-brightness",
 },
+"battery": {
+  "states": {
+    "warning": 30,
+    "critical": 15
+  },
+  "interval": 20,
+  "format": "{icon}{capacity}%",
+  "format-charging": " {icon}{capacity}%",
+  "format-alt": "{icon} {time}",
+  "format-icons": {
+    "default": [" ", " ", " ", " ", " "],
+  },
+  "tooltip-format": "{time}"
+},
 "custom/power": {
+    "tooltip": false,
     "on-click": "wlogout",
-    "format": "&#x23FB;",
+    "format": " ",
 },
 }
