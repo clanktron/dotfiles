@@ -1,5 +1,6 @@
 *{
     font-size: 13px;
+    font-family: "JetBrains Mono", "Font Awesome 6 Free";
     min-height: 20px;
     color: white;
 }
@@ -47,8 +48,4 @@ window#waybar {
     padding-top: 5px;
     padding-bottom: 5px;
     padding-right: 0;
-}
-#custom-power {
-    font-size: 14px;
-	padding-right: 15px;
 }

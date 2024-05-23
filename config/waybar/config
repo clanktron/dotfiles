@@ -6,7 +6,7 @@
 
 "modules-left": ["sway/workspaces","hyprland/workspaces"],
 "modules-center": ["clock"],
-"modules-right":  ["tray","temperature","cpu","memory","network","pulseaudio","backlight","custom/monitor","battery","custom/power"],
+"modules-right":  ["tray","temperature#cpu","cpu","memory","network","pulseaudio","backlight","custom/monitorbacklight","battery","custom/power"],
 
 "tray": {
     "icon-size": 16,
@@ -18,23 +18,32 @@
     "format": " {:%I:%M %p}",
     "on-click-right": "gnome-calendar"
 },
-"temperature": {
+"custom/gpu": {
+    "exec": "~/.local/bin/gpu.sh",
     "interval": 2,
-    "format": " {temperatureC:3}°C",
+    "min-length": 8,
+    "tooltip": false,
+},
+"temperature#cpu": {
+    "interval": 2,
+    "hwmon-path": "/sys/class/hwmon/hwmon6/temp1_input",
+    "format": "{icon}{temperatureC:3}°C",
+    "tooltip-format": "CPU",
+    "format-icons": {
+        "default": ""
+    }
 },
 "cpu": {
     "interval": 2,
     "format": " {usage}%",
-    "max-length": 7,
-    "min-length": 7,
     "on-double-click": "alacritty -e top",
 },
 "memory": {
     "interval": 2,
     "tooltip": false,
     "format": " {used:0.2f}GB",
-    "max-length": 8,
-    "min-length": 8,
+    "max-length": 9,
+    "min-length": 9,
     "warning": 70,
     "critical": 90,
     "on-double-click": "gnome-system-monitor"
@@ -58,7 +67,7 @@
   "on-double-click": "nm-connection-editor"
 },
 "pulseaudio": {
-  "format": "{icon} {volume}% {format_source}",
+  "format": "{icon}{volume}% {format_source}",
   "format-bluetooth": "{icon} {volume}% {format_source}",
   "format-muted": "{format_source}",
   "format-source-muted": " ",
@@ -69,7 +78,7 @@
     "phone": " ",
     "portable": " ",
     "car": " ",
-    "default": [" ", " ", " "]
+    "default": [" ", " "]
   },
   "on-click": "pavucontrol"
 },
@@ -80,8 +89,9 @@
     "on-scroll-down": "brightnessctl -c backlight set 1%-",
     "on-scroll-up": "brightnessctl -c backlight set +1%"
 },
-"custom/monitor": {
+"custom/monitorbacklight": {
     "format": "{icon}{}%",
+    "tooltip": false,
     "format-icons": ["☀ "],
     "interval": 1,
     "exec": "~/.local/bin/monitor-brightness",
