@@ -1,23 +1,22 @@
 #!/bin/sh
 # text attributes
-# bold=$(tput bold)
-green=$(tput setaf 2)
-orange=$(tput setaf 166)
-red=$(tput setaf 1)
-light_green=$(tput setaf 178)
-light_orange=$(tput setaf 208)
-light_red=$(tput setaf 196)
-reset=$(tput sgr0)
+green="\033[32m"
+orange="\033[38;5;166m"
+red="\033[31m"
+light_green="\033[38;5;178m"
+light_orange="\033[38;5;208m"
+light_red="\033[38;5;196m"
+reset="\033[0m"
 
 info() {
-    echo "${green}[ INFO ]${reset} ${light_green}$1${reset}"
+    echo -e "${green}[ INFO ]${reset} ${light_green}$1${reset}"
 }
 
 warn() {
-    echo "${orange}[ WARN ]${reset} ${light_orange}$1${reset}"
+    echo -e "${orange}[ WARN ]${reset} ${light_orange}$1${reset}"
 }
 
 error() {
-    echo "${red}[ ERROR ]${reset} ${light_red}$1${reset}"
+    echo -e "${red}[ ERROR ]${reset} ${light_red}$1${reset}"
 }
 
