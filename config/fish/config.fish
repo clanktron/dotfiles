@@ -26,6 +26,7 @@ set -px PATH /opt/pkg/sbin:/opt/pkg/bin
 set -px PATH /usr/local/go/bin
 set -px PATH /nix/var/nix/profiles/default/bin
 set -px PATH $HOME/.local/bin
+set -px PATH $HOME/.krew/bin
 set -px PATH $HOME/.local/share/nvim/mason/bin
 set -px PATH $HOME/.go/bin
 set -px PATH $HOME/.cargo/bin
