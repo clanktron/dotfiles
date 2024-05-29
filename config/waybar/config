@@ -14,8 +14,8 @@
 },
 "clock": {
     "locale": "C", 
-    "format-alt": " {:%a,%b %d  %I:%M %p}",
-    "format": " {:%I:%M %p}",
+    "format": " {:%a, %b %d  %I:%M %p}",
+    "format-alt": " {:%I:%M %p}",
     "on-click-right": "gnome-calendar"
 },
 "custom/gpu": {
