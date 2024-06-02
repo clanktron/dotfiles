@@ -189,6 +189,7 @@ default_floating_border pixel 3
 
 # Ensure games idle inhibit
 for_window [app_id="steam-app*"] inhibit_idle focus
+for_window [class="steam_app*"] inhibit_idle focus
 
 ## Floats
 # for_window [app_id="(Calculator|Power-statistics|Control-center)"] floating enable
