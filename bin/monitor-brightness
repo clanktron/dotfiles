@@ -1,5 +1,4 @@
 #!/bin/sh
-dev="${2:-dev:/dev/i2c-10}"
 brightness=""
 
 split() {
@@ -51,14 +50,15 @@ get_line() {
     done
 }
 
+# this is all now unecessary
 while IFS= read -r line; do
         case $line in
-            *Control*)
-                brightness=$(printf "%s" "$line" | rstrip " C [Brightness]" | lstrip "Control 0x10: " | split "/" | get_line 2)
+            *)
+                brightness=$(printf "%s" "$line" | rstrip " 100" | lstrip "VCP 10 C ")
             ;;
         esac
 done << EOF
-$(ddccontrol -r 0x10 "$dev" 2> /dev/null)
+$(ddcutil getvcp 10 -t 2> /dev/null)
 EOF
 if [ "$brightness" = "" ]; then
     exit 1

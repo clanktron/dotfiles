@@ -1,4 +1,18 @@
 #!/bin/sh
 increment="${1:?}"
-dev="${2:-dev:/dev/i2c-10}"
-ddccontrol -r 0x10 -W "$increment" "$dev" > /dev/null 2>&1
+sign="${2:-nil}"
+
+case $sign in
+    "nil")
+        ddcutil setvcp 10 "$increment"
+        # echo "set brightness to $increment"
+        ;;
+    "+")
+        ddcutil setvcp 10 + "$increment"
+        # echo "increased brightness by $increment"
+        ;;
+    "-")
+        ddcutil setvcp 10 - "$increment"
+        # echo "decreased brightness by $increment"
+        ;;
+esac

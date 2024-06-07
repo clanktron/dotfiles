@@ -12,6 +12,26 @@ set $lock_screen hyprlock
 set $screenshot slurp | grim -g -
 set $full_screenshot grim
 set $notification_center swaync-client -t -sw
+set $play_pause playerctl play-pause
+set $next_track playerctl next
+set $previous_track playerctl previous
+set $brightness_up brightnessctl set 10%+
+set $brightness_down brightnessctl set 10%-
+set $kbd_brightness_up brightnessctl set 10%+ -d '*kbd_backlight*'
+set $kbd_brightness_down brightnessctl set 10%+ -d '*kbd_backlight*'
+set $toggle_mute pactl set-sink-mute @DEFAULT_SINK@ toggle
+set $volume_up pamixer -ui 5
+set $volume_down pamixer -ud 5
+# pamixer is a 3rd party utility, but pactl doesn't support unmuting with same command as volume change
+# pactl set-sink-volume @DEFAULT_SINK@ +6.25%
+# pactl set-sink-volume @DEFAULT_SINK@ -6.25%
+set $monitor_to_hdmi ddcutil setvcp 60 17
+set $monitor_to_vga ddcutil setvcp 60 1
+set $monitor_power_on ddcutil setvcp d6 1
+set $monitor_power_off ddcutil setvcp d6 5
+set $monitor_brightness_up ~/.local/bin/set-monitor-brightness 10 +
+set $monitor_brightness_down ~/.local/bin/set-monitor-brightness 10 -
+set $toggle_touchpad swaymsg input type:touchpad events toggle enabled disabled
 
 ### Key bindings
 bindsym $super+e exec $term
@@ -116,43 +136,23 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Volume Control
-set $toggle_mute pactl set-sink-mute @DEFAULT_SINK@ toggle
-set $volume_up pamixer -ui 5
-set $volume_down pamixer -ud 5
-# pamixer is a 3rd party utility, but pactl doesn't support unmuting with same command as volume change
-# pactl set-sink-volume @DEFAULT_SINK@ +6.25%
-# pactl set-sink-volume @DEFAULT_SINK@ -6.25%
 bindsym XF86AudioMute exec $toggle_mute
 bindsym XF86AudioRaiseVolume exec $volume_up
 bindsym XF86AudioLowerVolume exec $volume_down
 
 # Media keys
-set $play_pause playerctl play-pause
-set $next_track playerctl next
-set $previous_track playerctl previous
 bindsym XF86AudioPlay exec $play_pause
 bindsym XF86AudioPause exec $play_pause
 bindsym XF86AudioNext exec $next_track
 bindsym XF86AudioPrev exec $previous_track
 
 # Brightness
-set $brightness_up brightnessctl set 10%+
-set $brightness_down brightnessctl set 10%-
-set $kbd_brightness_up brightnessctl set 10%+ -d '*kbd_backlight*'
-set $kbd_brightness_down brightnessctl set 10%+ -d '*kbd_backlight*'
 bindsym XF86MonBrightnessUp exec $brightness_up
 bindsym XF86MonBrightnessDown exec $brightness_down
 bindsym XF86KbdBrightnessUp exec $kbd_brightness_up
 bindsym XF86KbdBrightnessDown exec $kbd_brightness_down
 
 # Monitor Control (Acer KA242Y)
-set $monitor "dev:/dev/i2c-10"
-set $monitor_to_hdmi ddccontrol -r 0x60 -w 17 $monitor
-set $monitor_to_vga ddccontrol -r 0x60 -w 1 $monitor
-set $monitor_power_on ddccontrol -r 0xd6 -w 1 $monitor
-set $monitor_power_off ddccontrol -r 0xd6 -w 5 $monitor
-set $monitor_brightness_up ~/.local/bin/set-monitor-brightness 10
-set $monitor_brightness_down ~/.local/bin/set-monitor-brightness -10
 bindsym Num_Lock exec $monitor_to_hdmi
 bindsym KP_Divide exec $monitor_to_vga
 bindsym ctrl+up exec $monitor_power_on
@@ -161,7 +161,6 @@ bindsym $super+XF86MonBrightnessUp exec $monitor_brightness_up
 bindsym $super+XF86MonBrightnessDown exec $monitor_brightness_down
 
 # Disable touchpads (Dualshock 4)
-set $toggle_touchpad swaymsg input type:touchpad events toggle enabled disabled
 bindsym End exec $toggle_touchpad
 
 # External Daemons:
