@@ -1,14 +1,14 @@
 * {
-  font-family: JetBrainsMono;
+  font-family: SF Mono;
   color: #e5e9f0;
 }
 
 #window {
-  background: #000000;
+  background: #313f4a;
   margin: auto;
   padding: 10px;
   border-radius: 20px;
-  border: 3px solid #6887a1;
+  border: 9px solid #000000;
 }
 
 #input {
