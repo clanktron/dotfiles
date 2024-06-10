@@ -45,6 +45,7 @@ To remove all previously installed/linked files:
     * Window Manager: [Yabai](https://github.com/koekeishiya/yabai)
     * General Scripting: [Hammerspoon](https://www.hammerspoon.org/)
 * Linux Specific:
-    * Window Manager/Compositor(s): [Hyprland](https://hyprland.org), [Sway](https://swaywm.org)
-    * Widgets: [Ags](https://github.com/aylur/ags), [Wlogout](https://github.com/ArtsyMacaw/wlogout)
+    * Window Manager/Compositor(s): [Sway](https://swaywm.org), [Hyprland](https://hyprland.org) 
+    * Widgets: [Waybar](https://github.com/alexays/waybar), [Wlogout](https://github.com/ArtsyMacaw/wlogout)
+    * Notifications: [SwayNC](https://github.com/ErikReider/SwayNotificationCenter)
     * Launcher: [Wofi](https://hg.sr.ht/~scoopta/wofi)
