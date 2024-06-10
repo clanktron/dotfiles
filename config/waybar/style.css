@@ -2,28 +2,31 @@
     font-size: 13px;
     font-family: "SF Mono", "Font Awesome 6 Free";
     min-height: 20px;
-    color: white;
 }
 
 window#waybar {
     background-color: rgba(0, 0, 0, 1);
+    color: white;
 }
 
 #workspaces{
+    color: white;
     margin-top: 6px;
     margin-bottom: 6px;
     margin-right: 10px;
     margin-left: 15px;
 }
 
-#workspaces button{
+#workspaces button {
+    color: white;
     border-radius: 15px;
     padding: 1px 4px;
 }
 
 #workspaces button.active, #workspaces button.focused{
+    color: black;
     font-weight: bolder;
-    background: #6e93d4;
+    background: #ffffff;
 }
 
 #tray,
@@ -41,6 +44,7 @@ window#waybar {
 #clock, 
 #custom-power,
 #network {
+    color: white;
 	padding: 0 10px;
 }
 #network.netinfo {
