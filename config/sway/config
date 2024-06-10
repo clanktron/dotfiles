@@ -46,7 +46,7 @@ bindsym $super+Shift+Q exec $logout_menu
 # Lock Screen
 bindsym $super+L exec $lock_screen
 # Toggle notification sidebar
-bindsym $super+ctrl+n exec $notification_center
+bindsym $super+Shift+n exec $notification_center
 # Screenshots
 bindsym $super+Shift+4 exec $screenshot
 bindsym $super+Shift+3 exec $full_screenshot
