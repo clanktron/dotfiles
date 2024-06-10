@@ -17,8 +17,9 @@ args = ["--login"]
 program = "/usr/local/bin/fish"
 
 [window]
+decorations = "Full"
 dynamic_padding = true
-dynamic_title = true
+dynamic_title = false
 opacity = 0.9
 blur = true
 startup_mode = "Windowed"
