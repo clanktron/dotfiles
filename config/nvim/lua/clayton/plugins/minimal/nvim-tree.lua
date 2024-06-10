@@ -9,6 +9,7 @@ return {
             view = {
                 width = 35,
                 preserve_window_proportions = true,
+                signcolumn = "no",
                 float = {
                     enable = false,
                     open_win_config = {
@@ -20,7 +21,7 @@ return {
               add_trailing = false,
               group_empty = false,
               full_name = false,
-              root_folder_label = ":~:s?$?",
+              root_folder_label = false
             }
         },
         keys = {
