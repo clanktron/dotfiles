@@ -16,9 +16,9 @@ remove_installation() {
     for config in "$DOTFILES_DIR"/config/*; do
         config_target_path="${XDG_CONFIG_HOME:?}/${config##*/}"
         if [ -L "$config_target_path" ]; then
-            rm -v "$config"
+            rm -v "$config_target_path"
         elif [ -e "$config_target_path" ]; then
-            rm -rv "$config";
+            rm -rv "$config_target_path";
         fi
     done
 
