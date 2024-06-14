@@ -9,19 +9,19 @@ light_red="\033[38;5;196m"
 reset="\033[0m"
 
 info() {
-    printf "${green}[ INFO ]${reset} ${light_green}%s${reset}\n" "$1"
+    printf "${green}[ INFO ]${reset} ${light_green}%b${reset}" "$1"
 }
 
 warn() {
-    printf "${orange}[ WARN ]${reset} ${light_orange}%s${reset}\n" "$1"
+    printf "${orange}[ WARN ]${reset} ${light_orange}%b${reset}" "$1"
 }
 
 error() {
-    printf "${red}[ ERROR ]${reset} ${light_red}%s${reset}\n" "$1"
+    printf "${red}[ ERROR ]${reset} ${light_red}%b${reset}" "$1"
 }
 
 msg() {
-    printf "${light_green}%s${reset}" "$1"
+    printf "${light_green}%b${reset}" "$1"
 }
 
 prompt() {
