@@ -2,6 +2,15 @@
 . ./bin/vars.sh
 . ./bin/formatting.sh
 
+show_help() {
+    echo "Usage: ./install [options]"
+    echo ""
+    echo "Options:"
+    echo "  -l, --link       Create symbolic links instead of copying files"
+    echo "  -b, --backup     Backup any non-symlink files to be overwritten"
+    echo "  -h, --help       Display this help message and exit"
+}
+
 INSTALL="cp -r"
 INSTALL_MSG="Copying"
 BACKUP=false
@@ -16,8 +25,13 @@ while [ $# -gt 0 ]; do
         BACKUP=true
         shift
         ;;
+    -h | --help)
+        show_help
+        exit
+        ;;
     *)
-        shift
+        show_help
+        exit 1
         ;;
 esac
 done
