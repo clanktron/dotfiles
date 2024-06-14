@@ -1,30 +1,35 @@
 #!/bin/sh
+. ./bin/formatting.sh
+. ./bin/vars.sh
 DOTFILES_DIR="${DOTFILES_DIR:?}"
-. "$DOTFILES_DIR"/formatting.sh
 
 remove_installation() {
-    info "Removing current config..."
-    # Remove executables if they're installed
-    find "$DOTFILES_DIR"/bin -maxdepth 1 -exec basename {} \; | sed 1d | while read -r file; do 
-        if [ -e "${HOME:?}"/.local/bin/"$file" ]; then rm "${HOME:?}"/.local/bin/"$file"; fi
-    done
-    # Remove config directories if they're installed
-    find "$DOTFILES_DIR"/config -maxdepth 1 -exec basename {} \; | sed 1d | while read -r dir; do 
-        if [ -L "${XDG_CONFIG_HOME:?}"/"$dir" ]; then
-            rm "${XDG_CONFIG_HOME:?}"/"$dir"
-        else
-            if [ -e "${XDG_CONFIG_HOME:?}"/"$dir" ]; then rm -r "${XDG_CONFIG_HOME:?}"/"$dir"; fi
+    info "Removing current config...\n"
+
+    for executable in "$DOTFILES_DIR"/bin/*; do
+        executable_target_path="${HOME:?}/.local/bin/${executable##*/}"
+        if [ -e "$executable_target_path" ]; then
+            rm -v "$executable_target_path";
         fi
     done
 
-    if [ -e "$HOME"/.bashrc ]; then rm "$HOME"/.bashrc; fi
-    if [ -e "$HOME"/.hammerspoon ]; then rm -r "$HOME"/.hammerspoon/; fi
+    for config in "$DOTFILES_DIR"/config/*; do
+        config_target_path="${XDG_CONFIG_HOME:?}/${config##*/}"
+        if [ -L "$config_target_path" ]; then
+            rm -v "$config"
+        elif [ -e "$config_target_path" ]; then
+            rm -rv "$config";
+        fi
+    done
+
+    if [ -e "$HOME"/.bashrc ]; then
+        rm -v "$HOME"/.bashrc;
+    fi
 }
 
 main() {
     remove_installation
-    info "Finished removing existing config!"
+    info "Finished removing existing config!\n"
 }
 
 main
-

@@ -1,6 +1,6 @@
 #!/bin/sh
-. ./vars.sh
-. ./formatting.sh
+. ./bin/vars.sh
+. ./bin/formatting.sh
 
 INSTALL="cp -r"
 INSTALL_MSG="Copying"
@@ -12,8 +12,6 @@ while [ $# -gt 0 ]; do
         shift
         ;;
     *)
-        # If it's not a flag, assume it's an argument
-        # arg="$1"
         shift
         ;;
 esac
@@ -21,60 +19,58 @@ done
 export INSTALL
 export INSTALL_MSG
 
-ensure_paths() {
-    # Ensure ~/.config path is available
+remove_existing_installation() {
+    "$DOTFILES_DIR"/uninstall
+}
+
+ensure_config_dirs() {
     if [ ! -d "$HOME"/.config ]; then
-        info "Creating $HOME/.config directory..."
+        info "Creating $HOME/.config directory...\n"
         mkdir "$HOME"/.config
-    fi
-    # Ensure ~/.local/bin path is available for install
-    if [ ! -d "$HOME"/.local ]; then
-        info "Creating $HOME/.local directory..."
-        mkdir "$HOME"/.local
-        info "Creating $HOME/.local/bin directory..."
-        mkdir "$HOME"/.local/bin
-    else
-        if [ ! -d "$HOME"/.local/bin ]; then
-            mkdir "$HOME"/.local/bin
-        fi
     fi
 }
 
-remove_installation() {
-    "$DOTFILES_DIR"/uninstall
+ensure_script_dirs() {
+    if [ ! -d "$HOME"/.local ]; then
+        info "Creating $HOME/.local directory...\n"
+        mkdir "$HOME"/.local
+        info "Creating $HOME/.local/bin directory...\n"
+        mkdir "$HOME"/.local/bin
+    elif [ ! -d "$HOME"/.local/bin ]; then
+        info "Creating $HOME/.local/bin directory...\n"
+        mkdir "$HOME"/.local/bin
+    fi
+}
+
+install_config () {
+    ensure_config_dirs
+    info "$INSTALL_MSG config folders...\n"
+    for config in "$DOTFILES_DIR"/config/*; do
+        eval "$INSTALL" "$config" "$XDG_CONFIG_HOME/${config##*/}"
+    done
+    eval "$INSTALL" "$DOTFILES_DIR"/.bashrc "$HOME"/.bashrc
+}
+
+install_scripts() {
+    ensure_script_dirs
+    info "$INSTALL_MSG scripts/excecutables...\n"
+    for executable in "$DOTFILES_DIR"/bin/*; do
+        eval "$INSTALL" "$executable" "$HOME/.local/bin/${executable##*/}"
+    done
 }
 
 OS_script() {
     if [ "$(uname)" = "Darwin" ]; then
-        "$DOTFILES_DIR"/darwin/install.sh
+        "$DOTFILES_DIR"/darwin/install
     fi
 }
 
-install_scripts() {
-    # Softlink all executables in bin directory to ~/.local/bin
-    info "$INSTALL_MSG scripts/excecutables..."
-    BIN_DIR="$DOTFILES_DIR"/bin
-    find "$BIN_DIR" -maxdepth 1 -exec basename {} \; | sed 1d | while read -r file; do 
-        eval "$INSTALL" "$BIN_DIR"/"$file" "$HOME"/.local/bin/"$file"
-    done
+main() {
+    remove_existing_installation
+    install_config
+    install_scripts
+    OS_script
+    info "Done!\n"
 }
 
-install_config () {
-    # Install all directories in ./config to ~/.config
-    info "$INSTALL_MSG config folders..."
-    CONFIG_DIR="$DOTFILES_DIR"/config
-    find "$CONFIG_DIR" -maxdepth 1 -exec basename {} \; | sed 1d | while read -r dir; do 
-        eval "$INSTALL" "$CONFIG_DIR"/"$dir" "$XDG_CONFIG_HOME/$dir"
-    done
-    # these should eventually be migrated to some sort of generic function
-    eval "$INSTALL" "$DOTFILES_DIR"/.bashrc "$HOME"/.bashrc
-    mkdir "$HOME"/.hammerspoon
-    eval "$INSTALL" "$CONFIG_DIR"/hammerspoon/init.lua "$HOME"/.hammerspoon/init.lua
-}
-
-ensure_paths
-remove_installation
-install_config
-install_scripts
-OS_script
-info "Done!"
+main
