@@ -2,28 +2,42 @@
 . ./bin/formatting.sh
 . ./bin/vars.sh
 DOTFILES_DIR="${DOTFILES_DIR:?}"
+BACKUP="${BACKUP:-false}"
+
+backup() {
+   if [ "$BACKUP" = true ]; then
+       mv "$1" "$1".bk
+   fi
+}
 
 remove_installation() {
     info "Removing current config...\n"
 
-    for executable in "$DOTFILES_DIR"/bin/*; do
-        executable_target_path="${HOME:?}/.local/bin/${executable##*/}"
-        if [ -e "$executable_target_path" ]; then
-            rm -v "$executable_target_path";
+    for executable_to_install in "$DOTFILES_DIR"/bin/*; do
+        executable="${HOME:?}/.local/bin/${executable_to_install##*/}"
+        if [ -L "$executable" ]; then
+            rm -v "$executable";
+        elif [ -f "$executable" ]; then
+            backup "$executable"
+            rm -v "$executable";
         fi
     done
 
-    for config in "$DOTFILES_DIR"/config/*; do
-        config_target_path="${XDG_CONFIG_HOME:?}/${config##*/}"
-        if [ -L "$config_target_path" ]; then
-            rm -v "$config_target_path"
-        elif [ -e "$config_target_path" ]; then
-            rm -rv "$config_target_path";
+    for config_to_install in "$DOTFILES_DIR"/config/*; do
+        config="${XDG_CONFIG_HOME:?}/${config_to_install##*/}"
+        if [ -L "$config" ]; then
+            rm -v "$config"
+        elif [ -e "$config" ]; then
+            backup "$config"
+            rm -rv "$config";
         fi
     done
 
-    if [ -e "$HOME"/.bashrc ]; then
-        rm -v "$HOME"/.bashrc;
+    if [ -L "$HOME"/.bashrc ]; then
+        rm -v "$HOME"/.bashrc
+    elif [ -e "$HOME"/.bashrc ]; then
+        backup "$HOME"/.bashrc
+        rm -v "$HOME"/.bashrc
     fi
 }
 
