@@ -1,7 +1,7 @@
 #!/bin/sh
 
-TERM_PROCESS=wezterm
-TERM=org.wezfurlong.wezterm
+TERM=alacritty
+TERM_PROCESS=$TERM
 
 if pgrep -f "$TERM_PROCESS" > /dev/null; then
     pkill "$TERM_PROCESS"
