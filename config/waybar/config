@@ -27,7 +27,7 @@
 },
 "temperature#cpu": {
     "interval": 2,
-    "hwmon-path": "/sys/class/hwmon/hwmon4/temp1_input",
+    "hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input",
     "format": "{icon}{temperatureC:3}°C",
     "tooltip-format": "CPU",
     "format-icons": {
