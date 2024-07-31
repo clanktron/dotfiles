@@ -29,7 +29,7 @@ return {
         'rust_analyzer',
         'racket_langserver',
         'terraformls',
-        'tsserver',
+        -- 'tsserver',
         'volar', -- vue
     },
     config = function(_, opts)
@@ -96,7 +96,7 @@ return {
         lspconfig.volar.setup{
             capabilities = capabilities,
             on_attach = on_attach,
-            filetypes = {'vue'}
+            filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
         }
         lspconfig.java_language_server.setup{
             capabilities = capabilities,
