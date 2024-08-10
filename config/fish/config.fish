@@ -2,13 +2,6 @@ if not status --is-interactive
     exit
 end
 
-# Attach to tmux session if it already exists
-if command -q tmux; and not set -q TMUX
-    tmux attach > /dev/null 2>&1
-end
-
-set fish_dir (dirname (status --current-filename))
-
 # ENVIRONMENT
 # set -gx EDITOR 'code --wait'
 set -gx EDITOR nvim
@@ -21,18 +14,21 @@ set -gx FISHRC $HOME/.config/fish/config.fish
 set -gx VENDOR_DIR $HOME/Developer/repos/vendor
 
 ## PATH
-set -gx PATH /usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
-set -px PATH /opt/pkg/sbin:/opt/pkg/bin
-set -px PATH /usr/local/go/bin
-set -px PATH /nix/var/nix/profiles/default/bin
-set -px PATH $HOME/.local/bin
-set -px PATH $HOME/.krew/bin
-set -px PATH $HOME/.local/share/nvim/mason/bin
-set -px PATH $HOME/.go/bin
-set -px PATH $HOME/.cargo/bin
-set -px PATH $HOME/Developer/repos/clanktron/restic-backups
-set -px PATH $HOME/.rd/bin
-set -px PATH $HOME/Developer/vendor/google-cloud-sdk/bin
+set -gx PATH /opt/pkg/sbin:/opt/pkg/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
+set -ax PATH /run/wrappers/bin:/run/current-system/sw/bin
+set -ax PATH $HOME/.local/bin
+set -ax PATH $HOME/.krew/bin
+# set -px PATH $HOME/.local/share/nvim/mason/bin
+set -ax PATH $HOME/.go/bin
+set -ax PATH $HOME/.cargo/bin
+set -ax PATH $HOME/.rd/bin
+
+# Attach to tmux session if it already exists
+if command -q tmux; and not set -q TMUX
+    tmux attach > /dev/null 2>&1
+end
+
+set fish_dir (dirname (status --current-filename))
 
 # Aliases
 alias resource '. $FISHRC'

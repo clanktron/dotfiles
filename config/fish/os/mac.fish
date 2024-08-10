@@ -5,10 +5,7 @@ set -x XDG_CONFIG_HOME /Users/clayton/.config
 # Path
 # Use GNU coreutils instead of any mac builtins
 set -px PATH /usr/local/opt/coreutils/libexec/gnubin
-# set -gx GOPATH ~/Developer/go
-set -px PATH $GOPATH/bin
-set -px PATH ~/.cargo/bin
-# set -px PATH ~/.rd/bin
+set -px PATH /nix/var/nix/profiles/default/bin
 set -ax PATH /Library/Apple/usr/bin
 set -ax PATH /Applications/VMware\ Fusion.app/Contents/Public
 set -ax PATH /Applications/Wireshark.app/Contents/MacOS

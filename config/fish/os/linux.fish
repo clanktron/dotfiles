@@ -3,4 +3,5 @@ alias poke pokemon-showdown
 alias core 'sensors | grep Core'
 
 # PATH
-set -px PATH /var/lib/flatpak/exports/bin
+set -ax PATH /var/lib/flatpak/exports/bin
+set -ax PATH ~/.nix-profile/bin
