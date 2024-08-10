@@ -2,7 +2,7 @@ import = ["~/.config/alacritty/colors/Nord.toml"]
 live_config_reload = true
 
 [mouse]
-hide_when_typing = true
+hide_when_typing = false
 
 [scrolling]
 history = 100000
