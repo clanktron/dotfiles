@@ -20,8 +20,8 @@ set $brightness_down brightnessctl set 10%-
 set $kbd_brightness_up brightnessctl set 10%+ -d '*kbd_backlight*'
 set $kbd_brightness_down brightnessctl set 10%+ -d '*kbd_backlight*'
 set $toggle_mute wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-set $volume_up wpctl set-volume @DEFAULT_AUDIO_SINK@ 5.0%+
-set $volume_down wpctl set-volume @DEFAULT_AUDIO_SINK@ 5.0%-
+set $volume_up wpctl set-volume @DEFAULT_AUDIO_SINK@ 5.0%+ -l 1
+set $volume_down wpctl set-volume @DEFAULT_AUDIO_SINK@ 5.0%- -l 1
 set $monitor_to_hdmi ddcutil setvcp 60 17
 set $monitor_to_vga ddcutil setvcp 60 1
 # set $monitor_power_on ddcutil setvcp d6 1
