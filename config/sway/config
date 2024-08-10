@@ -8,7 +8,7 @@ set $right l
 set $term alacritty
 set $menu wofi
 set $logout_menu wlogout
-set $lock_screen hyprlock
+set $lock_screen swaylock
 set $screenshot slurp | grim -g -
 set $full_screenshot grim
 set $notification_center swaync-client -t -sw
@@ -24,10 +24,12 @@ set $volume_up wpctl set-volume @DEFAULT_AUDIO_SINK@ 5.0%+
 set $volume_down wpctl set-volume @DEFAULT_AUDIO_SINK@ 5.0%-
 set $monitor_to_hdmi ddcutil setvcp 60 17
 set $monitor_to_vga ddcutil setvcp 60 1
-set $monitor_power_on ddcutil setvcp d6 1
-set $monitor_power_off ddcutil setvcp d6 5
+# set $monitor_power_on ddcutil setvcp d6 1
+# set $monitor_power_off ddcutil setvcp d6 5
 set $monitor_brightness_up ~/.local/bin/set-monitor-brightness 10 +
 set $monitor_brightness_down ~/.local/bin/set-monitor-brightness 10 -
+set $displays_off swaymsg "output * dpms off"
+set $displays_on swaymsg "output * dpms on"
 set $toggle_touchpad swaymsg input type:touchpad events toggle enabled disabled
 
 ### Key bindings
@@ -154,8 +156,8 @@ bindsym XF86KbdBrightnessDown exec $kbd_brightness_down
 # Monitor Control (Acer KA242Y)
 bindsym Num_Lock exec $monitor_to_hdmi
 bindsym KP_Divide exec $monitor_to_vga
-bindsym ctrl+up exec $monitor_power_on
-bindsym KP_Subtract exec $monitor_power_off
+bindsym ctrl+up exec $displays_on
+bindsym KP_Subtract exec $displays_off
 bindsym $super+XF86MonBrightnessUp exec $monitor_brightness_up
 bindsym $super+XF86MonBrightnessDown exec $monitor_brightness_down
 
@@ -170,11 +172,11 @@ bar {
 exec_always {
     swww-daemon --format xrgb
     swaync
-    # swayidle -w \
-    #     timeout 300 'hyprlock' \
-    #     timeout 480 'swaymsg "output * dpms off"' \
-    #         resume 'swaymsg "output * dpms on"' \
-    #     before-sleep 'hyprlock'
+    swayidle -w \
+        timeout 300 $lock_screen \
+        timeout 480 $displays_off \
+            resume $displays_on \
+        before-sleep $lock_screen
 }
 
 # Settings:
