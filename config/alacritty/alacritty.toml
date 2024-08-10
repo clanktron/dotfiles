@@ -14,7 +14,7 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
 [shell]
 args = ["--login"]
-program = "/usr/local/bin/fish"
+program = "fish"
 
 [window]
 decorations = "Full"
