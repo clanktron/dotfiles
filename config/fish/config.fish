@@ -23,12 +23,20 @@ set -ax PATH $HOME/.go/bin
 set -ax PATH $HOME/.cargo/bin
 set -ax PATH $HOME/.rd/bin
 
-# Attach to tmux session if it already exists
-if command -q tmux; and not set -q TMUX
-    tmux attach > /dev/null 2>&1
+set fish_dir (dirname (status --current-filename))
+
+# Source additional config based on OS
+switch (uname)
+  case Darwin
+    source "$fish_dir"/os/mac.fish
+  case Linux
+    source "$fish_dir"/os/linux.fish
+  case '*'
+    source "$fish_dir"/os/windows.fish
 end
 
-set fish_dir (dirname (status --current-filename))
+# Attach to tmux session if it already exists
+tmux attach > /dev/null 2>&1
 
 # Aliases
 alias resource '. $FISHRC'
@@ -80,16 +88,6 @@ if test -z (pgrep ssh-agent | string collect)
   eval (ssh-agent -c)
   set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
   set -Ux SSH_AGENT_PID $SSH_AGENT_PID
-end
-
-# Source additional config based on OS
-switch (uname)
-  case Darwin
-    source "$fish_dir"/os/mac.fish
-  case Linux
-    source "$fish_dir"/os/linux.fish
-  case '*'
-    source "$fish_dir"/os/windows.fish
 end
 
 # Source local config
