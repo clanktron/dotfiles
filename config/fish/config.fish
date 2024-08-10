@@ -14,7 +14,7 @@ set -gx FISHRC $HOME/.config/fish/config.fish
 set -gx VENDOR_DIR $HOME/Developer/repos/vendor
 
 ## PATH
-set -gx PATH /opt/pkg/sbin:/opt/pkg/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
+set -gx PATH /sbin:/usr/sbin:/bin:/usr/bin:/usr/local/sbin:/usr/local/bin:/opt/pkg/sbin:/opt/pkg/bin
 set -ax PATH /run/wrappers/bin:/run/current-system/sw/bin
 set -ax PATH $HOME/.local/bin
 set -ax PATH $HOME/.krew/bin
