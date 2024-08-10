@@ -28,8 +28,8 @@ set $monitor_to_vga ddcutil setvcp 60 1
 # set $monitor_power_off ddcutil setvcp d6 5
 set $monitor_brightness_up ~/.local/bin/set-monitor-brightness 10 +
 set $monitor_brightness_down ~/.local/bin/set-monitor-brightness 10 -
-set $displays_off swaymsg "output * dpms off"
-set $displays_on swaymsg "output * dpms on"
+set $displays_off 'swaymsg "output * dpms off"'
+set $displays_on 'swaymsg "output * dpms on"'
 set $toggle_touchpad swaymsg input type:touchpad events toggle enabled disabled
 
 ### Key bindings
