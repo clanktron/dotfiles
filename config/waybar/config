@@ -7,7 +7,7 @@
 
 "modules-left": ["sway/workspaces","hyprland/workspaces"],
 "modules-center": ["clock"],
-"modules-right":  ["tray","cpu","memory","network","pulseaudio","backlight","battery","custom/power"],
+"modules-right":  ["tray","cpu","memory","network","pulseaudio","backlight","custom/monitorbacklight","battery","custom/power"],
 
 "tray": {
     "icon-size": 16,
@@ -81,7 +81,7 @@
     "car": " ",
     "default": [" ", " "]
   },
-  "on-click": "pavucontrol"
+  "on-click": "com.saivert.pwvucontrol"
 },
 "backlight": {
     "format": "{icon}{percent}%",
