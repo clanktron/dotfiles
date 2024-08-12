@@ -1,5 +1,6 @@
 # Environment variables
 set -gx HOMEBREW_NO_ENV_HINTS 1
+set -gx HOMEBREW_NO_VERIFY_ATTESTATIONS 1
 set -x XDG_CONFIG_HOME /Users/clayton/.config
 
 # Path
