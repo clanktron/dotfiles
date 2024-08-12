@@ -10,6 +10,7 @@ pkgs.buildEnv {
         bat
         zoxide
         ripgrep
+        yazi
         k9s
         nerdfonts
         font-awesome
