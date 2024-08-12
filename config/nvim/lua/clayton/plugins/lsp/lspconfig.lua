@@ -128,6 +128,8 @@ return {
         table.insert(lua_runtime, 'lua/?.lua')
         table.insert(lua_runtime, 'lua/?/init.lua')
         table.insert(lua_runtime, vim.env.VIMRUNTIME)
+        table.insert(lua_runtime, vim.env.VIMRUNTIME .. "/lua")
+        table.insert(lua_runtime, vim.env.VIMRUNTIME .. "/lua/vim/lsp")
         lspconfig.lua_ls.setup({
             capabilities = capabilities,
             on_attach = on_attach,
@@ -140,19 +142,16 @@ return {
                             'lua/?/init.lua',
                         },
                     },
-                    --  diagnostics = {
-                        --      globals = { "vim" },
-                        --  },
-                        workspace = {
-                            checkThirdParty = false,
-                            library = lua_runtime
-                        },
-                        telemetry = {
-                            enable = false,
-                        },
-                        hint = {
-                            enable = true,
-                        },
+                    workspace = {
+                        checkThirdParty = false,
+                        library = lua_runtime
+                    },
+                    telemetry = {
+                        enable = false,
+                    },
+                    hint = {
+                        enable = true,
+                    },
                     },
                 },
             })
