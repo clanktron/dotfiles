@@ -8,7 +8,7 @@ set $right l
 set $term alacritty
 set $menu wofi
 set $logout_menu wlogout
-set $lock_screen swaylock
+set $lock_screen 'swaylock -f'
 set $screenshot slurp | grim -g -
 set $full_screenshot grim
 set $notification_center swaync-client -t -sw
@@ -173,8 +173,8 @@ exec_always {
     swww-daemon --format xrgb
     swaync
     swayidle -w \
-        timeout 300 $lock_screen \
-        timeout 480 $displays_off \
+        timeout 900 $lock_screen \
+        timeout 960 $displays_off \
             resume $displays_on \
         before-sleep $lock_screen
 }
