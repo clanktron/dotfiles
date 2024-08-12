@@ -12,10 +12,6 @@ multiplier = 1
 save_to_clipboard = true
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
-[shell]
-args = ["--login"]
-program = "fish"
-
 [window]
 decorations = "Full"
 dynamic_padding = true
