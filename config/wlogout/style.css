@@ -1,23 +1,26 @@
-* {
-	background-image: none;
+*{
+    font-size: 13px;
+    font-family: "SF Pro", "Font Awesome 6 Free";
+    background-image: none;
 }
 window {
-	background-color: rgba(12, 12, 12, 0.5);
+    background-color: rgba(12, 12, 12, 0.5);
     background-size: 10%;
 }
 button {
-	background-color: rgba(0,0,0,0.85);
+    background-color: rgba(0,0,0,0.85);
+    color: white;
     border-radius: 0;
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: 25%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25%;
 }
 
 button:focus, button:active, button:hover {
-	border-style: solid;
+    border-style: solid;
     border-color: #FFFFFF;
-	border-width: 2px;
-	outline-style: none;
+    border-width: 2px;
+    outline-style: none;
 }
 
 #lock {

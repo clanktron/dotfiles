@@ -8,8 +8,8 @@
 @define-color critical-bg rgba(33, 164, 223, 0.7);
 
 * {
-    font-family: "Source Sans Pro";
-    font-size:   15px;
+    font-family: "SF Pro";
+    font-size: 13px;
 }
 
 .notification-row {
