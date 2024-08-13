@@ -19,21 +19,6 @@
     "format-alt": " {:%I:%M %p}",
     "on-click-right": "gnome-calendar"
 },
-"custom/gpu": {
-    "exec": "~/.local/bin/gpu.sh",
-    "interval": 2,
-    "min-length": 10,
-    "tooltip": false,
-},
-"temperature#cpu": {
-    "interval": 2,
-    "hwmon-path": "/sys/class/hwmon/hwmon4/temp1_input",
-    "format": "{icon}{temperatureC:3}°C",
-    "tooltip-format": "CPU",
-    "format-icons": {
-        "default": ""
-    }
-},
 "cpu": {
     "interval": 2,
     "format": " {usage}%",
@@ -87,15 +72,6 @@
     "format": "{icon}{percent}%",
     "tooltip": false,
     "format-icons": ["☀ "],
-    "on-scroll-down": "brightnessctl -c backlight set 1%-",
-    "on-scroll-up": "brightnessctl -c backlight set +1%"
-},
-"custom/monitorbacklight": {
-    "format": "{icon}{}%",
-    "tooltip": false,
-    "format-icons": ["☀ "],
-    "interval": 1,
-    "exec": "~/.local/bin/monitor-brightness",
 },
 "battery": {
   "states": {
