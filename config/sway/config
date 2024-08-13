@@ -177,6 +177,7 @@ exec_always {
         timeout 960 $displays_off \
             resume $displays_on \
         before-sleep $lock_screen
+    nwg-dock -nows -p left -d -hd 100000
 }
 
 # Settings:
