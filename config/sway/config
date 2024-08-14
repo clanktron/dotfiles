@@ -240,3 +240,5 @@ input type:keyboard {
 input 1356:2508:Sony_Interactive_Entertainment_Wireless_Controller_Touchpad {
     events disabled
 }
+
+include /etc/sway/config.d/*
