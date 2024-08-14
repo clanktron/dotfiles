@@ -8,7 +8,8 @@ set $right l
 set $term alacritty
 set $menu wofi
 set $logout_menu wlogout
-set $lock_screen 'swaylock -f'
+set $lock_screen swaylock -f
+set $dim_to_lock_screen chayang && $lock_screen
 set $screenshot slurp | grim -g -
 set $full_screenshot grim
 set $notification_center swaync-client -t -sw
@@ -170,14 +171,14 @@ bar {
 }
 
 exec_always {
+    nwg-dock -nows -p left -d -hd 100000
     swww-daemon --format xrgb
     swaync
     swayidle -w \
-        timeout 900 $lock_screen \
+        timeout 900 '$dim_to_lock_screen' \
         timeout 960 $displays_off \
             resume $displays_on \
-        before-sleep $lock_screen
-    nwg-dock -nows -p left -d -hd 100000
+        before-sleep  '$lock_screen'
 }
 
 # Settings:
@@ -232,9 +233,10 @@ input type:touchpad {
     accel_profile "adaptive"
 }
 input type:keyboard {
- repeat_rate 75
- repeat_delay 225
- xkb_options ctrl:nocaps
+    repeat_rate 75
+    repeat_delay 225
+    xkb_options ctrl:nocaps
 }
-
-include /etc/sway/config.d/*
+input 1356:2508:Sony_Interactive_Entertainment_Wireless_Controller_Touchpad {
+    events disabled
+}
