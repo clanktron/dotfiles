@@ -1,33 +1,34 @@
 {
 "layer": "top",
 "position": "top",
-"height": 36,
+"height": 24,
 "reload_style_on_change": true,
 "exclusive": true,
 
-"modules-left": ["sway/workspaces","hyprland/workspaces"],
+"modules-left": ["custom/power","sway/workspaces","hyprland/workspaces"],
 "modules-center": ["clock"],
-"modules-right":  ["tray","bluetooth","cpu","memory","network","pulseaudio","backlight","custom/monitorbacklight","battery","custom/power"],
+"modules-right":  ["tray","cpu","memory","pulseaudio","bluetooth","network","backlight","custom/monitorbacklight","battery"],
 
 "tray": {
-    "icon-size": 16,
+    "icon-size": 13,
     "spacing": 7
 },
 "clock": {
     "locale": "C", 
-    "format": " {:%a, %b %d  %I:%M %p}",
+    "format": "{:%a %b %d   %I:%M %p}",
     "format-alt": " {:%I:%M %p}",
+    "tooltip": false,
     "on-click-right": "gnome-calendar"
 },
 "bluetooth": {
-	"format": " {status}",
-	"format-connected": " {device_alias}",
-	"format-connected-battery": " {device_alias} {device_battery_percentage}%",
-	// "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
-	"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
-	"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
-	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-	"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+	"format": "",
+	"format-disabled": "󰂲",
+	"format-off": "",
+	"format-connected-battery": "",
+	"tooltip-format": "{controller_alias}  {controller_address}\n\n{num_connections} connected",
+	"tooltip-format-connected": "{controller_alias}  {controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+	"tooltip-format-enumerate-connected": "{device_alias}",
+	"tooltip-format-enumerate-connected-battery": "{device_alias}\t󰁹 {device_battery_percentage}%",
     "on-click": "blueman-manager"
 },
 "cpu": {
@@ -39,8 +40,6 @@
     "interval": 2,
     "tooltip": false,
     "format": " {used:0.2f}GB",
-    "max-length": 9,
-    "min-length": 9,
     "warning": 70,
     "critical": 90,
     "on-double-click": "gnome-system-monitor"
@@ -55,7 +54,7 @@
 "network": {
   "interval": 2,
   "format-wifi": " ",
-  "format-ethernet": "",
+  "format-ethernet": " ",
   "format-linked": "{ipaddr}",
   "format-disconnected": " Disconnected",
   "format-disabled": "",
@@ -64,13 +63,12 @@
   "on-double-click": "nm-connection-editor"
 },
 "pulseaudio": {
-  "format": "{icon}{volume}% {format_source}",
-  "format-bluetooth": "{icon} {volume}% {format_source}",
+  "format": "{icon} {volume}%",
   "format-muted": "{format_source}",
   "format-source-muted": " ",
   "format-icons": {
-    "headphone": " ",
-    "hands-free": " ",
+    "headphone": "🎧",
+    "hands-free": "🎧",
     "headset": "🎧",
     "phone": " ",
     "portable": " ",
@@ -101,6 +99,6 @@
 "custom/power": {
     "tooltip": false,
     "on-click": "wlogout",
-    "format": " ",
+    "format": "󱄅",
 },
 }
