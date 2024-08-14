@@ -43,6 +43,7 @@ window#waybar {
 #battery, 
 #clock, 
 #custom-power,
+#bluetooth,
 #network {
     color: white;
 	padding: 0 10px;
