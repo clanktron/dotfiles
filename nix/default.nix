@@ -12,6 +12,8 @@ pkgs.buildEnv {
         ripgrep
         yazi
         k9s
+        jq
+        yq
         nerdfonts
         font-awesome
         lazygit
