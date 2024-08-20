@@ -1,12 +1,12 @@
 {
     "label" : "lock",
-    "action" : "hyprlock",
+    "action" : "loginctl lock-session self",
     "text" : "Lock",
     "keybind" : "l"
 }
 {
     "label" : "logout",
-    "action" : "loginctl terminate-user $USER",
+    "action" : "loginctl terminate-session self",
     "text" : "Logout",
     "keybind" : "e"
 }
