@@ -7,20 +7,20 @@ pkgs.buildEnv {
         tree
         tmux
         bat
+        htop
         zoxide
         ripgrep
         yazi
-        nerdfonts
-        font-awesome
-        lazygit
-        gnumake
-        gcc
-        gnupg
-        alacritty
         mpv
         bitwarden-cli
         bws
+        lazygit
 
+        gh
+        devspace
+        azure-cli
+        cosign
+        syft
         skopeo
         oras
         crane
@@ -30,10 +30,20 @@ pkgs.buildEnv {
         kubectl
         kubectx
         krew
-        devspace
-        azure-cli
-        cosign
-        syft
-        gh
+
+        zed-editor
+        insomnia
+
+        gnumake
+        gcc
+        nodejs_22
+
+        gnupg
+        mpv
+        bitwarden-cli
+        bws
+
+        nerdfonts
+        font-awesome
     ];
 }
