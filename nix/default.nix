@@ -6,14 +6,10 @@ pkgs.buildEnv {
         neovim
         tree
         tmux
-        kubectl
         bat
         zoxide
         ripgrep
         yazi
-        k9s
-        jq
-        yq
         nerdfonts
         font-awesome
         lazygit
@@ -25,6 +21,15 @@ pkgs.buildEnv {
         bitwarden-cli
         bws
 
+        skopeo
+        oras
+        crane
+        k9s
+        jq
+        yq
+        kubectl
+        kubectx
+        krew
         devspace
         azure-cli
         cosign
