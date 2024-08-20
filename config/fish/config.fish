@@ -9,6 +9,7 @@ set -gx GPG_TTY (tty)
 set -gx XDG_CONFIG_HOME $HOME/.config
 set -px XDG_DATA_DIRS $HOME/.local/share
 set -gx KUBECONFIG $HOME/.kube/config
+set -gx NIXPKGS_ALLOW_UNFREE 1
 set -gx GOPATH $HOME/.go
 set -gx FISHRC $HOME/.config/fish/config.fish
 set -gx VENDOR_DIR $HOME/Developer/repos/vendor
@@ -16,9 +17,10 @@ set -gx VENDOR_DIR $HOME/Developer/repos/vendor
 ## PATH
 set -gx PATH /sbin:/usr/sbin:/bin:/usr/bin:/usr/local/sbin:/usr/local/bin:/opt/pkg/sbin:/opt/pkg/bin
 set -ax PATH /run/wrappers/bin:/run/current-system/sw/bin
+set -ax PATH $HOME/.nix-profile/bin
 set -ax PATH $HOME/.local/bin
 set -ax PATH $HOME/.krew/bin
-# set -px PATH $HOME/.local/share/nvim/mason/bin
+set -px PATH $HOME/.local/share/nvim/mason/bin
 set -ax PATH $HOME/.go/bin
 set -ax PATH $HOME/.cargo/bin
 set -ax PATH $HOME/.rd/bin

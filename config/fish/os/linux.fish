@@ -4,4 +4,3 @@ alias core 'sensors | grep Core'
 
 # PATH
 set -ax PATH /var/lib/flatpak/exports/bin
-set -ax PATH ~/.nix-profile/bin
