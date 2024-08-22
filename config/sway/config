@@ -12,6 +12,7 @@ set $lock_screen swaylock -f
 set $dim_to_lock_screen chayang && $lock_screen
 set $screenshot slurp | grim -g -
 set $full_screenshot grim
+set $screen_record 'wf-recorder -g $(slurp)'
 set $notification_center swaync-client -t -sw
 set $play_pause playerctl play-pause
 set $next_track playerctl next
@@ -50,6 +51,8 @@ bindsym $super+Ctrl+n exec $notification_center
 # Screenshots
 bindsym $super+Shift+4 exec $screenshot
 bindsym $super+Shift+3 exec $full_screenshot
+# Screen Recorder
+bindsym $super+Shift+5 exec $screen_record
 
 # Toggle the current window fullscreen
 bindsym $mod+f fullscreen
