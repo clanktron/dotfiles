@@ -18,6 +18,7 @@ set -gx VENDOR_DIR $HOME/Developer/repos/vendor
 set -gx PATH /sbin:/usr/sbin:/bin:/usr/bin:/usr/local/sbin:/usr/local/bin:/opt/pkg/sbin:/opt/pkg/bin
 set -ax PATH /run/wrappers/bin:/run/current-system/sw/bin
 set -ax PATH $HOME/.nix-profile/bin
+set -ax PATH $HOME/.npm-global/bin
 set -ax PATH $HOME/.local/bin
 set -ax PATH $HOME/.krew/bin
 set -px PATH $HOME/.local/share/nvim/mason/bin
