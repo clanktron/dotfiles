@@ -37,9 +37,12 @@ pkgs.buildEnv {
         gnumake
         gcc
         nodejs_22
+        yarn
+        rustup
 
         gnupg
         mpv
+        ffmpeg
         bitwarden-cli
         bws
 
