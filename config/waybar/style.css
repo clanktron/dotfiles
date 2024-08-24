@@ -2,7 +2,6 @@
     font-family: "SF Pro Text", "Font Awesome 6 Free";
     font-size: 13px;
     font-weight: 400;
-    min-height: 23px;
 }
 
 #custom-power {
@@ -11,7 +10,7 @@
 }
 
 window#waybar {
-    background-color: rgba(0, 0, 0, 1);
+    background-color: rgba(0, 0, 0, 0);
     color: rgba(255, 255, 255, 0.9);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -21,7 +20,6 @@ window#waybar {
     font-weight: 400;
     border-radius: 4px;
     padding: 0px 4px;
-    margin: 4px 0px;
 }
 
 #workspaces button:hover {
