@@ -30,6 +30,7 @@ pkgs.buildEnv {
         kubectl
         kubectx
         krew
+        kubernetes-helm
 
         zed-editor
         insomnia
