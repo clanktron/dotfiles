@@ -6,7 +6,7 @@
 
 #custom-power {
     font-size: 19px;
-    padding: 0px 20px 0px 14px;
+    padding: 0px 20px 0px 0px;
 }
 
 window#waybar {
@@ -56,12 +56,9 @@ window#waybar {
 #custom-audiorec,
 #battery, 
 #clock, 
+#network,
 #bluetooth {
     padding: 0px 7px;
-}
-
-#network {
-    padding: 0px 14px 0px 7px;
 }
 
 #network.netinfo {

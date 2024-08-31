@@ -4,6 +4,8 @@
 "height": 24,
 "reload_style_on_change": true,
 "exclusive": true,
+"margin-left": 14,
+"margin-right": 14,
 
 "modules-left": ["custom/power","sway/workspaces","hyprland/workspaces"],
 "modules-center": ["clock"],
