@@ -4,12 +4,10 @@
 <dict>
     <key>Label</key>
     <string>local.itsycal</string>
-
     <key>ProgramArguments</key>
     <array>
         <string>/Applications/Itsycal.app/Contents/MacOS/Itsycal</string>
     </array>
-
     <key>RunAtLoad</key>
     <true/>
 </dict>

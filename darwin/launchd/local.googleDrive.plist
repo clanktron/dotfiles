@@ -4,12 +4,10 @@
 <dict>
     <key>Label</key>
     <string>local.itsycal</string>
-
     <key>ProgramArguments</key>
     <array>
         <string>/Applications/Google Drive.app/Contents/MacOS/Google Drive</string>
     </array>
-
     <key>RunAtLoad</key>
     <true/>
 </dict>

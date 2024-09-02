@@ -4,12 +4,10 @@
 <dict>
     <key>Label</key>
     <string>local.hammerspoon</string>
-
     <key>ProgramArguments</key>
     <array>
         <string>/Applications/Hammerspoon.app/Contents/MacOS/Hammerspoon</string>
     </array>
-
     <key>RunAtLoad</key>
     <true/>
 </dict>

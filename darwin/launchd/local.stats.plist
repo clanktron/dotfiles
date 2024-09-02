@@ -4,12 +4,10 @@
 <dict>
     <key>Label</key>
     <string>local.stats</string>
-
     <key>ProgramArguments</key>
     <array>
         <string>/Applications/Stats.app/Contents/MacOS/Stats</string>
     </array>
-
     <key>RunAtLoad</key>
     <true/>
 </dict>

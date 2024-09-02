@@ -4,13 +4,11 @@
 <dict>
     <key>Label</key>
     <string>local.proton-mail-bridge</string>
-
     <key>ProgramArguments</key>
     <array>
         <string>/Applications/Proton Mail Bridge.app/Contents/MacOS/bridge</string>
         <string>--noninteractive</string>
     </array>
-
     <key>RunAtLoad</key>
     <true/>
 </dict>
