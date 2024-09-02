@@ -31,6 +31,7 @@ pkgs.buildEnv {
         kubectx
         krew
         kubernetes-helm
+        fluxcd
 
         zed-editor
         insomnia
