@@ -8,12 +8,19 @@
 "margin-right": 14,
 
 "modules-left": ["custom/power","sway/workspaces","hyprland/workspaces"],
-"modules-center": ["clock"],
-"modules-right":  ["tray","cpu","memory","pulseaudio","bluetooth","network","backlight","custom/monitorbacklight","battery"],
+"modules-right":  ["tray","cpu","memory","pulseaudio","bluetooth","network","backlight","custom/monitorbacklight","battery","custom/date","custom/clock"],
 
 "tray": {
     "icon-size": 13,
     "spacing": 7
+},
+"custom/date": {
+    "exec": "date +\"%a %b %-d\"",
+    "interval": 1
+},
+"custom/clock": {
+    "exec": "date +\"%-I:%M %p\"",
+    "interval": 1
 },
 "clock": {
     "locale": "C", 
@@ -56,7 +63,7 @@
 "network": {
   "interval": 2,
   "format-wifi": " ",
-  "format-ethernet": " ",
+  "format-ethernet": "",
   "format-linked": "{ipaddr}",
   "format-disconnected": " Disconnected",
   "format-disabled": "",

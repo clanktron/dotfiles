@@ -2,6 +2,7 @@
     font-family: "SF Pro Text", "Font Awesome 6 Free";
     font-size: 13px;
     font-weight: 400;
+    min-height: 0px;
 }
 
 #custom-power {
@@ -17,7 +18,6 @@ window#waybar {
 
 #workspaces button {
     color: rgba(255, 255, 255, 0.9);
-    font-weight: 400;
     border-radius: 4px;
     padding: 0px 4px;
 }
@@ -54,13 +54,11 @@ window#waybar {
 #disk,
 #custom-recorder,
 #custom-audiorec,
+#custom-date,
+#custom-clock,
 #battery, 
 #clock, 
 #network,
 #bluetooth {
-    padding: 0px 7px;
-}
-
-#network.netinfo {
-    font-size: 11px;
+    padding: 0px 0px 0px 14px;
 }
