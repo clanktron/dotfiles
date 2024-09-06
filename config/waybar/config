@@ -84,7 +84,7 @@
     "car": " ",
     "default": [" ", " "]
   },
-  "on-click": "com.saivert.pwvucontrol"
+  "on-click": "flatpak run com.saivert.pwvucontrol"
 },
 "backlight": {
     "format": "{icon}{percent}%",
