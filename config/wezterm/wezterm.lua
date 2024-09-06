@@ -10,17 +10,14 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
--- This is where you actually apply your config choices
-
--- For example, changing the color scheme:
-function get_appearance()
+local function get_appearance()
   if wezterm.gui then
     return wezterm.gui.get_appearance()
   end
   return 'Dark'
 end
 
-function scheme_for_appearance(appearance)
+local function scheme_for_appearance(appearance)
   if appearance:find 'Dark' then
     return 'Tokyo Night Storm'
   else
@@ -30,8 +27,8 @@ end
 
 config.color_scheme = scheme_for_appearance(get_appearance())
 config.freetype_load_flags = 'NO_HINTING'
-config.window_background_opacity = 0.95
-config.font_size = 16
+config.window_background_opacity = 1
+config.font_size = 13
 config.font = wezterm.font 'SauceCodePro Nerd Font'
 config.font_rules = {
 	{
@@ -49,11 +46,96 @@ config.window_decorations = "TITLE|RESIZE"
 config.enable_tab_bar = false
 config.enable_wayland = true
 config.window_close_confirmation = 'NeverPrompt'
+
+local act = wezterm.action
 config.keys = {
   {
     key = 'w',
     mods = 'CMD',
-    action = wezterm.action.CloseCurrentTab { confirm = false },
+    action = act.Multiple {
+        act.SendKey { key = "a", mods = "CTRL" },
+        act.SendKey { key = "&" },
+    }
+  },
+  {
+    key = 't',
+    mods = 'CMD',
+    action = act.Multiple {
+        act.SendKey { key = "a", mods = "CTRL" },
+        act.SendKey { key = "c" },
+    }
+  },
+  {
+      key = '1',
+      mods = 'CMD',
+      action = act.Multiple {
+          act.SendKey { key = "a", mods = "CTRL" },
+          act.SendKey { key = "1" },
+      }
+  },
+  {
+      key = '2',
+      mods = 'CMD',
+      action = act.Multiple {
+          act.SendKey { key = "a", mods = "CTRL" },
+          act.SendKey { key = "2" },
+      }
+  },
+  {
+      key = '3',
+      mods = 'CMD',
+      action = act.Multiple {
+          act.SendKey { key = "a", mods = "CTRL" },
+          act.SendKey { key = "3" },
+      }
+  },
+  {
+      key = '4',
+      mods = 'CMD',
+      action = act.Multiple {
+          act.SendKey { key = "a", mods = "CTRL" },
+          act.SendKey { key = "4" },
+      }
+  },
+  {
+      key = '5',
+      mods = 'CMD',
+      action = act.Multiple {
+          act.SendKey { key = "a", mods = "CTRL" },
+          act.SendKey { key = "5" },
+      }
+  },
+  {
+      key = '6',
+      mods = 'CMD',
+      action = act.Multiple {
+          act.SendKey { key = "a", mods = "CTRL" },
+          act.SendKey { key = "6" },
+      }
+  },
+  {
+      key = '7',
+      mods = 'CMD',
+      action = act.Multiple {
+          act.SendKey { key = "a", mods = "CTRL" },
+          act.SendKey { key = "7" },
+      }
+  },
+  {
+      key = '8',
+      mods = 'CMD',
+      action = act.Multiple {
+          act.SendKey { key = "a", mods = "CTRL" },
+          act.SendKey { key = "8" },
+      }
+  },
+  {
+      key = '9',
+      mods = 'CMD',
+      action = act.Multiple {
+          act.SendKey { key = "a", mods = "CTRL" },
+          act.SendKey { key = "9" },
+      }
   },
 }
 
