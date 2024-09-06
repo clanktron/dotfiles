@@ -74,8 +74,7 @@ set -g theme_hide_hostname no
 set -g theme_hostname always
 
 # Colorscheme
-set COLOR tokyonight
-source "$fish_dir"/colors/$COLOR.fish
+source "$fish_dir"/colors/active.fish
 
 # zoxide integration
 if command -q zoxide
