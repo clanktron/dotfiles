@@ -1,4 +1,4 @@
-import = ["~/.config/alacritty/colors/Nord.toml"]
+import = ["~/.config/alacritty/colors/active.toml"]
 live_config_reload = true
 
 [mouse]
@@ -16,7 +16,7 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 decorations = "Full"
 dynamic_padding = true
 dynamic_title = false
-opacity = 0.9
+opacity = 1
 blur = true
 startup_mode = "Windowed"
 
