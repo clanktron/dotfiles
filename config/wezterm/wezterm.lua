@@ -58,6 +58,14 @@ config.keys = {
     }
   },
   {
+    key = 'r',
+    mods = 'CMD',
+    action = act.Multiple {
+        act.SendKey { key = "a", mods = "CTRL" },
+        act.SendKey { key = "{" },
+    }
+  },
+  {
     key = 't',
     mods = 'CMD',
     action = act.Multiple {
