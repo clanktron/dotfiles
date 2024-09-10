@@ -26,14 +26,12 @@ set $kbdBrightnessDown brightnessctl set 10%+ -d '*kbd_backlight*'
 set $toggleMute wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 set $volumeUp wpctl set-volume @DEFAULT_AUDIO_SINK@ 5.0%+ -l 1
 set $volumeDown wpctl set-volume @DEFAULT_AUDIO_SINK@ 5.0%- -l 1
+set $displaysOn ddcutil setvcp d6 1 && 'swaymsg "output * dpms on"'
+set $displaysOff ddcutil setvcp d6 5 && 'swaymsg "output * dpms off"'
 set $monitorToHdmi ddcutil setvcp 60 17
 set $monitorToVga ddcutil setvcp 60 1
-# set $monitorPowerOn ddcutil setvcp d6 1
-# set $monitorPowerOff ddcutil setvcp d6 5
 set $monitorBrightnessUp ~/.local/bin/set-monitor-brightness 10 +
 set $monitorBrightnessDown ~/.local/bin/set-monitor-brightness 10 -
-set $displaysOff 'swaymsg "output * dpms off"'
-set $displaysOn 'swaymsg "output * dpms on"'
 set $toggleTouchpad swaymsg input type:touchpad events toggle enabled disabled
 
 ### Key bindings
@@ -175,11 +173,11 @@ bindsym --locked {
 }
 
 # Monitor Control (Acer KA242Y)
-bindsym {
-    Num_Lock exec $monitorToHdmi
-    KP_Divide exec $monitorToVga
+bindsym --locked {
     ctrl+up exec $displaysOn
     KP_Subtract exec $displaysOff
+    Num_Lock exec $monitorToHdmi
+    KP_Divide exec $monitorToVga
     $super+XF86MonBrightnessUp exec $monitorBrightnessUp
     $super+XF86MonBrightnessDown exec $monitorBrightnessDown
 }
