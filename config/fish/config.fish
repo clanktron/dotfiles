@@ -15,16 +15,16 @@ set -gx FISHRC $HOME/.config/fish/config.fish
 set -gx VENDOR_DIR $HOME/Developer/repos/vendor
 
 ## PATH
-set -gx PATH /sbin:/usr/sbin:/bin:/usr/bin:/usr/local/sbin:/usr/local/bin:/opt/pkg/sbin:/opt/pkg/bin
-set -ax PATH /run/wrappers/bin:/run/current-system/sw/bin
-set -ax PATH $HOME/.nix-profile/bin
-set -ax PATH $HOME/.npm-global/bin
-set -ax PATH $HOME/.local/bin
-set -ax PATH $HOME/.krew/bin
+set -gx PATH /opt/pkg/bin:/opt/pkg/sbin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
+set -px PATH /run/wrappers/bin:/run/current-system/sw/bin
+set -px PATH $HOME/.nix-profile/bin
+set -px PATH $HOME/.npm-global/bin
+set -px PATH $HOME/.local/bin
+set -px PATH $HOME/.krew/bin
 set -px PATH $HOME/.local/share/nvim/mason/bin
-set -ax PATH $HOME/.go/bin
-set -ax PATH $HOME/.cargo/bin
-set -ax PATH $HOME/.rd/bin
+set -px PATH $HOME/.go/bin
+set -px PATH $HOME/.cargo/bin
+set -px PATH $HOME/.rd/bin
 
 set fish_dir (dirname (status --current-filename))
 
