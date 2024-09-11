@@ -6,9 +6,9 @@ return {
       "neovim/nvim-lspconfig",
       "nvim-treesitter/nvim-treesitter",
     },
-    build = function ()
-        require("go.install").update_all_sync()
-    end,
+    -- build = function ()
+    --     require("go.install").update_all_sync()
+    -- end,
     config = function ()
         require('go').setup()
         -- Run gofmt + goimport on save

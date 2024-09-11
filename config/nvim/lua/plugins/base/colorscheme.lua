@@ -13,20 +13,20 @@ return {
         },
     },
     {
-        'EdenEast/nightfox.nvim',
-        opts = {
-            options = {
-                transparent = true,
-            }
-        },
+        "catppuccin/nvim",
+        name = "catppuccin",
         lazy = true,
     },
     {
-        'Tsuzat/NeoSolarized.nvim',
-        opts = {
-            transparent = true,
-        },
+        'rakr/vim-one',
+        lazy = true,
+    },
+    {
+        'altercation/vim-colors-solarized',
+        lazy = true,
+    },
+    {
+        'jsit/toast.vim',
         lazy = true,
     },
 }
--- TODO: norcalli/nvim-colorizer.lua
