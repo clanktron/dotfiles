@@ -74,7 +74,7 @@ set -g theme_hide_hostname no
 set -g theme_hostname always
 
 # Colorscheme
-source "$fish_dir"/colors/active.fish
+fish_config theme choose 'Tomorrow Night Bright'
 
 # zoxide integration
 if command -q zoxide
