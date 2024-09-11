@@ -2,8 +2,9 @@
 bind o run-shell "open #{pane_current_path}"
 
 # Vim-like copy mode
-bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "pbcopy"
-bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "pbcopy"
+set -s copy-command 'pbcopy'
+# bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "pbcopy"
+# bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "pbcopy"
 
 # Undercurl
 set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'  # undercurl support
