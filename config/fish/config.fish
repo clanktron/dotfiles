@@ -5,6 +5,7 @@ end
 # ENVIRONMENT
 # set -gx EDITOR 'code --wait'
 set -gx EDITOR nvim
+set -gx TERM xterm-256color
 set -gx GPG_TTY (tty)
 set -gx XDG_CONFIG_HOME $HOME/.config
 set -px XDG_DATA_DIRS $HOME/.local/share
@@ -29,17 +30,16 @@ set -px PATH $HOME/.rd/bin
 set fish_dir (dirname (status --current-filename))
 
 # Source additional config based on OS
-switch (uname)
-  case Darwin
-    source "$fish_dir"/os/mac.fish
-  case Linux
-    source "$fish_dir"/os/linux.fish
-  case '*'
-    source "$fish_dir"/os/windows.fish
+if command -q uname
+    switch (uname)
+      case Darwin
+        source "$fish_dir"/os/mac.fish
+      case Linux
+        source "$fish_dir"/os/linux.fish
+      case '*'
+        source "$fish_dir"/os/windows.fish
+    end
 end
-
-# Attach to tmux session if it already exists
-tmux attach > /dev/null 2>&1
 
 # Aliases
 alias resource '. $FISHRC'
@@ -86,17 +86,23 @@ if command -q opam
 end
 
 # Ensure ssh agent
-if test -z (pgrep ssh-agent | string collect)
+if command -q ssh-agent && test -z (pgrep ssh-agent | string collect)
   eval (ssh-agent -c)
   set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
   set -Ux SSH_AGENT_PID $SSH_AGENT_PID
+end
+
+if command -q tmux
+    tmux attach > /dev/null 2>&1
 end
 
 # Source local config
 source-if-exists "$fish_dir"/local.fish
 source-if-exists "$fish_dir"/secrets.fish
 
-# Start TMUX on login
-if command -q tmux; and not set -q TMUX
-    tmux new -s main > /dev/null
+# Attach to tmux session if it already exists, otherwise start new session
+if command -q tmux
+    if not set -q TMUX
+        tmux new -s main > /dev/null
+    end
 end
