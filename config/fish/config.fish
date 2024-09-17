@@ -10,6 +10,7 @@ set -gx GPG_TTY (tty)
 set -gx XDG_CONFIG_HOME $HOME/.config
 set -px XDG_DATA_DIRS $HOME/.local/share
 set -gx KUBECONFIG $HOME/.kube/config
+set -gx HOMEBREW_BUNDLE_FILE $XDG_CONFIG_HOME/brewfile/Brewfile
 set -gx NIXPKGS_ALLOW_UNFREE 1
 set -gx GOPATH $HOME/.go
 set -gx FISHRC $HOME/.config/fish/config.fish
