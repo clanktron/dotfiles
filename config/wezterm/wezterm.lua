@@ -21,7 +21,7 @@ local function scheme_for_appearance(appearance)
   if appearance:find 'Dark' then
     return 'Tokyo Night Storm'
   else
-    return 'Github Light (Gogh)'
+    return 'Catppuccin Latte (Gogh)'
   end
 end
 
