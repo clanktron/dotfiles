@@ -1,7 +1,7 @@
 [user]
 	name = clayton
 	email = hello@claytonc.dev
-	signingkey = 663D3BA996DFB8FE307CF7B9556848E0F75787A0
+	signingkey = B663E18F68156060E1C43B1F47A754728AD38C32
 [init]
 	defaultBranch = main
 [push]
