@@ -7,14 +7,14 @@ local config = {}
 -- In newer versions of wezterm, use the config_builder which will
 -- help provide clearer error messages
 if wezterm.config_builder then
-  config = wezterm.config_builder()
+    config = wezterm.config_builder()
 end
 
 local function get_appearance()
-  if wezterm.gui then
-    return wezterm.gui.get_appearance()
-  end
-  return 'Dark'
+    if wezterm.gui then
+        return wezterm.gui.get_appearance()
+    end
+    return 'Dark'
 end
 
 local function scheme_for_appearance(appearance)
@@ -31,16 +31,16 @@ config.window_background_opacity = 1
 config.font_size = 13
 config.font = wezterm.font 'SauceCodePro Nerd Font'
 config.font_rules = {
-	{
-		intensity = "Bold",
-		italic = false,
-		font = wezterm.font("SauceCodePro Nerd Font", { weight = "Bold", stretch = "Normal", style = "Normal" }),
-	},
-	{
-		intensity = "Bold",
-		italic = true,
-		font = wezterm.font("SauceCodePro Nerd Font", { weight = "Bold", stretch = "Normal", style = "Italic" }),
-	},
+    {
+        intensity = "Bold",
+        italic = false,
+        font = wezterm.font("SauceCodePro Nerd Font", { weight = "Bold", stretch = "Normal", style = "Normal" }),
+    },
+    {
+        intensity = "Bold",
+        italic = true,
+        font = wezterm.font("SauceCodePro Nerd Font", { weight = "Bold", stretch = "Normal", style = "Italic" }),
+    },
 }
 config.window_decorations = "TITLE|RESIZE"
 config.enable_tab_bar = false
@@ -49,102 +49,107 @@ config.window_close_confirmation = 'NeverPrompt'
 
 local act = wezterm.action
 config.keys = {
-  {
-    key = 'w',
-    mods = 'CMD',
-    action = act.Multiple {
-        act.SendKey { key = "a", mods = "CTRL" },
-        act.SendKey { key = "&" },
-    }
-  },
-  {
-    key = 'r',
-    mods = 'CMD',
-    action = act.Multiple {
-        act.SendKey { key = "a", mods = "CTRL" },
-        act.SendKey { key = "{" },
-    }
-  },
-  {
-    key = 't',
-    mods = 'CMD',
-    action = act.Multiple {
-        act.SendKey { key = "a", mods = "CTRL" },
-        act.SendKey { key = "c" },
-    }
-  },
-  {
-      key = '1',
-      mods = 'CMD',
-      action = act.Multiple {
-          act.SendKey { key = "a", mods = "CTRL" },
-          act.SendKey { key = "1" },
-      }
-  },
-  {
-      key = '2',
-      mods = 'CMD',
-      action = act.Multiple {
-          act.SendKey { key = "a", mods = "CTRL" },
-          act.SendKey { key = "2" },
-      }
-  },
-  {
-      key = '3',
-      mods = 'CMD',
-      action = act.Multiple {
-          act.SendKey { key = "a", mods = "CTRL" },
-          act.SendKey { key = "3" },
-      }
-  },
-  {
-      key = '4',
-      mods = 'CMD',
-      action = act.Multiple {
-          act.SendKey { key = "a", mods = "CTRL" },
-          act.SendKey { key = "4" },
-      }
-  },
-  {
-      key = '5',
-      mods = 'CMD',
-      action = act.Multiple {
-          act.SendKey { key = "a", mods = "CTRL" },
-          act.SendKey { key = "5" },
-      }
-  },
-  {
-      key = '6',
-      mods = 'CMD',
-      action = act.Multiple {
-          act.SendKey { key = "a", mods = "CTRL" },
-          act.SendKey { key = "6" },
-      }
-  },
-  {
-      key = '7',
-      mods = 'CMD',
-      action = act.Multiple {
-          act.SendKey { key = "a", mods = "CTRL" },
-          act.SendKey { key = "7" },
-      }
-  },
-  {
-      key = '8',
-      mods = 'CMD',
-      action = act.Multiple {
-          act.SendKey { key = "a", mods = "CTRL" },
-          act.SendKey { key = "8" },
-      }
-  },
-  {
-      key = '9',
-      mods = 'CMD',
-      action = act.Multiple {
-          act.SendKey { key = "a", mods = "CTRL" },
-          act.SendKey { key = "9" },
-      }
-  },
+    {
+        key = 'w',
+        mods = 'CMD',
+        action = act.Multiple {
+            act.SendKey { key = "a", mods = "CTRL" },
+            act.SendKey { key = "&" },
+        }
+    },
+    {
+        key = 'v',
+        mods = 'CMD',
+        action = act.PasteFrom 'Clipboard'
+    },
+    {
+        key = 'r',
+        mods = 'CMD',
+        action = act.Multiple {
+            act.SendKey { key = "a", mods = "CTRL" },
+            act.SendKey { key = "{" },
+        }
+    },
+    {
+        key = 't',
+        mods = 'CMD',
+        action = act.Multiple {
+            act.SendKey { key = "a", mods = "CTRL" },
+            act.SendKey { key = "c" },
+        }
+    },
+    {
+        key = '1',
+        mods = 'CMD',
+        action = act.Multiple {
+            act.SendKey { key = "a", mods = "CTRL" },
+            act.SendKey { key = "1" },
+        }
+    },
+    {
+        key = '2',
+        mods = 'CMD',
+        action = act.Multiple {
+            act.SendKey { key = "a", mods = "CTRL" },
+            act.SendKey { key = "2" },
+        }
+    },
+    {
+        key = '3',
+        mods = 'CMD',
+        action = act.Multiple {
+            act.SendKey { key = "a", mods = "CTRL" },
+            act.SendKey { key = "3" },
+        }
+    },
+    {
+        key = '4',
+        mods = 'CMD',
+        action = act.Multiple {
+            act.SendKey { key = "a", mods = "CTRL" },
+            act.SendKey { key = "4" },
+        }
+    },
+    {
+        key = '5',
+        mods = 'CMD',
+        action = act.Multiple {
+            act.SendKey { key = "a", mods = "CTRL" },
+            act.SendKey { key = "5" },
+        }
+    },
+    {
+        key = '6',
+        mods = 'CMD',
+        action = act.Multiple {
+            act.SendKey { key = "a", mods = "CTRL" },
+            act.SendKey { key = "6" },
+        }
+    },
+    {
+        key = '7',
+        mods = 'CMD',
+        action = act.Multiple {
+            act.SendKey { key = "a", mods = "CTRL" },
+            act.SendKey { key = "7" },
+        }
+    },
+    {
+        key = '8',
+        mods = 'CMD',
+        action = act.Multiple {
+            act.SendKey { key = "a", mods = "CTRL" },
+            act.SendKey { key = "8" },
+        }
+    },
+    {
+        key = '9',
+        mods = 'CMD',
+        action = act.Multiple {
+            act.SendKey { key = "a", mods = "CTRL" },
+            act.SendKey { key = "9" },
+        }
+    },
 }
 
 -- and finally, return the configuration to wezterm
