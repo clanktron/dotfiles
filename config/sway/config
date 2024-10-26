@@ -5,6 +5,7 @@ set $left h
 set $down j
 set $up k
 set $right l
+set $home /home/clayton
 set $term flatpak run org.wezfurlong.wezterm
 set $menu wofi
 set $logoutPrompt wlogout
@@ -26,8 +27,8 @@ set $kbdBrightnessDown brightnessctl set 10%+ -d '*kbd_backlight*'
 set $toggleMute wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 set $volumeUp wpctl set-volume @DEFAULT_AUDIO_SINK@ 5.0%+ -l 1
 set $volumeDown wpctl set-volume @DEFAULT_AUDIO_SINK@ 5.0%- -l 1
-set $displaysOn ddcutil setvcp d6 1 && 'swaymsg "output * dpms on"'
-set $displaysOff ddcutil setvcp d6 5 && 'swaymsg "output * dpms off"'
+set $displaysOn ddcutil setvcp d6 1 && swaymsg "output * dpms on" && /home/clayton/.local/bin/swww restore
+set $displaysOff ddcutil setvcp d6 5 && swaymsg "output * dpms off"
 set $monitorToHdmi ddcutil setvcp 60 17
 set $monitorToVga ddcutil setvcp 60 1
 set $monitorBrightnessUp ~/.local/bin/set-monitor-brightness 10 +
@@ -190,16 +191,15 @@ bar {
 	swaybar_command waybar
 }
 
+exec {
+    swayidle -w
+}
+
 exec_always {
     nwg-dock -nows -p left -d -hd 100000
-    swww-daemon --format xrgb
-    swaybg -i ~/.config/background
     swaync
-    swayidle -w \
-        timeout 900 '$dimToLockScreen' \
-        timeout 960 $displaysOff \
-            resume $displaysOn \
-        before-sleep  '$lockScreen'
+    $home/.local/bin/swww-daemon --format xrgb
+    $home/.local/bin/swww img $home/.config/background
 }
 
 # Settings:
