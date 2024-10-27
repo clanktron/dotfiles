@@ -198,7 +198,7 @@ exec {
 exec_always {
     nwg-dock -nows -p left -d -hd 100000
     swaync
-    $home/.local/bin/swww-daemon --format xrgb
+    $home/.local/bin/swww-daemon --format xrgb || swaybg -i $home/.config/background -m fill
     $home/.local/bin/swww img $home/.config/background
 }
 
