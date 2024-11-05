@@ -1,0 +1,8 @@
+[Unit]
+Description=Change wallpaper
+
+[Service]
+Type=oneshot
+ExecStart=/home/clayton/.local/bin/randomize-wallpaper.sh
+# still needed for contents of script
+Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/clayton/.local/bin"
