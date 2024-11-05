@@ -90,14 +90,14 @@ bindsym {
 }
 # Move the focused window
 bindsym {
-    $mod+Shift+$left move left
-    $mod+Shift+$down move down
-    $mod+Shift+$up move up
-    $mod+Shift+$right move right
-    $mod+Shift+Left move left
-    $mod+Shift+Down move down
-    $mod+Shift+Up move up
-    $mod+Shift+Right move right
+    $mod+Ctrl+$left move left
+    $mod+Ctrl+$down move down
+    $mod+Ctrl+$up move up
+    $mod+Ctrl+$right move right
+    $mod+Ctrl+Left move left
+    $mod+Ctrl+Down move down
+    $mod+Ctrl+Up move up
+    $mod+Ctrl+Right move right
 }
 
 # Switch to workspace
@@ -204,10 +204,10 @@ exec_always {
 
 # Settings:
 # Gaps
-gaps inner 4
-gaps outer 3
+gaps inner 0
+gaps outer 0
 # Border <normal|none|pixel>
-default_border pixel 9
+default_border none
 default_floating_border normal 9
 
 # client.<class> <border> <background> <text>
