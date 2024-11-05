@@ -1,4 +1,4 @@
 timeout 900 'swaylock -f'
-timeout 905 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
+timeout 905 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on" && /home/clayton/.local/bin/swww restore'
 before-sleep  'swaylock -f'
 lock 'swaylock -f'
