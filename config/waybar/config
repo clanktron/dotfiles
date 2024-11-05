@@ -4,12 +4,20 @@
 "height": 24,
 "reload_style_on_change": true,
 "exclusive": true,
-"margin-left": 14,
-"margin-right": 14,
+// "margin-left": 14,
+// "margin-right": 14,
 
-"modules-left": ["custom/power","sway/workspaces","hyprland/workspaces"],
-"modules-right":  ["tray","cpu","memory","pulseaudio","bluetooth","network","backlight","custom/monitorbacklight","battery","custom/date","custom/clock"],
+"modules-left": ["custom/paddingleft","custom/power","sway/workspaces","hyprland/workspaces"],
+"modules-right":  ["tray","cpu","memory","pulseaudio","bluetooth","network","backlight","custom/monitorbacklight","battery","custom/date","custom/clock","custom/paddingright"],
 
+"custom/paddingleft": {
+    "tooltip": false,
+    "format": " ",
+},
+"custom/paddingright": {
+    "tooltip": false,
+    "format": " ",
+},
 "tray": {
     "icon-size": 13,
     "spacing": 7
