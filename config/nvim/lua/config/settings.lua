@@ -31,3 +31,6 @@ vim.o.termguicolors = true
 
 -- use system clipboard
 vim.opt.clipboard:append("unnamedplus")
+
+-- conceal
+vim.opt.conceallevel = 2
