@@ -85,10 +85,16 @@ return {
             vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
         end
 
+        local handlers =  {
+          ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
+          ["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
+        }
+
         local lspconfig = require("lspconfig")
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
         for _, lsp in ipairs(opts) do
             lspconfig[lsp].setup({
+                handlers = handlers,
                 capabilities = capabilities,
                 on_attach = on_attach,
             })
@@ -97,6 +103,9 @@ return {
         local mason_registry = require('mason-registry')
         local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() .. '/node_modules/@vue/language-server'
         lspconfig.ts_ls.setup {
+          handlers = handlers,
+          capabilities = capabilities,
+          on_attach = on_attach,
           init_options = {
             plugins = {
               {
@@ -110,11 +119,13 @@ return {
         }
 
         lspconfig.volar.setup{
+            handlers = handlers,
             capabilities = capabilities,
             on_attach = on_attach,
         }
 
         lspconfig.java_language_server.setup{
+            handlers = handlers,
             capabilities = capabilities,
             on_attach = on_attach,
             filetypes = {'java'},
@@ -122,6 +133,7 @@ return {
             root_dir = lspconfig.util.root_pattern('*.java', '.git', 'pom.xml', 'build.gradle')
         }
         lspconfig.helm_ls.setup {
+            handlers = handlers,
             capabilities = capabilities,
             on_attach = on_attach,
             filetypes = {'helm'},
@@ -135,6 +147,7 @@ return {
             root_dir = lspconfig.util.root_pattern('Chart.yaml', 'values.yaml')
         }
         lspconfig.racket_langserver.setup{
+            handlers = handlers,
             capabilities = capabilities,
             on_attach = on_attach,
             root_dir = lspconfig.util.root_pattern('*.rkt', '.git')
@@ -147,6 +160,7 @@ return {
         table.insert(lua_runtime, vim.env.VIMRUNTIME .. "/lua")
         table.insert(lua_runtime, vim.env.VIMRUNTIME .. "/lua/vim/lsp")
         lspconfig.lua_ls.setup({
+            handlers = handlers,
             capabilities = capabilities,
             on_attach = on_attach,
             settings = {

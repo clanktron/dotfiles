@@ -34,3 +34,10 @@ vim.opt.clipboard:append("unnamedplus")
 
 -- conceal
 vim.opt.conceallevel = 2
+
+-- diagnostics
+vim.diagnostic.config({
+  float = {
+    border = 'rounded',
+  },
+})
