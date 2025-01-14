@@ -5,4 +5,4 @@ DOTFILES_DIR="${DOTFILES_DIR:?}"
 "$DARWIN_DIR"/configure-brew.sh
 "$DARWIN_DIR"/configure-system.sh
 "$DARWIN_DIR"/configure-apps.sh
-"$DARWIN_DIR"/configure-launchd.sh
+# "$DARWIN_DIR"/configure-launchd.sh
