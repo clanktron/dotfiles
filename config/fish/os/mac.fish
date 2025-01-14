@@ -1,10 +1,10 @@
 # Environment variables
 set -gx HOMEBREW_NO_ENV_HINTS 1
 set -gx HOMEBREW_NO_VERIFY_ATTESTATIONS 1
-set -x XDG_CONFIG_HOME /Users/clayton/.config
 
 # Path
 # Use GNU coreutils instead of any mac builtins
+set -px PATH /opt/homebrew/bin
 set -px PATH /usr/local/opt/coreutils/libexec/gnubin
 set -px PATH /nix/var/nix/profiles/default/bin
 set -ax PATH /Library/Apple/usr/bin
