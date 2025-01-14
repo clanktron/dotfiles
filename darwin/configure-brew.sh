@@ -15,6 +15,7 @@ install_homebrew() {
 
 install_brewfile() {
     # Select profile
+    WORKDIR=$DOTFILES_DIR/darwin
     BASE_BREWFILE="$WORKDIR"/Brewfile
     if [ -z "$BREWFILE" ]; then
         msg "Which brew bundle would you like to install? default: none (base, mbp, mb-air, none): "
