@@ -71,7 +71,7 @@ merge_kubeconfig() {
 
     # Replace your old config with the new merged config
     if [ -f "$tmp_kubeconfig_path" ]; then
-        mv "$tmp_kubeconfig_path" "$target_kubeconfig"
+        install -m 0700 "$tmp_kubeconfig_path" "$target_kubeconfig"
         echo "Merged kubeconfig saved to: $target_kubeconfig"
     else
         echo "error: Failed to create the merged kubeconfig file."
