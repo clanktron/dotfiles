@@ -55,6 +55,7 @@ alias gl 'git log'
 alias gs 'git status'
 alias ga 'git add'
 alias ta 'tmux attach'
+alias td 'tmux detach'
 alias k kubectl
 alias kd 'kubectl describe'
 alias kg 'kubectl get'
