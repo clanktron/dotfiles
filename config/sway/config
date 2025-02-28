@@ -16,8 +16,8 @@ set $fullScreenshot grim "$HOME/Pictures/Screenshot $(date "+%Y-%m-%d at %r").pn
 set $screenRecord wl-screenrec -g "$(slurp)" -f "$HOME/Videos/Screen Recording $(date "+%Y-%m-%d at %r").mov"
 set $stopScreenRecord pkill wl-screenrec
 set $notificationCenter swaync-client -t -sw
-set $playPause playerctl -a play-pause
-set $pause playerctl -a pause
+set $playPause playerctl play-pause
+set $pause playerctl pause
 set $nextTrack playerctl next
 set $previousTrack playerctl previous
 set $brightnessUp brightnessctl set 10%+
