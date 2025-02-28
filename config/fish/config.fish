@@ -94,17 +94,6 @@ if command -q ssh-agent && test -z (pgrep ssh-agent | string collect)
   set -Ux SSH_AGENT_PID $SSH_AGENT_PID
 end
 
-if command -q tmux
-    tmux attach > /dev/null 2>&1
-end
-
 # Source local config
 source-if-exists "$fish_dir"/local.fish
 source-if-exists "$fish_dir"/secrets.fish
-
-# Attach to tmux session if it already exists, otherwise start new session
-if command -q tmux
-    if not set -q TMUX
-        tmux new -s main > /dev/null
-    end
-end
