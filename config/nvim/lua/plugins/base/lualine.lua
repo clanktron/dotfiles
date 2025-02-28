@@ -36,15 +36,5 @@ return {
           lualine_y = {},
           lualine_z = {}
         },
-        tabline = {
-          lualine_a = {},
-          lualine_b = {'tabs'},
-          lualine_c = {
-              {'filetype', path = 0},
-          },
-          lualine_x = {},
-          lualine_y = {},
-          lualine_z = {}
-        }
     },
 }
