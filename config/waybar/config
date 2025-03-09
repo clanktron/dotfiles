@@ -12,11 +12,11 @@
 
 "custom/paddingleft": {
     "tooltip": false,
-    "format": " ",
+    "format": " "
 },
 "custom/paddingright": {
     "tooltip": false,
-    "format": " ",
+    "format": " "
 },
 "tray": {
     "icon-size": 13,
@@ -24,11 +24,13 @@
 },
 "custom/date": {
     "exec": "date +\"%a %b %-d\"",
-    "interval": 1
+    "interval": 1,
+    "on-click": "gnome-calendar"
 },
 "custom/clock": {
     "exec": "date +\"%-I:%M %p\"",
-    "interval": 1
+    "interval": 1,
+    "on-click": "swaync-client -t"
 },
 "clock": {
     "locale": "C", 
@@ -51,7 +53,7 @@
 "cpu": {
     "interval": 2,
     "format": " {usage}%",
-    "on-double-click": "alacritty -e top",
+    "on-double-click": "alacritty -e top"
 },
 "memory": {
     "interval": 2,
@@ -97,7 +99,7 @@
 "backlight": {
     "format": "{icon}{percent}%",
     "tooltip": false,
-    "format-icons": ["☀ "],
+    "format-icons": ["☀ "]
 },
 "battery": {
   "states": {
@@ -109,13 +111,13 @@
   "format-charging": " {icon}{capacity}%",
   "format-alt": "{icon} {time}",
   "format-icons": {
-    "default": [" ", " ", " ", " ", " "],
+    "default": [" ", " ", " ", " ", " "]
   },
   "tooltip-format": "{time}"
 },
 "custom/power": {
     "tooltip": false,
     "on-click": "wlogout",
-    "format": "",
-},
+    "format": ""
+}
 }
