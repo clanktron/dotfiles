@@ -27,6 +27,9 @@ vim.keymap.set("n", "<leader>s", "<C-w>s")
 -- alternative escape
 vim.keymap.set("n", "<cmd>.", "<Esc>")
 
+-- exit terminal mode easier
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
+
 -- -- popup navigation
 -- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 -- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
