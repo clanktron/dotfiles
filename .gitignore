@@ -6,6 +6,7 @@
 config/fish/fish_variables
 config/fish/local.fish
 config/fish/ssh.fish
+config/fish/completions
 
 # k9s config changes when app is opened
 config/k9s/config.yml
