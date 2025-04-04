@@ -45,9 +45,9 @@ return {
             options.desc = "Smart rename"
             vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, options)
             options.desc = "Go to previous diagnostic"
-            vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, options)
+            vim.keymap.set("n", "[d", function() vim.diagnostic.jump({count=-1, float=true}) end, options)
             options.desc = "Go to next diagnostic"
-            vim.keymap.set("n", "]d", vim.diagnostic.goto_next, options)
+            vim.keymap.set("n", "]d", function() vim.diagnostic.jump({count=1, float=true}) end, options)
             options.desc = "Show documentation for what is under cursor"
             vim.keymap.set("n", "K", vim.lsp.buf.hover, options)
             options.desc = "Show LSP references"
@@ -87,8 +87,8 @@ return {
         end
 
         local handlers =  {
-          ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
-          ["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
+          ["textDocument/hover"] =  vim.lsp.buf.hover, { border = "rounded" },
+          ["textDocument/signatureHelp"] =  vim.lsp.buf.signature_help, { border = "rounded" },
         }
 
         local lspconfig = require("lspconfig")
@@ -160,6 +160,7 @@ return {
         table.insert(lua_runtime, vim.env.VIMRUNTIME)
         table.insert(lua_runtime, vim.env.VIMRUNTIME .. "/lua")
         table.insert(lua_runtime, vim.env.VIMRUNTIME .. "/lua/vim/lsp")
+        table.insert(lua_runtime, "${3rd}/luv/library")
         lspconfig.lua_ls.setup({
             handlers = handlers,
             capabilities = capabilities,
