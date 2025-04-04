@@ -102,22 +102,31 @@ return {
         end
 
         local mason_registry = require('mason-registry')
-        local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() .. '/node_modules/@vue/language-server'
-        lspconfig.ts_ls.setup {
-          handlers = handlers,
-          capabilities = capabilities,
-          on_attach = on_attach,
-          init_options = {
-            plugins = {
-              {
-                name = '@vue/typescript-plugin',
-                location = vue_language_server_path,
-                languages = { 'vue' },
+        if mason_registry.get_package('vue-language-server') then
+            local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() .. '/node_modules/@vue/language-server'
+            lspconfig.ts_ls.setup {
+              handlers = handlers,
+              capabilities = capabilities,
+              on_attach = on_attach,
+              init_options = {
+                plugins = {
+                  {
+                    name = '@vue/typescript-plugin',
+                    location = vue_language_server_path,
+                    languages = { 'vue' },
+                  },
+                },
               },
-            },
-          },
-          filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
-        }
+              filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+            }
+        else
+            lspconfig.ts_ls.setup {
+              handlers = handlers,
+              capabilities = capabilities,
+              on_attach = on_attach,
+              filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+            }
+        end
 
         lspconfig.volar.setup{
             handlers = handlers,
