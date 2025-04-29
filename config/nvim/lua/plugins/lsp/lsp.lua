@@ -53,11 +53,17 @@ return {
                 vim.keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", options)
             end
 
-            local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-            for type, icon in pairs(signs) do
-                local hl = "DiagnosticSign" .. type
-                vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-            end
+            vim.diagnostic.config({
+                signs = {
+                    text = {
+                        [vim.diagnostic.severity.ERROR] = "",
+                        [vim.diagnostic.severity.WARN] = "",
+                        [vim.diagnostic.severity.HINT] = "󰠠",
+                        [vim.diagnostic.severity.INFO] = ""
+                    }
+                }
+            })
+
             local handlers =  {
               ["textDocument/hover"] =  vim.lsp.buf.hover, { border = "rounded" },
               ["textDocument/signatureHelp"] =  vim.lsp.buf.signature_help, { border = "rounded" },
@@ -76,6 +82,9 @@ return {
 
                 ["java_language_server"] = function ()
                     lspconfig.java_language_server.setup{
+                        handlers = handlers,
+                        capabilities = capabilities,
+                        on_attach = on_attach,
                         filetypes = {'java'},
                         cmd = {'java-language-server'},
                         root_dir = lspconfig.util.root_pattern('*.java', '.git', 'pom.xml', 'build.gradle')
@@ -84,6 +93,9 @@ return {
 
                 ["helm_ls"] = function ()
                     lspconfig.helm_ls.setup {
+                        handlers = handlers,
+                        capabilities = capabilities,
+                        on_attach = on_attach,
                         filetypes = {'helm'},
                         settings = {
                           ['helm-ls'] = {
@@ -100,18 +112,25 @@ return {
                     local mason_registry = require('mason-registry')
                     local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() .. '/node_modules/@vue/language-server'
                     lspconfig.ts_ls.setup {
-                      init_options = {
-                        plugins = {
-                          {
-                            name = '@vue/typescript-plugin',
-                            location = vue_language_server_path,
-                            languages = { 'vue' },
+                        handlers = handlers,
+                        capabilities = capabilities,
+                        on_attach = on_attach,
+                        init_options = {
+                          plugins = {
+                            {
+                              name = '@vue/typescript-plugin',
+                              location = vue_language_server_path,
+                              languages = { 'vue' },
+                            },
                           },
                         },
-                      },
-                      filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+                        filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
                     }
-                    lspconfig.volar.setup {}
+                    lspconfig.volar.setup {
+                        handlers = handlers,
+                        capabilities = capabilities,
+                        on_attach = on_attach,
+                    }
                 end,
 
                 ["lua_ls"] = function ()
@@ -123,6 +142,9 @@ return {
                     table.insert(lua_runtime, vim.env.VIMRUNTIME .. "/lua/vim/lsp")
                     table.insert(lua_runtime, "${3rd}/luv/library")
                     lspconfig.lua_ls.setup({
+                        handlers = handlers,
+                        capabilities = capabilities,
+                        on_attach = on_attach,
                         settings = {
                             Lua = {
                                 runtime = {
