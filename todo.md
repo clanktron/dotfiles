@@ -1,0 +1,5 @@
+- ~/.config/environment.d stuff for sway init
+- add lock.target (swaylock)
+- custom oci image for silverblue derivative
+    - rebuild with patches and notify when new silverblue release
+- make devspace use fish shell in devspace.sh
