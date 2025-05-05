@@ -9,8 +9,7 @@ set $home /home/clayton
 set $term flatpak run org.wezfurlong.wezterm
 set $menu wofi
 set $logoutPrompt wlogout
-set $lockScreen swaylock -f
-set $dimToLockScreen chayang && $lockScreen
+set $lockScreen loginctl lock-session
 set $screenshot grim -g "$(slurp)" "$HOME/Pictures/Screenshot $(date "+%Y-%m-%d at %r").png"
 set $fullScreenshot grim "$HOME/Pictures/Screenshot $(date "+%Y-%m-%d at %r").png"
 set $screenRecord wl-screenrec -g "$(slurp)" -f "$HOME/Videos/Screen Recording $(date "+%Y-%m-%d at %r").mov"
@@ -27,8 +26,8 @@ set $kbdBrightnessDown brightnessctl set 10%+ -d '*kbd_backlight*'
 set $toggleMute wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 set $volumeUp wpctl set-volume @DEFAULT_AUDIO_SINK@ 5.0%+ -l 1
 set $volumeDown wpctl set-volume @DEFAULT_AUDIO_SINK@ 5.0%- -l 1
-set $displaysOn ddcutil setvcp d6 1 && swaymsg "output * dpms on" && /home/clayton/.local/bin/swww restore
-set $displaysOff ddcutil setvcp d6 5 && swaymsg "output * dpms off"
+set $displaysOn ddcutil setvcp d6 1
+set $displaysOff ddcutil setvcp d6 5
 set $monitorToHdmi ddcutil setvcp 60 17
 set $monitorToVga ddcutil setvcp 60 1
 set $monitorBrightnessUp ~/.local/bin/set-monitor-brightness 10 +
@@ -191,15 +190,12 @@ bar {
 	swaybar_command waybar
 }
 
-exec {
-    swayidle -w
-}
-
 exec_always {
     nwg-dock -nows -p left -d -hd 100000
     swaync
+    pgrep swayidle || swayidle
     $home/.local/bin/swww-daemon --format xrgb
-    $home/.local/bin/swww img $home/.config/background
+    $home/.local/bin/randomize-wallpaper.sh
 }
 
 # Settings:
