@@ -1,3 +1,3 @@
 timeout 300 'chayang -d 300 && systemctl sleep'
 before-sleep 'loginctl lock-session'
-lock 'lock.sh'
+lock 'swaylock'
