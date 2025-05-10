@@ -18,6 +18,18 @@ return {
             local mason_lspconfig = require("mason-lspconfig")
             local lspconfig = require("lspconfig")
 
+            vim.api.nvim_create_autocmd("InsertCharPre", {
+              pattern = "*",
+              callback = function()
+                local char = vim.v.char
+                if char == '(' or char == ',' then
+                  vim.defer_fn(function()
+                    vim.lsp.buf.signature_help()
+                  end, 0)
+                end
+              end
+            })
+
             local on_attach = function(_, bufnr)
                 local options = {
                     noremap = true,
