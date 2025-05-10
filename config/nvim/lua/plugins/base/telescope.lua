@@ -18,6 +18,7 @@ return {
             local actions = require("telescope.actions")
             telescope.setup({
                 defaults = {
+                    border = false,
                     mappings = {
                         i = {
                             ['<C-p>'] = actions.move_selection_previous, -- move to prev result

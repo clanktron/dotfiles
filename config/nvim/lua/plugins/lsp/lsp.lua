@@ -33,14 +33,10 @@ return {
                 vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, options)
                 options.desc = "Show line diagnostics"
                 vim.keymap.set("n", "gl", vim.diagnostic.open_float, options)
-                options.desc = "Smart rename"
-                vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, options)
                 options.desc = "Go to previous diagnostic"
                 vim.keymap.set("n", "[d", function() vim.diagnostic.jump({count=-1, float=true}) end, options)
                 options.desc = "Go to next diagnostic"
                 vim.keymap.set("n", "]d", function() vim.diagnostic.jump({count=1, float=true}) end, options)
-                options.desc = "Show documentation for what is under cursor"
-                vim.keymap.set("n", "K", vim.lsp.buf.hover, options)
                 options.desc = "Show LSP references"
                 vim.keymap.set("n", "grr", "<cmd>Telescope lsp_references<CR>", options)
                 options.desc = "Show LSP definitions"
@@ -64,17 +60,13 @@ return {
                 }
             })
 
-            local handlers =  {
-              ["textDocument/hover"] =  vim.lsp.buf.hover, { border = "rounded" },
-              ["textDocument/signatureHelp"] =  vim.lsp.buf.signature_help, { border = "rounded" },
-            }
+
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
             local setup_handlers = {
                 -- default handler
                 function (server_name)
                     require("lspconfig")[server_name].setup {
-                        handlers = handlers,
                         capabilities = capabilities,
                         on_attach = on_attach,
                     }
@@ -82,7 +74,6 @@ return {
 
                 ["java_language_server"] = function ()
                     lspconfig.java_language_server.setup{
-                        handlers = handlers,
                         capabilities = capabilities,
                         on_attach = on_attach,
                         filetypes = {'java'},
@@ -93,7 +84,6 @@ return {
 
                 ["helm_ls"] = function ()
                     lspconfig.helm_ls.setup {
-                        handlers = handlers,
                         capabilities = capabilities,
                         on_attach = on_attach,
                         filetypes = {'helm'},
@@ -112,7 +102,6 @@ return {
                     local mason_registry = require('mason-registry')
                     local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() .. '/node_modules/@vue/language-server'
                     lspconfig.ts_ls.setup {
-                        handlers = handlers,
                         capabilities = capabilities,
                         on_attach = on_attach,
                         init_options = {
@@ -127,7 +116,6 @@ return {
                         filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
                     }
                     lspconfig.volar.setup {
-                        handlers = handlers,
                         capabilities = capabilities,
                         on_attach = on_attach,
                     }
@@ -142,7 +130,6 @@ return {
                     table.insert(lua_runtime, vim.env.VIMRUNTIME .. "/lua/vim/lsp")
                     table.insert(lua_runtime, "${3rd}/luv/library")
                     lspconfig.lua_ls.setup({
-                        handlers = handlers,
                         capabilities = capabilities,
                         on_attach = on_attach,
                         settings = {
