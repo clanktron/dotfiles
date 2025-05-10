@@ -14,9 +14,6 @@ return {
         lazy = false,
         cmd = {"Mason", "MasonInstall", "MasonUninstall", "MasonLog", "MasonUninstallAll", "MasonUpdate"},
         config = function()
-            -- Reserve space for diagnostic icons
-            vim.opt.signcolumn = 'yes'
-
             local mason = require("mason")
             local mason_lspconfig = require("mason-lspconfig")
             local lspconfig = require("lspconfig")
@@ -49,125 +46,87 @@ return {
                 vim.keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", options)
             end
 
-            vim.diagnostic.config({
-                signs = {
-                    text = {
-                        [vim.diagnostic.severity.ERROR] = "",
-                        [vim.diagnostic.severity.WARN] = "",
-                        [vim.diagnostic.severity.HINT] = "󰠠",
-                        [vim.diagnostic.severity.INFO] = ""
-                    }
-                }
-            })
-
-
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-            local setup_handlers = {
-                -- default handler
-                function (server_name)
-                    require("lspconfig")[server_name].setup {
-                        capabilities = capabilities,
-                        on_attach = on_attach,
-                    }
-                end,
+            vim.lsp.config('*', {
+                capabilities = capabilities,
+                on_attach = on_attach,
+            })
 
-                ["java_language_server"] = function ()
-                    lspconfig.java_language_server.setup{
-                        capabilities = capabilities,
-                        on_attach = on_attach,
-                        filetypes = {'java'},
-                        cmd = {'java-language-server'},
-                        root_dir = lspconfig.util.root_pattern('*.java', '.git', 'pom.xml', 'build.gradle')
+            vim.lsp.config.helm_ls = {
+                filetypes = {'helm'},
+                settings = {
+                  ['helm-ls'] = {
+                    yamlls = {
+                      enabled = false,
                     }
-                end,
+                  }
+                },
+                root_dir = lspconfig.util.root_pattern('Chart.yaml', 'values.yaml')
+            }
 
-                ["helm_ls"] = function ()
-                    lspconfig.helm_ls.setup {
-                        capabilities = capabilities,
-                        on_attach = on_attach,
-                        filetypes = {'helm'},
-                        settings = {
-                          ['helm-ls'] = {
-                            yamlls = {
-                              enabled = false,
-                            }
-                          }
-                        },
-                        root_dir = lspconfig.util.root_pattern('Chart.yaml', 'values.yaml')
-                    }
-                end,
+            local lua_runtime = vim.split(package.path, ';')
+            table.insert(lua_runtime, 'lua/?.lua')
+            table.insert(lua_runtime, 'lua/?/init.lua')
+            table.insert(lua_runtime, vim.env.VIMRUNTIME)
+            table.insert(lua_runtime, vim.env.VIMRUNTIME .. "/lua")
+            table.insert(lua_runtime, vim.env.VIMRUNTIME .. "/lua/vim/lsp")
+            table.insert(lua_runtime, "${3rd}/luv/library")
 
-                ["volar"] = function ()
-                    local mason_registry = require('mason-registry')
-                    local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() .. '/node_modules/@vue/language-server'
-                    lspconfig.ts_ls.setup {
-                        capabilities = capabilities,
-                        on_attach = on_attach,
-                        init_options = {
-                          plugins = {
-                            {
-                              name = '@vue/typescript-plugin',
-                              location = vue_language_server_path,
-                              languages = { 'vue' },
+            vim.lsp.config.lua_ls = {
+                settings = {
+                    Lua = {
+                        runtime = {
+                            version = 'LuaJIT',
+                            path = {
+                                'lua/?.lua',
+                                'lua/?/init.lua',
                             },
-                          },
                         },
-                        filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
-                    }
-                    lspconfig.volar.setup {
-                        capabilities = capabilities,
-                        on_attach = on_attach,
-                    }
-                end,
+                        workspace = {
+                            checkThirdParty = false,
+                            library = lua_runtime
+                        },
+                        telemetry = {
+                            enable = false,
+                        },
+                        hint = {
+                            enable = true,
+                        },
+                        },
+                    },
+            }
 
-                ["lua_ls"] = function ()
-                    local lua_runtime = vim.split(package.path, ';')
-                    table.insert(lua_runtime, 'lua/?.lua')
-                    table.insert(lua_runtime, 'lua/?/init.lua')
-                    table.insert(lua_runtime, vim.env.VIMRUNTIME)
-                    table.insert(lua_runtime, vim.env.VIMRUNTIME .. "/lua")
-                    table.insert(lua_runtime, vim.env.VIMRUNTIME .. "/lua/vim/lsp")
-                    table.insert(lua_runtime, "${3rd}/luv/library")
-                    lspconfig.lua_ls.setup({
-                        capabilities = capabilities,
-                        on_attach = on_attach,
-                        settings = {
-                            Lua = {
-                                runtime = {
-                                    version = 'LuaJIT',
-                                    path = {
-                                        'lua/?.lua',
-                                        'lua/?/init.lua',
-                                    },
-                                },
-                                workspace = {
-                                    checkThirdParty = false,
-                                    library = lua_runtime
-                                },
-                                telemetry = {
-                                    enable = false,
-                                },
-                                hint = {
-                                    enable = true,
-                                },
-                                },
-                            },
-                    })
-                end,
+            vim.lsp.config.volar = {
+              init_options = {
+                vue = {
+                  hybridMode = false,
+                },
+                -- NOTE: This might not be needed. Uncomment if you encounter issues.
+                -- typescript = {
+                --   tsdk = vim.fn.getcwd() .. "/node_modules/typescript/lib",
+                -- },
+              },
+            }
+            local mason_packages = vim.fn.stdpath("data") .. "/mason/packages"
+            local volar_path = mason_packages .. "/vue-language-server/node_modules/@vue/language-server"
+            vim.lsp.config.ts_ls.setup = {
+              -- NOTE: To enable Hybrid Mode, change hybrideMode to true above and uncomment the following filetypes block.
+              -- WARN: THIS MAY CAUSE HIGHLIGHTING ISSUES WITHIN THE TEMPLATE SCOPE WHEN TSSERVER ATTACHES TO VUE FILES
+              -- filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+              init_options = {
+                plugins = {
+                  {
+                    name = "@vue/typescript-plugin",
+                    location = volar_path,
+                    languages = { "vue" },
+                  },
+                },
+              },
             }
 
             mason.setup()
-            mason_lspconfig.setup({
-                -- list of servers for mason to install
-                ensure_installed = {
-                },
-                -- auto-install configured servers (with lspconfig)
-                automatic_installation = false,
-
-            })
-
-            mason_lspconfig.setup_handlers(setup_handlers)
+            mason_lspconfig.setup()
         end,
      }
  }

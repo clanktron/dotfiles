@@ -37,3 +37,16 @@ vim.opt.conceallevel = 2
 
 -- floating window borders
 vim.o.winborder = 'rounded'
+
+-- set diagnostic icons
+vim.opt.signcolumn = 'yes' -- reserve space for icons
+vim.diagnostic.config({
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = "",
+            [vim.diagnostic.severity.WARN] = "",
+            [vim.diagnostic.severity.HINT] = "󰠠",
+            [vim.diagnostic.severity.INFO] = ""
+        }
+    }
+})
