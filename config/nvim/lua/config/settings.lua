@@ -50,3 +50,6 @@ vim.diagnostic.config({
         }
     }
 })
+
+vim.o.exrc = true -- source project specific config
+vim.o.secure = true -- don't allow unsafe commands
