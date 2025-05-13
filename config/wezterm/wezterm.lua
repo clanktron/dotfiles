@@ -29,19 +29,7 @@ config.color_scheme = scheme_for_appearance(get_appearance())
 config.freetype_load_flags = 'NO_HINTING'
 config.window_background_opacity = 1
 config.font_size = 13
-config.font = wezterm.font 'SauceCodePro Nerd Font'
-config.font_rules = {
-    {
-        intensity = "Bold",
-        italic = false,
-        font = wezterm.font("SauceCodePro Nerd Font", { weight = "Bold", stretch = "Normal", style = "Normal" }),
-    },
-    {
-        intensity = "Bold",
-        italic = true,
-        font = wezterm.font("SauceCodePro Nerd Font", { weight = "Bold", stretch = "Normal", style = "Italic" }),
-    },
-}
+config.warn_about_missing_glyphs = false
 config.window_decorations = "TITLE|RESIZE"
 config.enable_tab_bar = false
 config.enable_wayland = true
