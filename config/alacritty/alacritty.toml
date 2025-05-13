@@ -1,5 +1,6 @@
-import = ["~/.config/alacritty/colors/active.toml"]
+[general]
 live_config_reload = true
+import = ["~/.config/alacritty/colors/active.toml"]
 
 [mouse]
 hide_when_typing = false
@@ -41,18 +42,6 @@ TERM = "xterm-256color"
 
 [font]
 size = 13
-
-[font.bold]
-family = "SauceCodePro Nerd Font"
-style = "Bold"
-
-[font.italic]
-family = "SauceCodePro Nerd Font"
-style = "Italic"
-
-[font.normal]
-family = "SauceCodePro Nerd Font"
-style = "Regular"
 
 [[hints.enabled]]
 command = "xdg-open"
