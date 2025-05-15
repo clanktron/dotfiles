@@ -30,6 +30,18 @@ vim.keymap.set("n", "<cmd>.", "<Esc>")
 -- exit terminal mode easier
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 
+-- code lsp/diagnostic navigation
+vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
+vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action)
+vim.keymap.set("n", "gl", vim.diagnostic.open_float)
+vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ count = -1, float = true }) end)
+vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ count = 1, float = true }) end)
+vim.keymap.set("n", "grr", "<cmd>Telescope lsp_references<CR>")
+vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>")
+vim.keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>")
+vim.keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>")
+vim.keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>")
+
 -- -- popup navigation
 -- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 -- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
