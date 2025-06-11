@@ -2,7 +2,7 @@ return {
   "lervag/vimtex",
   lazy = false,
   init = function()
-    vim.g.vimtex_view_method = "skim"
+    -- vim.g.vimtex_view_method = "skim"
     vim.g.vimtex_complete_closing_braces = 1
     -- vim.g.vimtex_view_general_viewer = "open"
     vim.g.vimtex_syntax_conceal = {
