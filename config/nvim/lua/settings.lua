@@ -41,6 +41,9 @@ vim.o.winborder = 'rounded'
 -- set diagnostic icons
 vim.opt.signcolumn = 'yes' -- reserve space for icons
 vim.diagnostic.config({
+    jump = {
+        float = true,
+    },
     signs = {
         text = {
             [vim.diagnostic.severity.ERROR] = "",
