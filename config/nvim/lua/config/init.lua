@@ -1,6 +1,0 @@
-require('config.commands')
-require('config.keymaps')
--- require('config.netrw')
-require('config.settings')
-require('config.nestedEsc')
-require('config.lsp')

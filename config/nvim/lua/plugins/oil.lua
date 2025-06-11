@@ -8,6 +8,6 @@ return {
                 show_hidden = true
             }
         }
-        vim.keymap.set('n', '<leader>e', oil.toggle_float)
+        -- vim.keymap.set('n', '<leader>e', oil.toggle_float)
     end
 }

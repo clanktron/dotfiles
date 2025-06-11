@@ -4,12 +4,12 @@ return {
         lazy = true,
         opts = {
             style = "storm",
-            transparent = true,
+            -- transparent = true,
             terminal_colors = true,
-            styles = {
-                sidebars = "transparent",
-                floats = "transparent",
-            }
+            -- styles = {
+            --     sidebars = "transparent",
+            --     floats = "transparent",
+            -- }
         },
     },
     {
