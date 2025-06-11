@@ -9,9 +9,6 @@ vim.keymap.set("n", "<leader>w", "<cmd>w<cr>")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
--- really escape
-vim.keymap.set({'n','v','i'}, "<Esc>", '<Esc><Esc>')
-
 -- sane pasting
 vim.keymap.set('x', '<leader>p', "\"_dP")
 
@@ -24,11 +21,8 @@ vim.keymap.set("n", "<leader>h", "<Esc>gT")
 vim.keymap.set("n", "<leader>v", "<C-w>v")
 vim.keymap.set("n", "<leader>s", "<C-w>s")
 
--- alternative escape
+-- alternative escape (iPad)
 vim.keymap.set("n", "<cmd>.", "<Esc>")
-
--- exit terminal mode easier
-vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 
 -- code lsp/diagnostic navigation
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration)

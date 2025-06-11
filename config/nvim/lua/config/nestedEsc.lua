@@ -12,3 +12,9 @@ function FishEscBehavior()
 end
 
 vim.api.nvim_set_keymap("t", "<Esc>", "<Cmd>lua FishEscBehavior()<CR>", { noremap = true, silent = true })
+
+-- exit terminal mode easier
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
+
+-- really escape (idk if these affect each other)
+vim.keymap.set({'n','v','i'}, "<Esc>", '<Esc><Esc>')
