@@ -2,7 +2,7 @@ require('commands')
 require('keymaps')
 require('settings')
 require('nestedEsc')
-require('lsp')
+require('session')
 
 -- ensure lazy is installed
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -35,5 +35,7 @@ require('lazy').setup(
       },
     }
 )
+
+require('lsp')
 
 vim.cmd.colorscheme('tokyonight')
