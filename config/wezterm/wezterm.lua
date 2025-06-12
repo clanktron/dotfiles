@@ -22,6 +22,14 @@ local function scheme_for_appearance(appearance)
   end
 end
 
+-- session persistence
+config.unix_domains = {
+  {
+    name = 'unix',
+  },
+}
+config.default_gui_startup_args = { 'connect', 'unix' }
+
 config.color_scheme = scheme_for_appearance(get_appearance())
 config.freetype_load_flags = 'NO_HINTING'
 config.window_background_opacity = 1
