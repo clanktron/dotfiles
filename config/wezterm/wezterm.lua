@@ -1,6 +1,19 @@
 local wezterm = require 'wezterm'
 local config = {}
 
+-- wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+--   local pane = tab.active_pane
+--   local title = pane.foreground_process_name
+--   local color = "navy"
+--   if tab.is_active then
+--     color = "blue"
+--   end
+--   return {
+--     {Background={Color=color}},
+--     {Text=" " .. title .. " "},
+--   }
+-- end)
+
 -- In newer versions of wezterm, use the config_builder which will
 -- help provide clearer error messages
 if wezterm.config_builder then
@@ -37,7 +50,6 @@ config.font_size = 13
 config.font = wezterm.font 'SauceCodePro Nerd Font'
 config.warn_about_missing_glyphs = false
 config.window_decorations = "TITLE|RESIZE"
-config.enable_tab_bar = false
 config.enable_wayland = true
 config.window_close_confirmation = 'NeverPrompt'
 
