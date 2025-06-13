@@ -1,4 +1,6 @@
 local wezterm = require 'wezterm'
+local sessionizer = require("sessionizer")
+
 local config = {}
 
 -- wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
@@ -53,13 +55,18 @@ config.window_decorations = "TITLE|RESIZE"
 config.enable_wayland = true
 config.window_close_confirmation = 'NeverPrompt'
 
-local sessionizer = require("sessionizer")
-
+config.leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 }
 config.keys = {
     { key = "f", mods = "SUPER", action = wezterm.action_callback(sessionizer.toggle) },
     { key = 'f', mods = 'SUPER|SHIFT', action = wezterm.action.ShowLauncherArgs { flags = 'FUZZY|WORKSPACES' } },
     { key = '[', mods = 'SUPER', action = wezterm.action.SwitchWorkspaceRelative(1) },
     { key = ']', mods = 'SUPER', action = wezterm.action.SwitchWorkspaceRelative(-1) },
+    { key = '=', mods = 'LEADER', action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain'} },
+    { key = '-', mods = 'LEADER', action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain'} },
+    { key = 'h', mods = 'CTRL', action = wezterm.action.ActivatePaneDirection("Left") },
+    { key = 'j', mods = 'CTRL', action = wezterm.action.ActivatePaneDirection("Down") },
+    { key = 'k', mods = 'CTRL', action = wezterm.action.ActivatePaneDirection("Up") },
+    { key = 'l', mods = 'CTRL', action = wezterm.action.ActivatePaneDirection("Right") },
 }
 
 return config
