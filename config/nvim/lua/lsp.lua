@@ -4,5 +4,5 @@ vim.lsp.enable({
     'lua_ls',
     'helm_ls',
     'ts_ls',
-    'volar',
+    'vue_ls',
 })
