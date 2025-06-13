@@ -1,5 +1,6 @@
 local wezterm = require 'wezterm'
 local sessionizer = require("sessionizer")
+local act = wezterm.action
 
 -- Integration with neovim panes
 local function isViProcess(pane)
@@ -18,7 +19,7 @@ local function conditionalActivatePane(window, pane, pane_direction, vim_directi
         local before = pane:get_cursor_position()
         window:perform_action(
             -- This should match the keybinds you set in Neovim.
-            wezterm.action.SendKey({ key = vim_direction, mods = 'CTRL' }),
+            act.SendKey({ key = vim_direction, mods = 'CTRL' }),
             pane
         )
         wezterm.sleep_ms(50)
@@ -30,7 +31,7 @@ local function conditionalActivatePane(window, pane, pane_direction, vim_directi
     end
 
     if not vim_pane_changed then
-        window:perform_action(wezterm.action.ActivatePaneDirection(pane_direction), pane)
+        window:perform_action(act.ActivatePaneDirection(pane_direction), pane)
     end
 end
 
@@ -102,20 +103,20 @@ config = {
     leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 },
     keys = {
         { key = "f", mods = "SUPER", action = wezterm.action_callback(sessionizer.toggle) },
-        { key = 's', mods = 'LEADER', action = wezterm.action.ShowLauncherArgs { flags = 'WORKSPACES' } },
-        { key = '[', mods = 'SUPER', action = wezterm.action.SwitchWorkspaceRelative(1) },
-        { key = ']', mods = 'SUPER', action = wezterm.action.SwitchWorkspaceRelative(-1) },
-        { key = '=', mods = 'LEADER', action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain'} },
-        { key = '-', mods = 'LEADER', action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain'} },
+        { key = 's', mods = 'LEADER', action = act.ShowLauncherArgs { flags = 'FUZZY|WORKSPACES' } },
+        { key = '[', mods = 'SUPER', action = act.SwitchWorkspaceRelative(1) },
+        { key = ']', mods = 'SUPER', action = act.SwitchWorkspaceRelative(-1) },
+        { key = '=', mods = 'LEADER', action = act.SplitHorizontal { domain = 'CurrentPaneDomain'} },
+        { key = '-', mods = 'LEADER', action = act.SplitVertical { domain = 'CurrentPaneDomain'} },
         -- Integration with neovim panes
-        { key = 'h', mods = 'CTRL', action = wezterm.action.EmitEvent('ActivatePaneDirection-left') },
-        { key = 'j', mods = 'CTRL', action = wezterm.action.EmitEvent('ActivatePaneDirection-down') },
-        { key = 'k', mods = 'CTRL', action = wezterm.action.EmitEvent('ActivatePaneDirection-up') },
-        { key = 'l', mods = 'CTRL', action = wezterm.action.EmitEvent('ActivatePaneDirection-right') },
-        -- { key = 'h', mods = 'CTRL', action = wezterm.action.ActivatePaneDirection("Left") },
-        -- { key = 'j', mods = 'CTRL', action = wezterm.action.ActivatePaneDirection("Down") },
-        -- { key = 'k', mods = 'CTRL', action = wezterm.action.ActivatePaneDirection("Up") },
-        -- { key = 'l', mods = 'CTRL', action = wezterm.action.ActivatePaneDirection("Right") },
+        { key = 'h', mods = 'CTRL', action = act.EmitEvent('ActivatePaneDirection-left') },
+        { key = 'j', mods = 'CTRL', action = act.EmitEvent('ActivatePaneDirection-down') },
+        { key = 'k', mods = 'CTRL', action = act.EmitEvent('ActivatePaneDirection-up') },
+        { key = 'l', mods = 'CTRL', action = act.EmitEvent('ActivatePaneDirection-right') },
+        -- { key = 'h', mods = 'CTRL', action = act..ActivatePaneDirection("Left") },
+        -- { key = 'j', mods = 'CTRL', action = act..ActivatePaneDirection("Down") },
+        -- { key = 'k', mods = 'CTRL', action = act..ActivatePaneDirection("Up") },
+        -- { key = 'l', mods = 'CTRL', action = act..ActivatePaneDirection("Right") },
     }
 }
 
