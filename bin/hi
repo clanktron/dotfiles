@@ -1,0 +1,15 @@
+#!/bin/sh
+set -eox pipefail
+
+HOST=$1
+remoteNvim=${2:-/home/linuxbrew/.linuxbrew/bin/nvim}
+port=$(awk 'BEGIN {srand(); print int(49152 + rand() * (65535 - 49152 + 1))}')
+ssh -M -N -f -v -T -L $port:localhost:$port -o ConnectTimeout=10 $HOST
+ssh $HOST "$remoteNvim --headless --listen localhost:$port" &
+
+# Wait for the server to be ready
+echo Waiting...
+sleep 5
+
+# Launch remote UI
+nvim --remote-ui --server localhost:$port
