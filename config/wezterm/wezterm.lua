@@ -90,6 +90,15 @@ config = {
         name = 'unix',
       },
     },
+    ssh_domains = {
+      {
+        -- This name identifies the domain
+        name = 'fedora.local',
+        remote_address = 'fedora.local',
+        -- The hostname or address to connect to. Will be used to match settings
+        -- from your ssh config file
+      }
+    },
     default_gui_startup_args = { 'connect', 'unix' },
     color_scheme = scheme_for_appearance(get_appearance()),
     freetype_load_flags = 'NO_HINTING',
@@ -108,6 +117,7 @@ config = {
         { key = ']', mods = 'SUPER', action = act.SwitchWorkspaceRelative(-1) },
         { key = '=', mods = 'LEADER', action = act.SplitHorizontal { domain = 'CurrentPaneDomain'} },
         { key = '-', mods = 'LEADER', action = act.SplitVertical { domain = 'CurrentPaneDomain'} },
+        { key = 'm', mods = 'LEADER', action = act.TogglePaneZoomState },
         -- Integration with neovim panes
         { key = 'h', mods = 'CTRL', action = act.EmitEvent('ActivatePaneDirection-left') },
         { key = 'j', mods = 'CTRL', action = act.EmitEvent('ActivatePaneDirection-down') },
