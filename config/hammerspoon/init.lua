@@ -1,5 +1,5 @@
 -- lua lsp stuff
-hs.loadSpoon("EmmyLua")
+-- hs.loadSpoon("EmmyLua")
 
 -- terminal hotkey
 hs.application.enableSpotlightForNameSearches(true)
