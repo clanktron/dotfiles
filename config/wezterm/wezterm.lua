@@ -1,8 +1,6 @@
 local wezterm = require 'wezterm'
 local sessionizer = require("sessionizer")
 
-local config = {}
-
 -- Integration with neovim panes
 local function isViProcess(pane)
     -- get_foreground_process_name On Linux, macOS and Windows,
@@ -62,12 +60,6 @@ end)
 --   }
 -- end)
 
--- In newer versions of wezterm, use the config_builder which will
--- help provide clearer error messages
-if wezterm.config_builder then
-    config = wezterm.config_builder()
-end
-
 local function get_appearance()
     if wezterm.gui then
         return wezterm.gui.get_appearance()
@@ -83,41 +75,48 @@ local function scheme_for_appearance(appearance)
   end
 end
 
--- session persistence
-config.unix_domains = {
-  {
-    name = 'unix',
-  },
-}
-config.default_gui_startup_args = { 'connect', 'unix' }
+-- In newer versions of wezterm, use the config_builder which will
+-- help provide clearer error messages
+local config = {}
+if wezterm.config_builder then
+    config = wezterm.config_builder()
+end
 
-config.color_scheme = scheme_for_appearance(get_appearance())
-config.freetype_load_flags = 'NO_HINTING'
-config.window_background_opacity = 1
-config.font_size = 13
-config.font = wezterm.font 'SauceCodePro Nerd Font'
-config.warn_about_missing_glyphs = false
-config.window_decorations = "TITLE|RESIZE"
-config.enable_wayland = true
-config.window_close_confirmation = 'NeverPrompt'
-
-config.leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 }
-config.keys = {
-    { key = "f", mods = "SUPER", action = wezterm.action_callback(sessionizer.toggle) },
-    { key = 's', mods = 'LEADER', action = wezterm.action.ShowLauncherArgs { flags = 'WORKSPACES' } },
-    { key = '[', mods = 'SUPER', action = wezterm.action.SwitchWorkspaceRelative(1) },
-    { key = ']', mods = 'SUPER', action = wezterm.action.SwitchWorkspaceRelative(-1) },
-    { key = '=', mods = 'LEADER', action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain'} },
-    { key = '-', mods = 'LEADER', action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain'} },
-    -- Integration with neovim panes
-    { key = 'h', mods = 'CTRL', action = wezterm.action.EmitEvent('ActivatePaneDirection-left') },
-    { key = 'j', mods = 'CTRL', action = wezterm.action.EmitEvent('ActivatePaneDirection-down') },
-    { key = 'k', mods = 'CTRL', action = wezterm.action.EmitEvent('ActivatePaneDirection-up') },
-    { key = 'l', mods = 'CTRL', action = wezterm.action.EmitEvent('ActivatePaneDirection-right') },
-    -- { key = 'h', mods = 'CTRL', action = wezterm.action.ActivatePaneDirection("Left") },
-    -- { key = 'j', mods = 'CTRL', action = wezterm.action.ActivatePaneDirection("Down") },
-    -- { key = 'k', mods = 'CTRL', action = wezterm.action.ActivatePaneDirection("Up") },
-    -- { key = 'l', mods = 'CTRL', action = wezterm.action.ActivatePaneDirection("Right") },
+config = {
+    -- session persistence
+    unix_domains = {
+      {
+        name = 'unix',
+      },
+    },
+    default_gui_startup_args = { 'connect', 'unix' },
+    color_scheme = scheme_for_appearance(get_appearance()),
+    freetype_load_flags = 'NO_HINTING',
+    window_background_opacity = 1,
+    font_size = 13,
+    font = wezterm.font 'SauceCodePro Nerd Font',
+    warn_about_missing_glyphs = false,
+    window_decorations = "TITLE|RESIZE",
+    enable_wayland = true,
+    window_close_confirmation = 'NeverPrompt',
+    leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 },
+    keys = {
+        { key = "f", mods = "SUPER", action = wezterm.action_callback(sessionizer.toggle) },
+        { key = 's', mods = 'LEADER', action = wezterm.action.ShowLauncherArgs { flags = 'WORKSPACES' } },
+        { key = '[', mods = 'SUPER', action = wezterm.action.SwitchWorkspaceRelative(1) },
+        { key = ']', mods = 'SUPER', action = wezterm.action.SwitchWorkspaceRelative(-1) },
+        { key = '=', mods = 'LEADER', action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain'} },
+        { key = '-', mods = 'LEADER', action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain'} },
+        -- Integration with neovim panes
+        { key = 'h', mods = 'CTRL', action = wezterm.action.EmitEvent('ActivatePaneDirection-left') },
+        { key = 'j', mods = 'CTRL', action = wezterm.action.EmitEvent('ActivatePaneDirection-down') },
+        { key = 'k', mods = 'CTRL', action = wezterm.action.EmitEvent('ActivatePaneDirection-up') },
+        { key = 'l', mods = 'CTRL', action = wezterm.action.EmitEvent('ActivatePaneDirection-right') },
+        -- { key = 'h', mods = 'CTRL', action = wezterm.action.ActivatePaneDirection("Left") },
+        -- { key = 'j', mods = 'CTRL', action = wezterm.action.ActivatePaneDirection("Down") },
+        -- { key = 'k', mods = 'CTRL', action = wezterm.action.ActivatePaneDirection("Up") },
+        -- { key = 'l', mods = 'CTRL', action = wezterm.action.ActivatePaneDirection("Right") },
+    }
 }
 
 return config
