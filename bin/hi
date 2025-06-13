@@ -4,12 +4,36 @@ set -eox pipefail
 HOST=$1
 remoteNvim=${2:-/home/linuxbrew/.linuxbrew/bin/nvim}
 port=$(awk 'BEGIN {srand(); print int(49152 + rand() * (65535 - 49152 + 1))}')
-ssh -M -N -f -v -T -L $port:localhost:$port -o ConnectTimeout=10 $HOST
-ssh $HOST "$remoteNvim --headless --listen localhost:$port" &
+controlPath="/tmp/ssh-$USER-$HOST"
 
-# Wait for the server to be ready
-echo Waiting...
-sleep 5
+# Check if SSH master connection is alive, else start it
+if ! ssh -o ControlPath=$controlPath -O check $HOST 2>/dev/null; then
+  ssh -M -N -f \
+    -o ControlPath=$controlPath \
+    -o ControlMaster=yes \
+    -o ConnectTimeout=10 \
+    -L $port:localhost:$port \
+    $HOST
+else
+  # Start just the port forwarding using existing master
+  ssh -S $controlPath -O forward -L $port:localhost:$port $HOST || true
+fi
 
-# Launch remote UI
+# Check if nvim is already listening remotely on that port
+if ! ssh -o ControlPath=$controlPath $HOST "lsof -iTCP:$port -sTCP:LISTEN -nP | grep -q $remoteNvim"; then
+  ssh -o ControlPath=$controlPath $HOST "$remoteNvim --headless --listen localhost:$port" &
+fi
+
+# Wait for nvim to be ready
+timeout=50
+while ! nvim --server localhost:$port --remote-expr '1' >/dev/null 2>&1; do
+  sleep 0.2
+  timeout=$((timeout - 1))
+  if [ $timeout -le 0 ]; then
+    echo "Timed out waiting for Neovim server on port $port"
+    exit 1
+  fi
+done
+
+# Connect local Neovim to remote server
 nvim --remote-ui --server localhost:$port
