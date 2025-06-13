@@ -14,13 +14,25 @@ fi
 # name of working directory for session
 FOLDER=$(basename "$ZOXIDE_RESULT")
 
-# lookup tmux session name
-SESSION=$(tmux list-sessions | grep "$FOLDER" | awk '{print $1}')
-SESSION=${SESSION//:/}
+if [ -n "$WEZTERM_EXECUTABLE" ]; then
+    SESSION=$(wezterm cli list | grep "$FOLDER" | awk '{print $3}' | head -1)
+elif  [ -n "$TMUX" ]; then
+    SESSION=$(tmux list-sessions | grep "$FOLDER" | awk '{print $1}')
+    SESSION=${SESSION//:/}
+else
+    exit 1
+fi
 
-if [ -z "$TMUX" ]; then
-  # echo "tmux is not active"
-  if [ -z "$SESSION" ]; then
+
+
+
+if [ -n "$WEZTERM_EXECUTABLE" ]; then
+    cd "$ZOXIDE_RESULT" || (echo "Failed to change directory."; exit 1)
+    wezterm cli acti
+fi
+
+
+if [ -z "$TMUX" ] && [ -z "$SESSION" ]; then
     # echo "session $SESSION does not exist"
     cd "$ZOXIDE_RESULT" || (echo "Failed to change directory."; exit 1)
     tmux new-session -s "$FOLDER"
@@ -28,15 +40,14 @@ if [ -z "$TMUX" ]; then
     # echo "session $SESSION exists"
     tmux attach -t "$SESSION"
   fi
-else
-  # echo "tmux is active"
-  if [ -z "$SESSION" ]; then
-    # echo "session $SESSION does not exist"
-    cd "$ZOXIDE_RESULT" || (echo "Failed to change directory."; exit 1)
-    tmux new-session -d -s "$FOLDER"
-    tmux switch-client -t "$FOLDER"
-  else
-    # echo "session exists"
-    tmux switch-client -t "$SESSION"
-  fi
 fi
+
+# echo "tmux is active"
+if [ -z "$SESSION" ]; then
+  # echo "session $SESSION does not exist"
+  cd "$ZOXIDE_RESULT" || (echo "Failed to change directory."; exit 1)
+  tmux new-session -d -s "$FOLDER"
+  tmux switch-client -t "$FOLDER"
+fi
+
+tmux switch-client -t "$SESSION"
