@@ -6,4 +6,6 @@ vim.lsp.enable({
     'helm_ls',
     'ts_ls',
     'vue_ls',
+    'bashls',
+    -- 'fish_lsp',
 })
