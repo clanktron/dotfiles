@@ -33,7 +33,7 @@ M.fuzzy_find_projects = function()
     }),
     sorter = conf.generic_sorter({}),
     attach_mappings = function(_, map)
-      map("i", "<CR>", function(prompt_bufnr)
+      map({"i", "n"}, "<CR>", function(prompt_bufnr)
         local selection = require("telescope.actions.state").get_selected_entry()
         require("telescope.actions").close(prompt_bufnr)
         vim.cmd("cd " .. selection.value)

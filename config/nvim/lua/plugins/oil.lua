@@ -8,7 +8,9 @@ return {
                 show_hidden = true
             }
         }
-        vim.keymap.set('n', '<leader>e', oil.open)
+        vim.keymap.set('n', '<leader>e', function ()
+            oil.open(vim.fn.getcwd())
+        end)
         vim.keymap.set('n', '-', oil.open)
     end
 }
