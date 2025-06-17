@@ -12,3 +12,8 @@ function TerminalEsc()
 end
 
 vim.api.nvim_set_keymap("t", "<Esc>", "<Cmd>lua TerminalEsc()<CR>", { noremap = true, silent = true })
+
+vim.api.nvim_create_autocmd("TermOpen", {
+  pattern = "*",
+  command = "startinsert"
+})
