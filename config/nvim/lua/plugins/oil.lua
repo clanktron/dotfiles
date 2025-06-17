@@ -9,5 +9,6 @@ return {
             }
         }
         vim.keymap.set('n', '<leader>e', oil.open)
+        vim.keymap.set('n', '-', oil.open)
     end
 }

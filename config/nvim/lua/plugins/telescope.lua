@@ -38,12 +38,16 @@ return {
             for _, extension in ipairs(opts) do
                 telescope.load_extension(extension)
             end
+            vim.keymap.set("n", "grr", "<cmd>Telescope lsp_references<CR>")
+            vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>")
+            vim.keymap.set("n", "gri", "<cmd>Telescope lsp_implementations<CR>")
+            vim.keymap.set("n", "grt", "<cmd>Telescope lsp_type_definitions<CR>")
+            vim.keymap.set('n', '<leader>fb', require('telescope.builtin').buffers, {})
         end,
         keys = {
             { "<leader>ff", function() require('telescope.builtin').find_files {} end, desc = "Telescope fzf files" },
             { "<leader>fk", function() require('telescope.builtin').keymaps {} end, desc = "Telescope fzf keymaps" },
             { "<leader>fs", function() require('telescope.builtin').live_grep {} end, desc = "Telescope live grep" },
-            -- vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
             -- vim.keymap.set('n', '<leader>fc', builtin.grep_string, {})
             -- vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
         },
