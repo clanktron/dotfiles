@@ -108,6 +108,7 @@ config = {
     warn_about_missing_glyphs = false,
     window_decorations = "TITLE|RESIZE",
     enable_wayland = true,
+    enable_tab_bar = false,
     window_close_confirmation = 'NeverPrompt',
     leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 },
     keys = {

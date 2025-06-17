@@ -44,6 +44,9 @@ return {
             vim.keymap.set("n", "grt", "<cmd>Telescope lsp_type_definitions<CR>")
             vim.keymap.set('n', '<leader>fb', require('telescope.builtin').buffers, {})
         end,
+        init = function ()
+
+        end,
         keys = {
             { "<leader>ff", function() require('telescope.builtin').find_files {} end, desc = "Telescope fzf files" },
             { "<leader>fk", function() require('telescope.builtin').keymaps {} end, desc = "Telescope fzf keymaps" },

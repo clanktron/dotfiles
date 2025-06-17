@@ -1,0 +1,7 @@
+local fuzzy = require("fuzzy_dir.fuzzy")
+vim.api.nvim_create_user_command("Projects", function()
+  fuzzy.fuzzy_find_projects()
+end, {})
+vim.keymap.set("n", "<leader>cd", function()
+    fuzzy.fuzzy_find_projects()
+end, {})

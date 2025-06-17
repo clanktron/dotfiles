@@ -1,3 +1,4 @@
+- neovim plugin that starts local neovim servers with fuzzy found directories in a set dir
 - ~/.config/environment.d stuff for sway init
 - add lock.target (swaylock)
 - custom oci image for silverblue derivative
