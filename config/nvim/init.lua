@@ -1,8 +1,4 @@
-require('CD')
-require('case_insensitive')
-require('keymaps')
-require('nestedEsc')
-require('settings')
+vim.g.mapleader = " "
 
 -- ensure lazy is installed
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -35,10 +31,5 @@ require('lazy').setup(
       },
     }
 )
-
-require('lsp')
-
--- show path
-vim.api.nvim_create_user_command("Path", "echo expand('%:p')", {})
 
 vim.cmd.colorscheme('tokyonight')

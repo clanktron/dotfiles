@@ -1,6 +1,3 @@
--- set custom leader key
-vim.g.mapleader = " "
-
 -- fast quit and save
 vim.keymap.set("n", "<leader>q", "<cmd>q<cr>")
 vim.keymap.set("n", "<leader>w", "<cmd>w<cr>")
