@@ -28,17 +28,3 @@ vim.keymap.set("n", "<cmd>.", "<Esc>")
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
 vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action)
 vim.keymap.set("n", "gl", vim.diagnostic.open_float)
-vim.keymap.set("n", "grr", "<cmd>Telescope lsp_references<CR>")
-vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>")
-vim.keymap.set("n", "gri", "<cmd>Telescope lsp_implementations<CR>")
-vim.keymap.set("n", "grt", "<cmd>Telescope lsp_type_definitions<CR>")
-
--- -- popup navigation
--- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
--- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
--- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
--- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
-
--- -- stable page browsing
--- vim.keymap.set("n", "<C-d>", "<C-d>zz")
--- vim.keymap.set("n", "<C-u>", "<C-u>zz")
