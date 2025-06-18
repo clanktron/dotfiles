@@ -36,8 +36,11 @@ M.fuzzy_find_projects = function()
       map({"i", "n"}, "<CR>", function(prompt_bufnr)
         local selection = require("telescope.actions.state").get_selected_entry()
         require("telescope.actions").close(prompt_bufnr)
-        vim.cmd("cd " .. selection.value)
-        print("Changed directory to: " .. selection.value)
+        vim.fn.chdir(selection.value)
+        -- use event loop schedule to avoid losing message to telescope UI redraw
+        vim.schedule(function()
+          vim.notify("Changed directory to: " .. selection.value, vim.log.levels.INFO)
+        end)
       end)
       return true
     end,
