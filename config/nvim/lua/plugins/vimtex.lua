@@ -1,6 +1,7 @@
 return {
   "lervag/vimtex",
-  lazy = false,
+  lazy = true,
+  ft = { "tex" },
   init = function()
     -- vim.g.vimtex_view_method = "skim"
     vim.g.vimtex_complete_closing_braces = 1
