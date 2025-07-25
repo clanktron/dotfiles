@@ -1,5 +1,5 @@
-# Shell look
-PS1='\[\e[32m\]\u@\e[37m\]\h \e[34m\]\w \e[37m\]>> '
+PS1='\[\e[32m\]\u@\[\e[37m\]\h \[\e[34m\]\w \[\e[37m\]>> '
+set -o vi
 
 # ENVIRONMENT
 export EDITOR=nvim
@@ -15,6 +15,7 @@ export BLOG_DIR="$HOME"/Developer/repos/clanktron/blog/src/contents
 ## PATH
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin
 export PATH=/opt/pkg/sbin:/opt/pkg/bin:$PATH
+export PATH=/opt/homebrew/bin:$PATH
 export PATH=/run/current-system/sw/bin:$PATH
 export PATH=/run/wrappers/bin:$PATH
 export PATH=$HOME/.nix-profile/bin:$PATH
@@ -68,3 +69,7 @@ function ide() {
     tmux split-window -h -p 53
     vi
 }
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/clayton.castro/.lmstudio/bin"
+# End of LM Studio CLI section
