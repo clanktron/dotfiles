@@ -1,5 +1,6 @@
 set $mod Mod4
-set $launcher wofi
+# set $launcher wofi
+set $launcher rofi -show drun
 
 set $left h
 set $down j
@@ -17,15 +18,20 @@ smart_borders on
 # default_border none
 # default_floating_border normal 9
 
+
 set $home /home/clayton
-set $term flatpak run org.wezfurlong.wezterm
+set $wallpaper /home/clayton/.config/background
+set $term foot
 set $logoutPrompt wlogout
-set $lock loginctl lock-session
+#set $lock loginctl lock-session
+set $lock swaylock -i $wallpaper
 set $screenshot grim -g "$(slurp)" "$HOME/Pictures/Screenshot $(date "+%Y-%m-%d at %r").png"
 set $select_screenshot grim "$HOME/Pictures/Screenshot $(date "+%Y-%m-%d at %r").png"
 set $screenRecord wl-screenrec -g "$(slurp)" -f "$HOME/Videos/Screen Recording $(date "+%Y-%m-%d at %r").mov"
 set $stopScreenRecord pkill wl-screenrec
 # set $notificationCenter swaync-client -t -sw
+
+output * bg $wallpaper fill
 
 set $playPause playerctl play-pause
 set $pause playerctl pause
@@ -59,10 +65,10 @@ bindsym $mod+space exec $launcher
 bindsym $mod+Shift+R reload
 bindsym $mod+Shift+Q exec $logoutPrompt
 
-bindsym $mod+Alt+3 exec $screenshot
-bindsym $mod+Alt+4 exec $select_screenshot
-bindsym $mod+Alt+5 exec $screenRecord
-bindsym $mod+Alt+6 exec $stopScreenRecord
+bindsym $mod+Shift+3 exec $screenshot
+bindsym $mod+Shift+4 exec $select_screenshot
+bindsym $mod+Shift+5 exec $screenRecord
+bindsym $mod+Shift+6 exec $stopScreenRecord
 
 bindsym $mod+Shift+f fullscreen
 bindsym $mod+f floating toggle
@@ -118,16 +124,16 @@ bindsym {
 }
 # Move focused container to workspace
 bindsym {
-    $mod+Shift+1 move container to workspace number 1; workspace 1
-    $mod+Shift+2 move container to workspace number 2; workspace 2
-    $mod+Shift+3 move container to workspace number 3; workspace 3
-    $mod+Shift+4 move container to workspace number 4; workspace 4
-    $mod+Shift+5 move container to workspace number 5; workspace 5
-    $mod+Shift+6 move container to workspace number 6; workspace 6
-    $mod+Shift+7 move container to workspace number 7; workspace 7
-    $mod+Shift+8 move container to workspace number 8; workspace 8
-    $mod+Shift+9 move container to workspace number 9; workspace 9
-    $mod+Shift+0 move container to workspace number 10; workspace 10
+    $mod+Alt+1 move container to workspace number 1; workspace 1
+    $mod+Alt+2 move container to workspace number 2; workspace 2
+    $mod+Alt+3 move container to workspace number 3; workspace 3
+    $mod+Alt+4 move container to workspace number 4; workspace 4
+    $mod+Alt+5 move container to workspace number 5; workspace 5
+    $mod+Alt+6 move container to workspace number 6; workspace 6
+    $mod+Alt+7 move container to workspace number 7; workspace 7
+    $mod+Alt+8 move container to workspace number 8; workspace 8
+    $mod+Alt+9 move container to workspace number 9; workspace 9
+    $mod+Alt+0 move container to workspace number 10; workspace 10
 }
 
 # Resizing containers:
@@ -248,11 +254,14 @@ bar {
 	swaybar_command waybar
 }
 
+exec {
+}
+
 exec_always {
     nwg-dock -nows -p left -d -hd 100000
     swaync
-    pgrep swayidle || swayidle
     pgrep autoLightDark || autoLightDark
+    pgrep swayidle || swayidle
     swww-daemon --format xrgb
     $home/.local/bin/randomize-wallpaper.sh
 }
