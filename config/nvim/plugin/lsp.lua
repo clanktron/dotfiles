@@ -41,7 +41,7 @@ vim.lsp.enable({
     'ccls',
     'cds_lsp',
     'circom-lsp',
-    'clangd',
+    -- 'clangd',
     'clarity_lsp',
     'clojure_lsp',
     'cmake',
