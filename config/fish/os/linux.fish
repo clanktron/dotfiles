@@ -6,6 +6,6 @@ alias core 'sensors | grep Core'
 set -px XDG_DATA_DIRS /home/linuxbrew/.linuxbrew/share
 
 # PATH
-set -px PATH /var/lib/flatpak/exports/bin
-set -px PATH /home/linuxbrew/.linuxbrew/sbin
-set -px PATH /home/linuxbrew/.linuxbrew/bin
+set -ax PATH /var/lib/flatpak/exports/bin
+set -ax PATH /home/linuxbrew/.linuxbrew/sbin
+set -ax PATH /home/linuxbrew/.linuxbrew/bin
