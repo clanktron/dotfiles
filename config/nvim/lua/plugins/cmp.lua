@@ -25,8 +25,8 @@ return {
           documentation = cmp.config.window.bordered(),
       },
       mapping = cmp.mapping.preset.insert({
-        ["<S-Tab>"] = cmp.mapping.select_prev_item(), -- previous suggestion
-        ["<Tab>"] = cmp.mapping.select_next_item(), -- next suggestion
+        -- ["<S-Tab>"] = cmp.mapping.select_prev_item(), -- previous suggestion
+        -- ["<Tab>"] = cmp.mapping.select_next_item(), -- next suggestion
         ["<C-d>"] = cmp.mapping.scroll_docs(-4),
         ["<C-u>"] = cmp.mapping.scroll_docs(4),
         -- ["<Tab>"] = cmp.mapping.complete(), -- show completion suggestions
