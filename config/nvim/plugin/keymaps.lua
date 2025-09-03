@@ -22,6 +22,7 @@ vim.keymap.set("n", "<leader>s", "<C-w>s")
 vim.keymap.set("n", "<cmd>.", "<Esc>")
 
 -- code lsp/diagnostic navigation
+vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
 vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action)
 vim.keymap.set("n", "gl", vim.diagnostic.open_float)
