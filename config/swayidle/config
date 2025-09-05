@@ -1,1 +1,3 @@
-timeout 300 'swaylock -f && swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
+timeout 300 'systemctl sleep'
+before-sleep 'loginctl lock-session'
+lock 'swaylock'

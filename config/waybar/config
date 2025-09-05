@@ -4,6 +4,7 @@
 "height": 24,
 "reload_style_on_change": true,
 "exclusive": true,
+"ipc": true,
 // "margin-left": 14,
 // "margin-right": 14,
 
@@ -107,8 +108,8 @@
     "critical": 15
   },
   "interval": 20,
-  "format": "{icon}{capacity}%",
-  "format-charging": " {icon}{capacity}%",
+  "format": "{icon} {capacity}%", // extra space here is weird on different displays
+  "format-charging": " {icon} {capacity}%",
   "format-alt": "{icon} {time}",
   "format-icons": {
     "default": [" ", " ", " ", " ", " "]

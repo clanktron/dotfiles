@@ -63,6 +63,7 @@ bindsym $mod+q kill
 bindsym $mod+space exec $launcher
 
 bindsym $mod+Shift+R reload
+bindsym $mod+Ctrl+l exec $lock
 bindsym $mod+Shift+Q exec $logoutPrompt
 
 bindsym $mod+Ctrl+3 exec $screenshot
@@ -81,14 +82,14 @@ bindgesture swipe:3:right workspace next
 bindgesture swipe:3:left workspace prev
 
 # use dedicated workspace as "closed" equivalent to mac
-bindsym $mod+w move scratchpad
+bindsym $mod+h move scratchpad
 # Show the next closed windows or hide the focused scratchpad window.
 # If there are multiple closed windows, this command cycles through them.
-bindsym $mod+Shift+w scratchpad show
+bindsym $mod+Shift+h scratchpad show
 
 # Move window focus
 bindsym {
-    $mod+$left focus left
+    # $mod+$left focus left
     $mod+$down focus down
     $mod+$up focus up
     $mod+$right focus right
@@ -99,7 +100,7 @@ bindsym {
 }
 # Move the focused window
 bindsym {
-    $mod+Shift+$left move left
+    # $mod+Shift+$left move left
     $mod+Shift+$down move down
     $mod+Shift+$up move up
     $mod+Shift+$right move right
@@ -252,18 +253,21 @@ input 1356:2508:Wireless_Controller_Touchpad {
 # External Daemons:
 bar {
 	swaybar_command waybar
+    mode hide
+    modifier none
 }
+bindsym $mod+i bar mode toggle
 
 exec {
 }
 
 exec_always {
-    nwg-dock -nows -p left -d -hd 100000
+    # nwg-dock -nows -p left -d -hd 100000
     swaync
     pgrep autoLightDark || autoLightDark
     pgrep swayidle || swayidle
-    swww-daemon --format xrgb
-    $home/.local/bin/randomize-wallpaper.sh
+    # swww-daemon --format xrgb
+    # $home/.local/bin/randomize-wallpaper.sh
 }
 
 include /etc/sway/config.d/*
