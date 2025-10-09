@@ -5,10 +5,10 @@
 hs.application.enableSpotlightForNameSearches(true)
 
 apps = {
-  {key="1", app="Ghostty"},
-  {key="2", app="Safari"},
-  {key="3", app="Spotify"},
-  {key="4", app="Slack"}
+  {key="1", app="ghostty"},
+  {key="2", app="safari"},
+  {key="3", app="spotify"},
+  {key="4", app="slack"}
 }
 
 for _, a in ipairs(apps) do
