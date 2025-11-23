@@ -8,6 +8,7 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
+
 -- indentation
 vim.opt.autoindent = true
 vim.opt.smartindent = true
@@ -31,6 +32,7 @@ vim.o.termguicolors = true
 
 -- use system clipboard
 vim.opt.clipboard:append("unnamedplus")
+vim.g.clipboard = 'osc52'
 
 -- conceal
 vim.opt.conceallevel = 2
