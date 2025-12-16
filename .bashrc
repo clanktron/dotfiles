@@ -3,7 +3,7 @@ set -o vi
 
 # ENVIRONMENT
 export EDITOR=nvim
-GPG_TTY="$(tty)" && export GPG_TTY="$GPG"
+export GPG_TTY=$(tty)
 # set -gx EDITOR 'code --wait'
 export XDG_CONFIG_HOME="$HOME"/.config
 export KUEBCONFIG="$HOME"/.kube/config
