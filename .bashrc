@@ -71,6 +71,11 @@ function ide() {
     vi
 }
 
+if [ -z "$SSH_AUTH_SOCK" ]; then
+    eval "$(ssh-agent -s)"
+    ssh-add
+fi
+
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/clayton.castro/.lmstudio/bin"
 # End of LM Studio CLI section
