@@ -3,12 +3,12 @@ return {
         "nvim-telescope/telescope.nvim",
         lazy = true,
         dependencies = {
-            { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+            -- { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
             { "nvim-telescope/telescope-dap.nvim", enabled = false },
             { 'nvim-lua/plenary.nvim' },
         },
         opts = {
-            "fzf",
+            -- "fzf",
             -- "dap"
         },
         config = function(_, opts)
