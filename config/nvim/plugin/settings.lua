@@ -32,10 +32,10 @@ vim.o.termguicolors = true
 
 -- use system clipboard
 vim.opt.clipboard:append("unnamedplus")
-vim.g.clipboard = 'osc52'
+-- vim.g.clipboard = 'osc52'
 
 -- conceal
-vim.opt.conceallevel = 2
+vim.opt.conceallevel = 0
 
 -- floating window borders
 vim.o.winborder = 'rounded'
