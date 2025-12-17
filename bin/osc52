@@ -1,0 +1,24 @@
+#!/bin/sh
+# read stdin or args into data
+if [ -t 0 ]; then
+  data="$*"
+else
+  data="$(cat)"
+fi
+
+# base64 with no wraps (portable)
+b64="$(printf %s "$data" | base64 | tr -d '\r\n')"
+
+seq="\e]52;c;${b64}\a"
+
+case "$TMUX" in
+  "")  # not in tmux
+       printf "$seq" ;;
+  *)   # tmux DCS passthrough
+       printf "\ePtmux;\e%s\e\\" "$seq" ;;
+esac
+
+# GNU screen passthrough (if you use screen)
+if [ -n "$STY" ] && [ -z "$TMUX" ]; then
+  printf "\eP\e]52;c;%s\a\e\\" "$b64"
+fi
