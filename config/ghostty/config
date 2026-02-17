@@ -1,0 +1,4 @@
+window-save-state = always
+quit-after-last-window-closed = true
+clipboard-read = allow
+theme = dark:catppuccin-frappe,light:catppuccin-latte
