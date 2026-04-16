@@ -1,6 +1,4 @@
-local M = {}
-
-function M.cd_to_zoxide(path)
+local function z(path)
   local handle
   local cmd = { "zoxide", "query" }
 
@@ -29,7 +27,5 @@ function M.cd_to_zoxide(path)
 end
 
 vim.api.nvim_create_user_command("CD", function(opts)
-  M.cd_to_zoxide(opts.args)
+  z(opts.args)
 end, { nargs = "?", desc = "Change directory using zoxide" })
-
-return M
