@@ -81,15 +81,15 @@ bindsym $mod+Shift+tab workspace prev_on_output
 bindgesture swipe:3:right workspace next
 bindgesture swipe:3:left workspace prev
 
-# use dedicated workspace as "closed" equivalent to mac
-bindsym $mod+h move scratchpad
-# Show the next closed windows or hide the focused scratchpad window.
-# If there are multiple closed windows, this command cycles through them.
-bindsym $mod+Shift+h scratchpad show
+# # use dedicated workspace as "closed" equivalent to mac
+# bindsym $mod+h move scratchpad
+# # Show the next closed windows or hide the focused scratchpad window.
+# # If there are multiple closed windows, this command cycles through them.
+# bindsym $mod+Shift+h scratchpad show
 
 # Move window focus
 bindsym {
-    # $mod+$left focus left
+    $mod+$left focus left
     $mod+$down focus down
     $mod+$up focus up
     $mod+$right focus right
@@ -100,7 +100,7 @@ bindsym {
 }
 # Move the focused window
 bindsym {
-    # $mod+Shift+$left move left
+    $mod+Shift+$left move left
     $mod+Shift+$down move down
     $mod+Shift+$up move up
     $mod+Shift+$right move right
@@ -275,7 +275,7 @@ output DP-1 scale 1.5
 output "Dell Inc. DELL S2725QC B309S84" {
     mode 3840x2160@120Hz
     # transform 270
-    scale 1.5
+    scale 1.75
 }
 
 include /etc/sway/config.d/*
