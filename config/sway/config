@@ -258,9 +258,6 @@ bar {
 }
 bindsym $mod+i bar mode toggle
 
-exec {
-}
-
 exec_always {
     # nwg-dock -nows -p left -d -hd 100000
     swaync
@@ -268,6 +265,17 @@ exec_always {
     pgrep swayidle || swayidle
     # swww-daemon --format xrgb
     # $home/.local/bin/randomize-wallpaper.sh
+}
+
+bindswitch --locked --reload lid:on output eDP-1 disable
+bindswitch --locked --reload lid:off output eDP-1 enable
+
+output DP-1 scale 1.5
+
+output "Dell Inc. DELL S2725QC B309S84" {
+    mode 3840x2160@120Hz
+    # transform 270
+    scale 1.5
 }
 
 include /etc/sway/config.d/*
