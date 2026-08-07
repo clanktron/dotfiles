@@ -14,7 +14,5 @@ return {
     },
     {
         "williamboman/mason.nvim",
-        opts = {},
-        cmd = { "Mason" }
     },
 }
