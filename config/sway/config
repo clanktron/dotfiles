@@ -1,4 +1,6 @@
-set $mod Mod4
+set $mod Alt
+# set $mod Mod4
+
 # set $launcher wofi
 set $launcher rofi -show drun
 
@@ -78,8 +80,8 @@ bindsym $mod+b border toggle
 # Cycle through workspaces
 bindsym $mod+tab workspace next_on_output
 bindsym $mod+Shift+tab workspace prev_on_output
-bindgesture swipe:3:right workspace next
-bindgesture swipe:3:left workspace prev
+bindgesture swipe:3:right workspace prev
+bindgesture swipe:3:left workspace next
 
 # # use dedicated workspace as "closed" equivalent to mac
 # bindsym $mod+h move scratchpad
@@ -270,12 +272,19 @@ exec_always {
 bindswitch --locked --reload lid:on output eDP-1 disable
 bindswitch --locked --reload lid:off output eDP-1 enable
 
-output DP-1 scale 1.5
+output eDP-1 scale 1.5
 
 output "Dell Inc. DELL S2725QC B309S84" {
     mode 3840x2160@120Hz
-    # transform 270
-    scale 1.75
+    transform 270
+    scale 2
+    position 0,0
+}
+
+output "LG Electronics LG ULTRAGEAR 308MXQA1P068" {
+    mode 2560x1440@143.933Hz
+    scale 1.33
+    position 1080,400
 }
 
 include /etc/sway/config.d/*
