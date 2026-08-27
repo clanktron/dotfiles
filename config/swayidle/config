@@ -1,3 +1,4 @@
+timeout 15 'brightnessctl -d "*::kbd_backlight" set 0' resume 'brightnessctl -d "*::kbd_backlight" set 100'
 timeout 900 'systemctl sleep'
 before-sleep 'loginctl lock-session'
 lock 'swaylock'
