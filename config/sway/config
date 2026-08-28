@@ -20,15 +20,14 @@ smart_borders on
 # default_border none
 # default_floating_border normal 9
 
-
 set $home /home/clayton
-set $wallpaper /home/clayton/.config/background
-set $term foot
+set $wallpaper /home/clayton/Pictures/kings-canyon.jpeg
+set $term ghostty
 set $logoutPrompt wlogout
 #set $lock loginctl lock-session
 set $lock swaylock -i $wallpaper
-set $screenshot  grim "$HOME/Pictures/Screenshot $(date "+%Y-%m-%d at %r").png"
-set $select_screenshot grim -g "$(slurp)" "$HOME/Pictures/Screenshot $(date "+%Y-%m-%d at %r").png"
+set $screenshot  grim "$HOME/Pictures/Screenshots/Screenshot From $(date "+%Y-%m-%d at %r").png"
+set $select_screenshot grim -g "$(slurp)" "$HOME/Pictures/Screenshots/Screenshot From $(date "+%Y-%m-%d at %r").png"
 set $screenRecord wl-screenrec -g "$(slurp)" -f "$HOME/Videos/Screen Recording $(date "+%Y-%m-%d at %r").mov"
 set $stopScreenRecord pkill wl-screenrec
 # set $notificationCenter swaync-client -t -sw
@@ -50,16 +49,6 @@ set $toggleMute wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 set $volumeUp wpctl set-volume @DEFAULT_AUDIO_SINK@ 5.0%+ -l 1
 set $volumeDown wpctl set-volume @DEFAULT_AUDIO_SINK@ 5.0%- -l 1
 
-# Acer Monitor Control
-set $displaysOn ddcutil setvcp d6 1
-set $displaysOff ddcutil setvcp d6 5
-set $monitorToHdmi ddcutil setvcp 60 17
-set $monitorToVga ddcutil setvcp 60 1
-set $monitorBrightnessUp ~/.local/bin/set-monitor-brightness 10 +
-set $monitorBrightnessDown ~/.local/bin/set-monitor-brightness 10 -
-
-set $toggleTouchpad swaymsg input type:touchpad events toggle enabled disabled
-
 bindsym $mod+e exec $term
 bindsym $mod+q kill
 bindsym $mod+space exec $launcher
@@ -68,6 +57,8 @@ bindsym $mod+Shift+R reload
 bindsym $mod+Ctrl+l exec $lock
 bindsym $mod+Shift+Q exec $logoutPrompt
 
+bindsym Print exec $screenshot
+bindsym $mod+Print exec $select_screenshot
 bindsym $mod+Ctrl+3 exec $screenshot
 bindsym $mod+Ctrl+4 exec $select_screenshot
 bindsym $mod+Ctrl+5 exec $screenRecord
@@ -189,9 +180,6 @@ bindsym --locked {
     $mod+XF86MonBrightnessDown exec $monitorBrightnessDown
 }
 
-# Disable touchpads (Dualshock 4)
-bindsym End exec $toggleTouchpad
-
 # Settings:
 # Gaps
 # gaps inner 0
@@ -288,3 +276,17 @@ output "LG Electronics LG ULTRAGEAR 308MXQA1P068" {
 }
 
 include /etc/sway/config.d/*
+
+# DEPRECATED
+
+# # Acer Monitor Control
+# set $displaysOn ddcutil setvcp d6 1
+# set $displaysOff ddcutil setvcp d6 5
+# set $monitorToHdmi ddcutil setvcp 60 17
+# set $monitorToVga ddcutil setvcp 60 1
+# set $monitorBrightnessUp ~/.local/bin/set-monitor-brightness 10 +
+# set $monitorBrightnessDown ~/.local/bin/set-monitor-brightness 10 -
+
+# # Disable touchpads (Dualshock 4)
+# bindsym End exec $toggleTouchpad
+# set $toggleTouchpad swaymsg input type:touchpad events toggle enabled disabled
