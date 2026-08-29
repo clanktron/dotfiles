@@ -164,6 +164,10 @@ bindsym --locked {
     XF86AudioPause exec $pause
     XF86AudioNext exec $nextTrack
     XF86AudioPrev exec $previousTrack
+    # stupid teams keys 
+    XF86PickupPhone exec $previousTrack
+    XF86HangupPhone exec $playPause
+    XF86Favorites exec $nextTrack
 
     # Brightness
     XF86MonBrightnessUp exec $brightnessUp
