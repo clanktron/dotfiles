@@ -1,10 +1,5 @@
 # Dotfiles
 
-MacOS:
-![darwin-screenshot](assets/screenshots/darwin.png)
-Linux:
-![linux-screenshot](assets/screenshots/linux-sway.png)
-
 Configuration files for my development environment. Feel free to grab anything you like.
 
 ## Installation
