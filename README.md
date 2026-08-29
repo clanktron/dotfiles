@@ -26,22 +26,3 @@ To remove all previously installed/linked files:
 ```bash
 ./uninstall
 ```
-
-## Configured Software
-
-* Terminal Emulator(s): [Wezterm](https://wezfurlong.org/wezterm), [Alacritty](https://alacritty.org)
-* Shell(s): [fish](https://fishshell.com), [bash](https://www.gnu.org/software/bash)
-* Multiplexer: [tmux](https://github.com/tmux/tmux/wiki)
-* Editor: [Neovim](https://neovim.io)
-    * Plugin Manager: [lazy.nvim](https://github.com/folke/lazy.nvim)
-* Keyboard Manager: [Kmonad](https://github.com/kmonad/kmonad)
-* Kubernetes Management: [K9s](https://k9scli.io)
-* Mac Specific:
-    * Package Manager: [Homebrew](https://brew.sh)
-    * Window Manager: [Yabai](https://github.com/koekeishiya/yabai)
-    * General Scripting: [Hammerspoon](https://www.hammerspoon.org/)
-* Linux Specific:
-    * Window Manager/Compositor(s): [Sway](https://swaywm.org), [Hyprland](https://hyprland.org) 
-    * Widgets: [Waybar](https://github.com/alexays/waybar), [Wlogout](https://github.com/ArtsyMacaw/wlogout)
-    * Notifications: [SwayNC](https://github.com/ErikReider/SwayNotificationCenter)
-    * Launcher: [Wofi](https://hg.sr.ht/~scoopta/wofi)
