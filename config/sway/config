@@ -57,12 +57,14 @@ bindsym $mod+Shift+R reload
 bindsym $mod+Ctrl+l exec $lock
 bindsym $mod+Shift+Q exec $logoutPrompt
 
-bindsym Print exec $screenshot
-bindsym $mod+Print exec $select_screenshot
-bindsym $mod+Ctrl+3 exec $screenshot
-bindsym $mod+Ctrl+4 exec $select_screenshot
-bindsym $mod+Ctrl+5 exec $screenRecord
-bindsym $mod+Ctrl+6 exec $stopScreenRecord
+bindsym --inhibited {
+    Print exec $screenshot
+    $mod+Print exec $select_screenshot
+    $mod+Ctrl+3 exec $screenshot
+    $mod+Ctrl+4 exec $select_screenshot
+    $mod+Ctrl+5 exec $screenRecord
+    $mod+Ctrl+6 exec $stopScreenRecord
+}
 
 bindsym $mod+Shift+f fullscreen
 bindsym $mod+f floating toggle
@@ -81,7 +83,7 @@ bindgesture swipe:3:left workspace next
 # bindsym $mod+Shift+h scratchpad show
 
 # Move window focus
-bindsym {
+bindsym --inhibited {
     $mod+$left focus left
     $mod+$down focus down
     $mod+$up focus up
@@ -92,7 +94,7 @@ bindsym {
     $mod+Right focus right
 }
 # Move the focused window
-bindsym {
+bindsym --inhibited {
     $mod+Shift+$left move left
     $mod+Shift+$down move down
     $mod+Shift+$up move up
@@ -104,7 +106,7 @@ bindsym {
 }
 
 # Switch to workspace
-bindsym {
+bindsym --inhibited {
     $mod+1 workspace number 1
     $mod+2 workspace number 2
     $mod+3 workspace number 3
@@ -117,7 +119,7 @@ bindsym {
     $mod+0 workspace number 10
 }
 # Move focused container to workspace
-bindsym {
+bindsym --inhibited {
     $mod+Shift+1 move container to workspace number 1; workspace 1
     $mod+Shift+2 move container to workspace number 2; workspace 2
     $mod+Shift+3 move container to workspace number 3; workspace 3
