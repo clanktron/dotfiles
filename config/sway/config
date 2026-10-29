@@ -256,9 +256,9 @@ bindsym $mod+i bar mode toggle
 
 exec_always {
     # nwg-dock -nows -p left -d -hd 100000
-    swaync
-    pgrep autoLightDark || autoLightDark
-    pgrep swayidle || swayidle
+    # swaync
+    pkill autoLightDark; autoLightDark
+    pkill swayidle; swayidle -w
     # swww-daemon --format xrgb
     # $home/.local/bin/randomize-wallpaper.sh
 }
